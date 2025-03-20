@@ -4,13 +4,14 @@ import Navigation from '../../Navigation';
 
 const ServiceNavigation = ({ activeService }) => {
   const services = [
-    { id: 'security-foundation', name: 'Security Foundation' },
-    { id: 'microsoft-optimization', name: 'Microsoft Optimization' },
-    { id: 'cxo-services', name: 'CxO Advisory Services' },
-    { id: 'ai-services', name: 'AI Solutions' },
-    { id: 'electronic-message-archiving', name: 'Electronic Message Archiving' },
-    { id: 'private-msp', name: 'Private MSP' },
-    { id: 'regulatory-compliance', name: 'Regulatory Compliance' }
+    { id: 'all-services', name: 'All Services', path: '/services' },
+    { id: 'security-foundation', name: 'Security Foundation', path: '/security' },
+    { id: 'microsoft-optimization', name: 'Microsoft Optimization', path: '/microsoft-optimization' },
+    { id: 'cxo-services', name: 'CxO Advisory Services', path: '/cxo-services' },
+    { id: 'ai-services', name: 'AI Solutions', path: '/ai-services' },
+    { id: 'electronic-message-archiving', name: 'Electronic Message Archiving', path: '/electronic-message-archiving' },
+    { id: 'private-msp', name: 'Private MSP', path: '/private-msp' },
+    { id: 'regulatory-compliance', name: 'Regulatory Compliance', path: '/regulatory-compliance' }
   ];
 
   return (
@@ -31,7 +32,7 @@ const ServiceNavigation = ({ activeService }) => {
               {services.map(service => (
                 <li key={service.id}>
                   <Link 
-                    to={`/${service.id}`} 
+                    to={service.path} 
                     className={`font-medium pb-3 inline-block whitespace-nowrap ${
                       activeService === service.name 
                         ? 'text-blue-600 border-b-2 border-blue-600' 

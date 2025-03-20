@@ -15,7 +15,7 @@ import {
 const RegulatoryCompliance = () => {
   const pageData = {
     title: "Regulatory & Compliance Solutions",
-    subtitle: "for Boutique Alternative Investment",
+    subtitle: "for Specialized Alternative Investment",
     description: "Navigate complex regulatory requirements with technology-powered compliance solutions tailored for hedge funds, private equity, venture capital, and family offices.",
     
     challenges: [
@@ -26,7 +26,7 @@ const RegulatoryCompliance = () => {
       },
       {
         title: "Resource Constraints",
-        description: "Boutique firms must manage comprehensive compliance programs with limited staff and technology resources.",
+        description: "Specialized firms must manage comprehensive compliance programs with limited staff and technology resources.",
         icon: <Users className="w-6 h-6 text-orange-600" />
       },
       {
@@ -47,7 +47,7 @@ const RegulatoryCompliance = () => {
     },
     
     metrics: [
-      { value: "38%", label: "Increase in SEC examinations for boutique firms" },
+      { value: "38%", label: "Increase in SEC examinations for specialized firms" },
       { value: "30%", label: "Average increase in Microsoft Compliance Manager score" },
       { value: "65%", label: "Reduction in audit preparation time" },
       { value: "85%", label: "Reduction in deficiency findings" }

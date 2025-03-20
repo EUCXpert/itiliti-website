@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Download } from 'lucide-react';
 import ConsultationModal from './ConsultationModal';
+import useFormTracking from './useFormTracking';
 
 const FloatingCTASection = ({ 
   showOnScroll = 300, 
@@ -9,14 +10,35 @@ const FloatingCTASection = ({
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  
+  // Track form submissions
+  useFormTracking('consultation', isModalOpen);
+  useFormTracking('download', isDownloading);
 
   const downloadCapabilitiesOverview = () => {
+    setIsDownloading(true);
+    
+    // Track the download in analytics if available
+    if (window.gtag) {
+      window.gtag('event', 'download', {
+        'event_category': 'engagement',
+        'event_label': 'capabilities_overview_floating'
+      });
+    }
+    
+    // Create and trigger download
     const link = document.createElement('a');
     link.href = '/capabilities-overview.pdf';
     link.download = 'ITILITI-Capabilities-Overview.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    
+    // Reset download state after a short delay
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -44,7 +66,34 @@ const FloatingCTASection = ({
     e.stopPropagation();
     setIsDismissed(true);
     setIsVisible(false);
+    
+    // Track dismissal in analytics if available
+    if (window.gtag) {
+      window.gtag('event', 'dismiss', {
+        'event_category': 'engagement',
+        'event_label': 'floating_cta_dismissed'
+      });
+    }
+    
+    // Store dismissal in localStorage to remember user preference
+    try {
+      localStorage.setItem('floatingCTADismissed', 'true');
+    } catch (e) {
+      console.error('Error saving dismissal state:', e);
+    }
   };
+  
+  // Check if CTA was previously dismissed
+  useEffect(() => {
+    try {
+      const wasDismissed = localStorage.getItem('floatingCTADismissed') === 'true';
+      if (wasDismissed) {
+        setIsDismissed(true);
+      }
+    } catch (e) {
+      // Ignore storage errors
+    }
+  }, []);
 
   if (!isVisible) return null;
 
@@ -75,26 +124,36 @@ const FloatingCTASection = ({
             <button 
               onClick={() => setIsModalOpen(true)}
               className="bg-white text-blue-700 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors text-sm"
+              aria-label="Schedule a discovery call"
             >
               Schedule Discovery Call
             </button>
             <button 
               onClick={downloadCapabilitiesOverview}
-              className="bg-transparent border border-white text-white px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-colors text-sm"
+              className="bg-transparent border border-white text-white px-4 py-2 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-colors text-sm flex items-center justify-center"
+              disabled={isDownloading}
+              aria-label="Download overview"
             >
-              Download Overview
+              {isDownloading ? (
+                <span>Downloading...</span>
+              ) : (
+                <>
+                  <Download className="w-4 h-4 mr-2" />
+                  <span>Download Overview</span>
+                </>
+              )}
             </button>
           </div>
         </div>
       </div>
       
-      {/* Modal */}
+      {/* ConsultationModal component */}
       <ConsultationModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
       
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes slideUp {
           from {
             transform: translateY(100%);

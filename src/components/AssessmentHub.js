@@ -13,23 +13,41 @@ const AssessmentHub = () => {
     {
       id: 'security',
       title: 'Security Posture Assessment',
-      description: 'Evaluate your firm\'s cybersecurity controls, governance, and resilience against financial services threats and regulatory requirements.',
+      description: 'Evaluate your firm\'s cybersecurity controls, governance, and resilience against financial services threats and regulatory requirements to enhance investor confidence and protect critical assets.',
       icon: <Shield className="w-10 h-10 text-blue-600" />,
-      component: SecurityPostureAssessment
+      component: SecurityPostureAssessment,
+      benefits: [
+        "Identify gaps in your security posture before institutional investors do",
+        "Receive prioritized recommendations aligned with SEC and regulatory expectations",
+        "Develop an actionable roadmap for security enhancement",
+        "Prepare comprehensive documentation for investor due diligence"
+      ]
     },
     {
       id: 'ai_readiness',
       title: 'AI Readiness Assessment',
       description: 'Evaluate your firm\'s preparedness to implement and benefit from artificial intelligence solutions in your investment operations.',
       icon: <BrainCircuit className="w-10 h-10 text-blue-600" />,
-      component: AIReadinessAssessment
+      component: AIReadinessAssessment,
+      benefits: [
+        "Understand your data readiness for AI implementation",
+        "Identify high-value AI use cases specific to your investment strategy",
+        "Evaluate your technology infrastructure's AI capabilities",
+        "Determine the governance and compliance frameworks needed for responsible AI"
+      ]
     },
     {
       id: 'odd_readiness',
       title: 'Operational Due Diligence Assessment',
-      description: 'Evaluate your readiness for institutional investor operational due diligence (ODD) and identify critical improvement areas.',
+      description: 'Evaluate your readiness for institutional investor operational due diligence (ODD) and identify critical improvement areas to enhance your capital raising capabilities.',
       icon: <Briefcase className="w-10 h-10 text-blue-600" />,
-      component: OperationalDueDiligenceAssessment
+      component: OperationalDueDiligenceAssessment,
+      benefits: [
+        "Identify operational gaps before institutional investors do",
+        "Improve operational documentation for investor scrutiny",
+        "Strengthen business continuity and disaster recovery capabilities",
+        "Enhance vendor management and oversight processes"
+      ]
     }
   ];
 
@@ -42,11 +60,11 @@ const AssessmentHub = () => {
     <div className="font-sans min-h-screen bg-gray-50">
       <Navigation />
       
-      <div className="bg-gradient-to-r from-gray-900 to-black text-white relative">
+      <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white relative">
         <div className="container mx-auto px-6 py-16">
           <h1 className="text-4xl font-bold mb-4">Assessment Hub</h1>
           <p className="text-xl mb-8 max-w-2xl">
-            Evaluate your firm's capabilities, identify improvement opportunities, and get personalized recommendations.
+            Evaluate your firm's capabilities, identify improvement opportunities, and receive personalized recommendations aligned with institutional investor expectations.
           </p>
         </div>
       </div>
@@ -60,7 +78,7 @@ const AssessmentHub = () => {
               <p className="text-gray-700">
                 Our specialized assessments are designed specifically for boutique alternative investment firms. 
                 Each assessment takes approximately 5-7 minutes to complete and provides personalized results 
-                and recommendations based on industry best practices.
+                with actionable recommendations based on institutional investor expectations and industry best practices.
               </p>
             </div>
             
@@ -78,6 +96,19 @@ const AssessmentHub = () => {
                   </div>
                   <h3 className="text-xl font-bold text-center mb-3">{assessment.title}</h3>
                   <p className="text-gray-600 text-center mb-6">{assessment.description}</p>
+                  
+                  <div className="bg-gray-50 p-4 rounded-lg mb-4">
+                    <h4 className="font-medium text-gray-800 mb-2">Key Benefits:</h4>
+                    <ul className="space-y-2">
+                      {assessment.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start text-sm">
+                          <ArrowRight className="w-4 h-4 text-blue-500 mr-2 flex-shrink-0 mt-1" />
+                          <span className="text-gray-600">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
                   <div className="text-blue-600 text-sm font-medium flex items-center justify-center">
                     Start Assessment
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -95,7 +126,7 @@ const AssessmentHub = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Identify Critical Risks</h4>
-                    <p className="text-gray-700 text-sm">Discover potential vulnerabilities before they impact your business or investor confidence.</p>
+                    <p className="text-gray-700 text-sm">Discover potential vulnerabilities before they impact your business or institutional investor confidence.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -104,7 +135,7 @@ const AssessmentHub = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Strategic Planning</h4>
-                    <p className="text-gray-700 text-sm">Get prioritized recommendations to inform your technology roadmap and resource allocation.</p>
+                    <p className="text-gray-700 text-sm">Receive prioritized recommendations to inform your technology roadmap and resource allocation.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -112,8 +143,8 @@ const AssessmentHub = () => {
                     <Briefcase className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Investor Readiness</h4>
-                    <p className="text-gray-700 text-sm">Prepare for institutional investor due diligence and enhance your capital raising capabilities.</p>
+                    <h4 className="font-semibold mb-1">Capital Raising Readiness</h4>
+                    <p className="text-gray-700 text-sm">Prepare for institutional investor due diligence to enhance your capital raising capabilities.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -122,7 +153,7 @@ const AssessmentHub = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Competitive Edge</h4>
-                    <p className="text-gray-700 text-sm">Benchmark your capabilities against industry standards and gain a competitive advantage.</p>
+                    <p className="text-gray-700 text-sm">Benchmark your capabilities against industry standards and gain a competitive advantage in the alternative investment space.</p>
                   </div>
                 </div>
               </div>

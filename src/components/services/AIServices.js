@@ -11,41 +11,43 @@ import {
   Shield, 
   Clock, 
   ArrowUpRight,
-  Users
+  Users,
+  FileText,
+  Lightbulb
 } from 'lucide-react';
 
 const AIServices = () => {
   const pageData = {
     title: "AI Solutions",
-    subtitle: "for Boutique Alternative Investment",
-    description: "Transform your investment processes, unlock hidden insights, and create competitive advantage with AI solutions specifically designed for hedge funds, private equity, venture capital, and family offices.",
+    subtitle: "for Specialized Alternative Investment",
+    description: "Transform your investment processes, unlock hidden insights, and create competitive advantage with AI solutions specifically designed for hedge funds, private equity, venture capital, and family offices. Our approach enhances rather than replaces your team's expertise and judgment.",
     
     challenges: [
       {
-        title: "Data Quality & Integration Challenges",
-        description: "Alternative investment firms often struggle with disparate data sources, incomplete datasets, and inconsistent formats.",
+        title: "Data Architecture Challenges",
+        description: "Alternative investment firms often struggle with disparate data sources, inconsistent formats, and fragmented data ecosystems, making effective AI implementation difficult.",
         icon: <Database className="w-6 h-6 text-orange-600" />
       },
       {
-        title: "Technology Infrastructure Gaps",
-        description: "Legacy systems and fragmented technology stacks create barriers to AI implementation.",
+        title: "Technology Infrastructure Limitations",
+        description: "Legacy systems and fragmented technology stacks create barriers to AI adoption that boutique firms lack the resources to address effectively.",
         icon: <Server className="w-6 h-6 text-orange-600" />
       },
       {
-        title: "Talent & Expertise Limitations",
-        description: "Boutique firms face challenges attracting and retaining AI/ML talent alongside investment expertise.",
+        title: "AI Talent Constraints",
+        description: "Boutique firms face significant challenges attracting and retaining AI/ML specialists alongside investment expertise in a competitive talent market.",
         icon: <Users className="w-6 h-6 text-orange-600" />
       },
       {
-        title: "Regulatory & Compliance Concerns",
-        description: "Emerging AI regulations and data privacy considerations create complex compliance challenges.",
+        title: "AI Governance & Regulatory Complexity",
+        description: "Emerging AI regulations and compliance considerations pose complex challenges that require specialized knowledge of both AI and financial regulatory frameworks.",
         icon: <Shield className="w-6 h-6 text-orange-600" />
       }
     ],
     
     keyFeatures: {
       title: "AI That Enhances, Not Replaces, Investment Expertise",
-      description: "Our approach focuses on augmenting your team's capabilities with responsible, transparent AI that delivers measurable business impact aligned with your investment strategy."
+      description: "Our approach focuses on augmenting your team's capabilities with responsible, transparent AI that delivers measurable business impact aligned with your investment strategy. We bring enterprise-grade AI capabilities scaled appropriately for boutique investment firms."
     },
     
     metrics: [
@@ -62,7 +64,7 @@ const AIServices = () => {
         icon: <Search className="w-8 h-8 text-blue-600" />,
         capabilities: [
           "Summarize lengthy research reports to extract key insights",
-          "Analyze earnings call transcripts to identify sentiment and trends",
+          "Analyze earnings call transcripts for sentiment and trends",
           "Track specific company developments across multiple sources",
           "Process unstructured data for actionable investment signals"
         ]
@@ -79,7 +81,7 @@ const AIServices = () => {
         ]
       },
       {
-        title: "Investor Communication",
+        title: "Investor Communication Enhancement",
         description: "Create personalized investor communications, from routine updates to detailed responses for specific inquiries.",
         icon: <MessageSquare className="w-8 h-8 text-blue-600" />,
         capabilities: [
@@ -90,11 +92,11 @@ const AIServices = () => {
         ]
       },
       {
-        title: "Portfolio Analytics",
+        title: "Portfolio Analytics Augmentation",
         description: "Extract insights from portfolio data to identify trends, risks, and opportunities across investments.",
         icon: <BarChart4 className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Generate portfolio performance summaries from spreadsheet data",
+          "Generate portfolio performance summaries from complex data",
           "Create comparative analyses across portfolio companies",
           "Identify correlation patterns among investments",
           "Develop predictive models for portfolio risk assessment"
@@ -122,12 +124,40 @@ const AIServices = () => {
         { value: "3.5x", label: "More potential investments evaluated per analyst" },
         { value: "40%", label: "Reduction in research time for investment analysis" }
       ],
-      quote: "Copilot has transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
+      quote: "The AI solution has transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
       author: {
         title: "Investment Director",
         company: "Mid-Market Private Equity Firm"
       }
-    }
+    },
+    
+    faqs: [
+      {
+        id: 1,
+        question: "How do your AI solutions specifically address alternative investment needs?",
+        answer: "Our AI solutions are designed specifically for investment workflows including research analysis, due diligence, portfolio monitoring, and investor communications. We've trained our models on financial data relevant to alternative investments and designed interfaces that integrate with your existing investment processes. Our team includes both AI specialists and investment professionals who understand the nuances of alternative strategies, ensuring solutions that address real pain points rather than generic AI applications."
+      },
+      {
+        id: 2,
+        question: "What kind of data do we need to implement your AI solutions?",
+        answer: "While more data generally leads to better results, our solutions can work with various levels of data maturity. For firms with structured data repositories, we can integrate directly with your existing systems. For those with less organized data, we begin with data discovery and organization before implementing AI capabilities. We can work with financial statements, investment memoranda, legal documents, portfolio company reports, market data, investor communications, and other investment-relevant information sources."
+      },
+      {
+        id: 3,
+        question: "How does your AI approach address regulatory and compliance concerns?",
+        answer: "Our AI implementation includes comprehensive governance frameworks designed specifically for financial services regulatory requirements. This includes transparency in AI decision-making, explainability of outputs, appropriate human oversight, data privacy controls, and audit trails. We stay current on emerging AI regulations affecting financial services and ensure our implementations align with regulatory expectations. We also collaborate with your compliance team to document AI usage for regulatory examinations."
+      },
+      {
+        id: 4,
+        question: "How long does implementation take and what's the expected ROI?",
+        answer: "Implementation timelines range from 4-12 weeks depending on the specific solution and your data readiness. We focus on quick wins first, often delivering initial capabilities within 4-6 weeks to demonstrate value. Most clients see ROI within the first quarter through efficiency gains, enhanced analysis capabilities, and improved decision quality. Our phased approach ensures you realize value throughout the implementation rather than waiting for a lengthy project to complete."
+      },
+      {
+        id: 5,
+        question: "How do your AI solutions integrate with our existing systems?",
+        answer: "Our solutions are designed to integrate seamlessly with your existing investment technology stack, including research management systems, deal tracking tools, portfolio monitoring platforms, and investor communications systems. We use API-based connections where available and build custom integrations where needed. The goal is to enhance your current workflow rather than forcing adoption of new platforms. This approach minimizes disruption while maximizing the value of both your existing systems and our AI capabilities."
+      }
+    ]
   };
 
   return <ServicePage {...pageData} />;

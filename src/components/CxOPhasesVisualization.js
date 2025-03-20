@@ -6,27 +6,27 @@ const CxOPhasesVisualization = () => {
   const phases = [
     {
       title: "Phase 1",
-      subtitle: "Security Foundation",
+      subtitle: "Foundation",
       icon: <Shield className="w-10 h-10 text-gray-700" />,
       color: "from-blue-500 to-blue-600",
-      description: "Establish robust security infrastructure and operational stability",
-      cxoRole: "Security leadership and compliance oversight to establish proper governance"
+      description: "Establish robust security infrastructure and ITSM maturity",
+      cxoRole: "Security leadership and infrastructure planning to establish proper governance"
     },
     {
       title: "Phase 2",
-      subtitle: "Microsoft Optimization",
+      subtitle: "Capabilities",
       icon: <Lightbulb className="w-10 h-10 text-gray-700" />,
-      color: "from-blue-600 to-blue-700",
-      description: "Maximize your technology investments through strategic optimization",
-      cxoRole: "Strategic license management and technology consolidation to reduce costs"
+      color: "from-purple-500 to-purple-600",
+      description: "Advance capabilities through AI readiness and compliance maturity",
+      cxoRole: "Strategic license management and AI governance framework development"
     },
     {
       title: "Phase 3",
-      subtitle: "Business Transformation",
+      subtitle: "Optimization",
       icon: <BrainCircuit className="w-10 h-10 text-gray-700" />,
-      color: "from-blue-700 to-blue-800",
-      description: "Transform core investment workflows for maximum efficiency",
-      cxoRole: "Strategic leadership to align technology with investment objectives"
+      color: "from-indigo-500 to-indigo-600",
+      description: "Focus on business optimization and intelligent automation",
+      cxoRole: "Digital transformation leadership and workflow innovation strategy"
     }
   ];
 
@@ -48,7 +48,7 @@ const CxOPhasesVisualization = () => {
       {/* Connected Phases */}
       <div className="relative pb-8">
         {/* Connection Line */}
-        <div className="absolute top-16 left-1/2 w-4/5 h-1 bg-gradient-to-r from-blue-400 to-blue-700 transform -translate-x-1/2 rounded-full"></div>
+        <div className="absolute top-16 left-1/2 w-4/5 h-1 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-700 transform -translate-x-1/2 rounded-full"></div>
 
         {/* Phases */}
         <div className="flex justify-between relative">

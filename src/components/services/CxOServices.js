@@ -17,35 +17,35 @@ import {
 const CxOServices = () => {
   const pageData = {
     title: "CxO Advisory Services",
-    subtitle: "for Boutique Alternative Investment",
-    description: "Enterprise-grade executive leadership with boutique flexibility and deep alternative investment expertise. Access fractional CIO, CISO, and technology leadership aligned with your firm's growth.",
+    subtitle: "for Specialized Alternative Investment",
+    description: "Access fractional technology leadership that delivers enterprise expertise at Specialized-appropriate scale and cost. Our CxO services align your technology strategy with investment objectives while ensuring operational excellence and regulatory compliance.",
     
     challenges: [
       {
-        title: "Executive Cost Constraints",
-        description: "Boutique firms need C-suite technology leadership but cannot justify full-time executive salaries, leading to strategic gaps in technology guidance.",
+        title: "Executive Cost Limitations",
+        description: "Specialized investment firms require C-suite technology leadership but cannot justify full-time executive compensation, creating strategic gaps in technology governance.",
         icon: <DollarSign className="w-6 h-6 text-blue-600" />
       },
       {
-        title: "Complex Technology Decisions",
-        description: "Strategic technology decisions require experienced guidance to align with investment operations, but finding expertise specific to alternative investments is challenging.",
+        title: "Investment-Specific Technology Decisions",
+        description: "Strategic technology choices demand specialized expertise aligned with alternative investment operations, which is increasingly difficult to find and retain.",
         icon: <Lightbulb className="w-6 h-6 text-blue-600" />
       },
       {
-        title: "Regulatory & Security Oversight",
-        description: "Growing regulatory and investor expectations demand sophisticated technology governance that most boutique firms struggle to implement effectively.",
+        title: "Institutional Investor Requirements",
+        description: "Growing institutional allocator and regulatory expectations demand sophisticated technology governance that most Specialized firms struggle to implement effectively.",
         icon: <Shield className="w-6 h-6 text-blue-600" />
       },
       {
-        title: "Growth Transition Points",
+        title: "AUM Growth Transition Points",
         description: "Technology needs evolve rapidly as AUM grows, requiring strategic planning and foresight that's difficult to maintain without dedicated leadership.",
         icon: <Target className="w-6 h-6 text-blue-600" />
       }
     ],
     
     keyFeatures: {
-      title: "Executive Leadership Without the Executive Price Tag",
-      description: "Our fractional CxO services deliver enterprise-caliber leadership precisely scaled to your boutique investment firm's needs and budget, providing sophisticated guidance at a fraction of the cost of a full-time hire."
+      title: "Enterprise Leadership Without the Enterprise Cost",
+      description: "Our fractional CxO services deliver institutional-caliber technology leadership precisely scaled to your Specialized investment firm's needs, providing sophisticated guidance at a fraction of the cost of a full-time hire."
     },
     
     metrics: [
@@ -58,12 +58,12 @@ const CxOServices = () => {
     serviceOfferings: [
       {
         title: "Virtual CIO",
-        description: "Strategic technology leadership tailored to your firm's investment strategy and growth objectives.",
+        description: "Strategic technology leadership tailored to your firm's investment strategy and growth trajectory.",
         icon: <Lightbulb className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Technology roadmap development aligned with fund strategy",
+          "Technology roadmap development aligned with investment objectives",
           "IT budget optimization and strategic allocation",
-          "Vendor selection and management for investment technology",
+          "Vendor management for investment-specific technologies",
           "Digital transformation leadership and execution"
         ]
       },
@@ -72,21 +72,21 @@ const CxOServices = () => {
         description: "Expert security leadership to protect sensitive investor data and meet regulatory requirements.",
         icon: <Shield className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Security strategy development and implementation",
+          "Security strategy development aligned with institutional investor expectations",
           "Operational Due Diligence (ODD) preparation and support",
-          "Regulatory compliance oversight (SEC, FINRA, etc.)",
+          "SEC and regulatory compliance oversight",
           "Incident response planning and management"
         ]
       },
       {
-        title: "Compliance/Governance Officer",
+        title: "Technology Governance",
         description: "Navigate complex regulatory requirements with expert guidance and systematic oversight.",
         icon: <FileText className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Regulatory filing management and oversight",
+          "Investment-specific IT governance frameworks",
           "Policy development and implementation",
           "Compliance monitoring and testing",
-          "Regulatory exam preparation and support"
+          "Regulatory examination preparation and support"
         ]
       },
       {
@@ -94,7 +94,7 @@ const CxOServices = () => {
         description: "Technical expertise to optimize your investment operations and technology stack.",
         icon: <BarChart4 className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Technology stack optimization for investment workflows",
+          "Investment workflow optimization through technology",
           "Data integration and analytics strategy",
           "Technical architecture design and implementation",
           "Development team leadership and management"
@@ -110,7 +110,7 @@ const CxOServices = () => {
         { icon: <Users className="w-4 h-4" />, text: "14-person investment team" },
         { icon: <Target className="w-4 h-4" />, text: "Institutional investor focus" }
       ],
-      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet investor requirements.",
+      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet allocator requirements.",
       approach: [
         "Deployed a virtual CIO and CISO service working 4 days monthly",
         "Developed and implemented a technology and security strategy aligned with institutional investor expectations",
@@ -133,7 +133,7 @@ const CxOServices = () => {
       {
         id: 1,
         question: "How does your fractional CxO approach compare to hiring a full-time executive?",
-        answer: "Our fractional model provides enterprise-caliber expertise at 60-75% less cost than a full-time executive hire. You receive scheduled strategic guidance, on-demand support during critical periods, and comprehensive expertise across multiple disciplines (CIO, CISO, CTO) rather than being limited to a single executive's skill set. This approach also eliminates recruitment costs, benefits expenses, and the challenges of retaining top executive talent at boutique firms."
+        answer: "Our fractional model provides enterprise-caliber expertise at 60-75% less cost than a full-time executive hire. You receive scheduled strategic guidance, on-demand support during critical periods, and comprehensive expertise across multiple disciplines (CIO, CISO, CTO) rather than being limited to a single executive's skill set. This approach also eliminates recruitment costs, benefits expenses, and the challenges of retaining top executive talent at Specialized firms."
       },
       {
         id: 2,

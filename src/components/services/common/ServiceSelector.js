@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import HoverCard from '../../HoverCard'; // Updated import path
+import HoverCard from '../../HoverCard';
 import { 
   Shield, 
   Lightbulb, 
@@ -13,16 +12,21 @@ import {
   Target,
   CheckSquare,
   FileText,
-  ArrowUpRight // Added missing import
+  ArrowUpRight,
+  Building,
+  Briefcase,
+  Database,
+  Server,
+  WifiOff
 } from 'lucide-react';
 
-// Service data - in a real implementation, this would likely come from a central data store or API
+// Service data aligned with ITILITI service catalog
 const allServices = [
   {
     id: 'security-foundation',
     title: "Security Foundation",
-    description: "Enterprise-grade security infrastructure tailored for boutique investment firms, meeting regulatory and investor requirements.",
-    icon: <Shield className="w-12 h-12 text-blue-600" />,
+    description: "Enterprise-grade security infrastructure tailored for boutique investment firms, meeting regulatory and investor due diligence requirements.",
+    icon: <Shield className="w-12 h-12 text-gray-700" />,
     category: 'foundation',
     phase: 'Phase 1: Security Foundation',
     metrics: [
@@ -31,16 +35,16 @@ const allServices = [
     ],
     keyPoints: [
       "Comprehensive security posture assessment",
-      "Investment-specific security controls",
-      "Operational due diligence readiness",
-      "Business continuity & disaster recovery"
+      "Zero-trust identity and access management",
+      "Institutional investor due diligence readiness",
+      "SEC and regulatory compliance framework"
     ]
   },
   {
     id: 'microsoft-optimization',
     title: "Microsoft Optimization",
     description: "Strategic license management and platform utilization to reduce costs and enhance capabilities for your investment operations.",
-    icon: <Lightbulb className="w-12 h-12 text-blue-600" />,
+    icon: <Lightbulb className="w-12 h-12 text-gray-700" />,
     category: 'optimization',
     phase: 'Phase 2: Optimization',
     metrics: [
@@ -58,7 +62,7 @@ const allServices = [
     id: 'cxo-services',
     title: "CxO Advisory Services",
     description: "Fractional executive technology leadership providing enterprise expertise at boutique-appropriate scale and cost.",
-    icon: <Users className="w-12 h-12 text-blue-600" />,
+    icon: <Users className="w-12 h-12 text-gray-700" />,
     category: 'transformation',
     phase: 'Phase 3: Transformation',
     metrics: [
@@ -66,17 +70,17 @@ const allServices = [
       { value: "35%", label: "Reduction in technology TCO" }
     ],
     keyPoints: [
-      "Virtual CIO services",
-      "CISO as a Service",
-      "Technology roadmap development",
-      "Investment-focused digital transformation"
+      "Virtual CIO/CISO services",
+      "Investment strategy-aligned technology roadmap",
+      "Vendor management for 3rd party applications",
+      "Institutional investor due diligence preparation"
     ]
   },
   {
     id: 'ai-services',
     title: "AI Solutions",
     description: "Transform your investment processes with AI capabilities that enhance, not replace, your team's expertise and judgment.",
-    icon: <BrainCircuit className="w-12 h-12 text-blue-600" />,
+    icon: <BrainCircuit className="w-12 h-12 text-gray-700" />,
     category: 'transformation',
     phase: 'Phase 3: Transformation',
     metrics: [
@@ -99,31 +103,31 @@ const allServices = [
     phase: 'Phase 1: Security Foundation',
     metrics: [
       { value: "100%", label: "SEC compliance for text messages" },
-      { value: "15 min", label: "Average support response time" }
+      { value: "$1.8B+", label: "In potential penalties avoided" }
     ],
     keyPoints: [
       "SEC-compliant text archiving",
-      "Communication supervision",
-      "eDiscovery & legal hold",
+      "Communication surveillance",
+      "eDiscovery & legal hold capabilities",
       "White-glove implementation"
     ]
   },
   {
     id: 'private-msp',
     title: "Private MSP",
-    description: "Experience truly personalized IT service tailored specifically for investment firms with trading-hour support and financial expertise.",
+    description: "Experience truly personalized IT service tailored specifically for investment firms with trading-hour aware support and financial expertise.",
     icon: <Headphones className="w-12 h-12 text-blue-600" />,
     category: 'foundation',
     phase: 'Phase 1: Security Foundation',
     metrics: [
-      { value: "15 min", label: "Average response time" },
+      { value: "<15 min", label: "Average response time" },
       { value: "Zero", label: "Trading disruptions" }
     ],
     keyPoints: [
       "White-glove service desk",
       "Investment-aware monitoring",
-      "Embedded security operations",
-      "Business continuity focus"
+      "Secure workforce enablement",
+      "Business continuity & disaster recovery"
     ]
   },
   {
@@ -142,6 +146,42 @@ const allServices = [
       "Policy development & management",
       "Compliance monitoring & testing",
       "Regulatory exam preparation"
+    ]
+  },
+  {
+    id: 'data-protection',
+    title: "Data Protection & Recovery",
+    description: "Ensure the safety and continuity of your business with tailored disaster recovery and business continuity solutions.",
+    icon: <Database className="w-12 h-12 text-blue-600" />,
+    category: 'foundation',
+    phase: 'Phase 1: Security Foundation',
+    metrics: [
+      { value: "99.99%", label: "Data protection reliability" },
+      { value: "<1 hour", label: "Recovery time objective" }
+    ],
+    keyPoints: [
+      "DR and BC plan creation",
+      "Backup infrastructure management",
+      "Secure protection for sensitive data",
+      "24/7 monitoring across environments"
+    ]
+  },
+  {
+    id: 'cyber-operations',
+    title: "Cyber Operations",
+    description: "Secure your operations with our proactive, AI-enhanced security solutions designed to prevent breaches before they occur.",
+    icon: <Shield className="w-12 h-12 text-blue-600" />,
+    category: 'foundation',
+    phase: 'Phase 1: Security Foundation',
+    metrics: [
+      { value: "24x7", label: "Continuous monitoring" },
+      { value: "<30 min", label: "Incident response time" }
+    ],
+    keyPoints: [
+      "Continuous monitoring of data flows",
+      "Security incident analysis",
+      "End-to-end event management",
+      "Vulnerability management"
     ]
   }
 ];
@@ -177,9 +217,9 @@ const ServiceSelector = () => {
   // Get phase title based on category
   const getPhaseTitle = (category) => {
     switch(category) {
-      case 'foundation': return 'Phase 1: Security Foundation';
-      case 'optimization': return 'Phase 2: Optimization';
-      case 'transformation': return 'Phase 3: Transformation';
+      case 'foundation': return 'Phase 1: Foundation';
+      case 'capabilities': return 'Phase 2: Capabilities';
+      case 'optimization': return 'Phase 3: Optimization';
       default: return '';
     }
   };
@@ -195,7 +235,7 @@ const ServiceSelector = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Our Service Offerings</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive technology solutions designed specifically for the unique needs of alternative investment firms.
+            Comprehensive technology solutions designed specifically for the unique needs of boutique alternative investment firms.
           </p>
           
           {selectedServices.length > 0 && (
@@ -286,13 +326,13 @@ const ServiceSelector = () => {
                     <td className="p-4"></td>
                     {servicesForComparison.map(service => (
                       <td key={service.id} className="p-4 text-center">
-                        <Link 
-                          to={`/${service.id}`} 
+                        <a 
+                          href={`/${service.id}`} 
                           className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                         >
                           Learn More
                           <ArrowRight className="w-4 h-4 ml-1" />
-                        </Link>
+                        </a>
                       </td>
                     ))}
                   </tr>
@@ -404,7 +444,7 @@ const ServiceSelector = () => {
             <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Technology?</h3>
             <p className="max-w-2xl mx-auto mb-6">
               Our strategic approach delivers immediate value while building toward your long-term goals.
-              Let's discuss which services align with your current priorities.
+              Let's discuss which services align with your current priorities and investment strategy.
             </p>
             <button className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-3 rounded-lg font-medium transition-colors inline-flex items-center">
               Schedule a Strategic Consultation

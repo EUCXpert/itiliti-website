@@ -16,7 +16,7 @@ import ServicePage from './common/ServicePage';
 const EnhancedAIServices = () => {
   const pageData = {
     title: "AI Solutions",
-    subtitle: "for Boutique Alternative Investment",
+    subtitle: "Specialized Alternative Investment",
     description: "Transform your investment processes, unlock hidden insights, and create competitive advantage with AI solutions specifically designed for hedge funds, private equity, venture capital, and family offices.",
     
     challenges: [
@@ -27,12 +27,12 @@ const EnhancedAIServices = () => {
       },
       {
         title: "Technology Infrastructure Gaps",
-        description: "Legacy systems and fragmented technology stacks create barriers to AI implementation, preventing boutique firms from capitalizing on advanced analytics.",
+        description: "Legacy systems and fragmented technology stacks create barriers to AI implementation, preventing Specialized firms from capitalizing on advanced analytics.",
         icon: <Server className="w-6 h-6 text-blue-600" />
       },
       {
         title: "Talent & Expertise Limitations",
-        description: "Boutique firms face challenges attracting and retaining AI/ML talent alongside investment expertise, creating a significant competitive disadvantage.",
+        description: "Specialized firms face challenges attracting and retaining AI/ML talent alongside investment expertise, creating a significant competitive disadvantage.",
         icon: <Users className="w-6 h-6 text-blue-600" />
       },
       {
@@ -44,7 +44,7 @@ const EnhancedAIServices = () => {
     
     keyFeatures: {
       title: "AI That Enhances, Not Replaces, Investment Expertise",
-      description: "Our approach focuses on augmenting your team's capabilities with responsible, transparent AI that delivers measurable business impact aligned with your investment strategy. We bring enterprise-grade AI capabilities scaled appropriately for boutique investment firms."
+      description: "Our approach focuses on augmenting your team's capabilities with responsible, transparent AI that delivers measurable business impact aligned with your investment strategy. We bring enterprise-grade AI capabilities scaled appropriately for specialized investment firms."
     },
     
     metrics: [

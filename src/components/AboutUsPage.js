@@ -23,7 +23,7 @@ const AboutUsPage = () => {
       <div className="bg-gradient-to-r from-black to-blue-900 text-white">
         <div className="container mx-auto px-6 py-20">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Enterprise DNA, Boutique Delivery</h1>
+            <h1 className="text-4xl font-bold mb-4">About Us</h1>
             <p className="text-xl mb-8">
               We bring enterprise-class expertise and methodologies, right-sized for boutique alternative investment firms.
             </p>

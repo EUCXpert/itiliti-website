@@ -10,45 +10,48 @@ import {
   Clock, 
   Database, 
   Lock, 
-  BarChart4
+  BarChart4,
+  Zap,
+  CheckCircle,
+  PhoneCall
 } from 'lucide-react';
 
 const PrivateMSP = () => {
   const pageData = {
     title: "Private MSP",
-    subtitle: "for Boutique Alternative Investment",
-    description: "Experience the difference of truly personalized IT service tailored specifically for investment firms. All the expertise of an enterprise IT department, sized and scaled perfectly for your boutique operation.",
+    subtitle: "for Specialized Alternative Investment",
+    description: "Experience white-glove IT service tailored specifically for investment firms. Our high-touch, in-house service desk delivers enterprise-grade support at Boutique scale, ensuring your team can focus on investment activities without technology distractions.",
     
     challenges: [
       {
-        title: "Your Team, Not a Call Center",
-        description: "Our support is delivered by a dedicated team that knows your business, not anonymous call center agents reading from scripts.",
+        title: "Investment-Specific Support Needs",
+        description: "Generic IT providers lack understanding of alternative investment workflows, causing delays and ineffective support during critical investment activities.",
         icon: <Users className="w-6 h-6 text-blue-600" />
       },
       {
-        title: "Investment Operations Focus",
-        description: "Our entire service delivery model is built around the unique needs and timelines of investment operations.",
-        icon: <Database className="w-6 h-6 text-blue-600" />
+        title: "Trading Hour Criticality",
+        description: "Investment operations demand heightened responsiveness during market hours and critical investment periods that standard IT services can't provide.",
+        icon: <Clock className="w-6 h-6 text-blue-600" />
       },
       {
-        title: "Institutional-Grade, Boutique Delivery",
-        description: "Enterprise capabilities scaled appropriately for boutique firms, combining sophistication with personalized service.",
+        title: "Impersonal Outsourced Support",
+        description: "Traditional MSPs offer anonymous call centers with multiple tiers and outsourced technicians who lack understanding of your firm's investment operations.",
+        icon: <Headphones className="w-6 h-6 text-blue-600" />
+      },
+      {
+        title: "Hybrid Work Environment",
+        description: "Alternative investment firms require seamless technology experiences across office, home, and mobile environments with appropriate security controls.",
         icon: <Server className="w-6 h-6 text-blue-600" />
-      },
-      {
-        title: "Security Built-In, Not Bolted-On",
-        description: "Security is integrated into every aspect of our service delivery, not treated as an optional add-on.",
-        icon: <Lock className="w-6 h-6 text-blue-600" />
       }
     ],
     
     keyFeatures: {
-      title: "IT Service That Actually Makes Sense for Investment Firms",
-      description: "Traditional MSPs aren't built for the unique demands of investment operations. Our Private MSP approach delivers technology service that enhances rather than hinders your investment activities."
+      title: "IT Service Tailored for Investment Operations",
+      description: "Our Private MSP approach delivers technology service that enhances rather than hinders your investment activities, with trading-hour aware support, investment-specific expertise, and white-glove service delivery."
     },
     
     metrics: [
-      { value: "15 min", label: "Average response time" },
+      { value: "<15 min", label: "Average response time" },
       { value: "93%", label: "Issues resolved within SLA" },
       { value: "99.99%", label: "Uptime for trading-critical systems" },
       { value: "98%", label: "Client satisfaction score" }
@@ -60,10 +63,10 @@ const PrivateMSP = () => {
         description: "Experience truly personalized IT support with our in-house, high-touch service desk dedicated to your investment operations.",
         icon: <Headphones className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Dedicated support team that knows your business and investment workflow",
-          "Rapid response times with priority handling for trading hours and critical operations",
-          "Direct access to senior engineers without frustrating tiers or outsourced staff",
-          "Proactive monitoring and resolution before issues impact your operations"
+          "Dedicated support team that knows your investment workflow",
+          "Rapid response with priority handling during market hours",
+          "Direct access to senior engineers without frustrating tiers",
+          "Proactive monitoring and resolution before issues impact operations"
         ]
       },
       {
@@ -71,32 +74,32 @@ const PrivateMSP = () => {
         description: "24/7 proactive monitoring and management of your entire technology stack with special attention to investment-critical systems.",
         icon: <Settings className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Investment-aware monitoring prioritizing trading systems and market data",
-          "Automated patch management and maintenance aligned with market hours",
-          "Comprehensive inventory and asset lifecycle management",
-          "Detailed reporting and analytics on system performance and health"
+          "Investment-aware monitoring prioritizing trading systems",
+          "Automated maintenance aligned with market hours",
+          "Comprehensive asset lifecycle management",
+          "Detailed reporting on system performance and security"
         ]
       },
       {
-        title: "Embedded Security Operations",
-        description: "Integrated security operations center (SOC) services with specialized focus on financial services threats.",
+        title: "Secure Workforce Enablement",
+        description: "Empower your team with secure access to investment resources from any location on any device.",
         icon: <Shield className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "24/7 security monitoring with financial services-specific threat intelligence",
-          "Continuous vulnerability assessment and remediation",
-          "Security posture reporting for investor due diligence and regulatory compliance",
-          "Incident response and remediation with investment workflow awareness"
+          "Secure connectivity to investment applications and data",
+          "Seamless user onboarding and offboarding processes",
+          "Advanced endpoint monitoring and management",
+          "Managed voice and collaboration services"
         ]
       },
       {
         title: "Business Continuity & Disaster Recovery",
-        description: "Robust business continuity and disaster recovery solutions ensuring your investment operations continue without disruption.",
+        description: "Ensure uninterrupted investment operations with robust business continuity and disaster recovery solutions.",
         icon: <WifiOff className="w-8 h-8 text-blue-600" />,
         capabilities: [
-          "Trading-specific recovery strategies with prioritized critical systems",
-          "Regular testing and validation aligned with regulatory requirements",
+          "Trading-specific recovery strategies with prioritized systems",
+          "Regular testing aligned with regulatory requirements",
           "Comprehensive documentation for investor due diligence",
-          "Multiple recovery options including same-day trading capability restoration"
+          "Multiple recovery options including same-day trading capability"
         ]
       }
     ],
@@ -109,7 +112,7 @@ const PrivateMSP = () => {
         { icon: <BarChart4 className="w-4 h-4" />, text: "Sophisticated trading strategies" },
         { icon: <Clock className="w-4 h-4" />, text: "Critical market hours support" }
       ],
-      challenge: "A 25-person quantitative hedge fund was struggling with their generic MSP's lack of understanding of trading operations and slow response times during market hours. Their transition to our Private MSP service transformed their technology operations with trading-hour aware support and specialized financial services expertise.",
+      challenge: "A 25-person quantitative hedge fund was experiencing productivity losses due to their generic MSP's lack of understanding of trading operations and slow response times during market hours. Their previous provider used offshore support teams unfamiliar with their investment applications and critical systems.",
       approach: [
         "Implemented dedicated support team with financial services expertise",
         "Established investment-aware monitoring with priority for trading systems",
@@ -121,12 +124,40 @@ const PrivateMSP = () => {
         { value: "95%", label: "Reduction in IT-related productivity loss" },
         { value: "100%", label: "Success rate in operational due diligence" }
       ],
-      quote: "The difference is night and day. Their team understands our trading operations and responds immediately during market hours. It's like having an enterprise-grade IT department that's perfectly tailored to our boutique operation.",
+      quote: "The difference is night and day. Their team understands our trading operations and responds immediately during market hours. It's like having an enterprise-grade IT department that's perfectly tailored to our Specialized operation.",
       author: {
         title: "Chief Operating Officer",
         company: "Quantitative Hedge Fund"
       }
-    }
+    },
+    
+    faqs: [
+      {
+        id: 1,
+        question: "How does your service differ from traditional MSPs?",
+        answer: "Unlike traditional MSPs, we provide a dedicated support team that intimately understands your investment operations rather than anonymous call centers. We offer trading-hour aware support with accelerated response during market hours, in-house expertise on investment-specific applications, and white-glove service that feels like an extension of your team. Our approach eliminates tiered support structures, offshore resources, and the 'break-fix' mentality common to generic MSPs."
+      },
+      {
+        id: 2,
+        question: "What support is provided during trading hours?",
+        answer: "During market hours, we provide heightened support with accelerated response times, dedicated resources, and prioritization of trading-critical systems. This includes specialized monitoring of market data feeds, trading platforms, and research tools with rapid intervention for any issues. Our team understands the time-sensitivity of trading operations and provides direct access to senior engineers who can quickly resolve complex issues without escalation delays."
+      },
+      {
+        id: 3,
+        question: "How do you support hybrid work environments?",
+        answer: "We enable secure, seamless experiences across office, home, and mobile environments through centralized management of endpoint devices, secure remote access solutions, and cloud-based collaboration tools. Our approach includes comprehensive device management, secure connectivity to investment applications, consistent user experience across locations, and appropriate security controls for sensitive data. We ensure your team maintains productivity regardless of location while satisfying regulatory requirements."
+      },
+      {
+        id: 4,
+        question: "What onboarding and offboarding processes do you provide?",
+        answer: "We implement rigorous onboarding and offboarding processes aligned with financial services requirements. For onboarding, this includes pre-configured workstations, automated account provisioning across systems, comprehensive security training, and personalized orientation to your firm's technology. For offboarding, we provide immediate access revocation, data preservation, device sanitization, and detailed documentation for compliance purposes."
+      },
+      {
+        id: 5,
+        question: "How do you handle regulatory compliance requirements?",
+        answer: "We incorporate regulatory compliance requirements directly into our service delivery model, including SEC and FINRA guidelines for financial services firms. This includes maintaining comprehensive documentation of your technology environment for regulatory examinations, implementing required security controls for financial data, supporting electronic communication archiving, and providing detailed audit trails of system access. Our team stays current on regulatory changes affecting alternative investment technology."
+      }
+    ]
   };
 
   return <ServicePage {...pageData} />;
