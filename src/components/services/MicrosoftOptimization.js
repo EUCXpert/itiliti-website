@@ -1,5 +1,6 @@
 import React from 'react';
 import ServicePage from './common/ServicePage';
+import MicrosoftBusinessValueSection from '../MicrosoftBusinessValueSection';
 import { 
   Lightbulb, 
   Shield, 
@@ -159,7 +160,12 @@ const MicrosoftOptimization = () => {
     ]
   };
 
-  return <ServicePage {...pageData} />;
+  return (
+    <>
+      <ServicePage {...pageData} />
+      <MicrosoftBusinessValueSection /> {/* Add this line */}
+    </>
+  );
 };
 
 export default MicrosoftOptimization;

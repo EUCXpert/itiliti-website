@@ -17,7 +17,8 @@ import {
   Briefcase,
   Database,
   Server,
-  WifiOff
+  WifiOff,
+  Clock
 } from 'lucide-react';
 
 // Service data aligned with ITILITI service catalog
@@ -180,10 +181,28 @@ const allServices = [
     keyPoints: [
       "Continuous monitoring of data flows",
       "Security incident analysis",
-      "End-to-end event management",
-      "Vulnerability management"
-    ]
-  }
+        "End-to-end event management",
+        "Vulnerability management"
+      ]
+    },
+    {
+      id: 'workflow-automation',
+      title: "Workflow Automation",
+      description: "Transform your investment operations with intelligent automation that enhances efficiency, reduces errors, and scales your capabilities without adding headcount.",
+      icon: <Clock className="w-12 h-12 text-blue-600" />,
+      category: 'transformation',
+      phase: 'Phase 3: Transformation',
+      metrics: [
+        { value: "40%", label: "Acceleration in deal cycle time" },
+        { value: "70%", label: "Reduction in manual effort" }
+      ],
+      keyPoints: [
+        "Investor relationship automation",
+        "Deal flow management",
+        "Portfolio monitoring automation",
+        "Regulatory filing automation"
+      ]
+    }
 ];
 
 const ServiceSelector = () => {

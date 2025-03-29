@@ -4,6 +4,7 @@ import ServiceNavigation from './common/ServiceNavigation';
 import ScheduleButton from '../ScheduleButton';
 import ServiceSelector from './common/ServiceSelector';
 import CxOPhasesVisualization from '../CxOPhasesVisualization';
+import IntegratedTechnologyStrategy from '../IntegratedTechnologyStrategy';
 import { 
   Target, 
   CheckSquare, 
@@ -48,7 +49,8 @@ const AllServicesPage = () => {
       color: "indigo",
       services: [
         { name: "CxO Advisory Services", path: "/cxo-services" },
-        { name: "AI Solutions", path: "/ai-services" }
+        { name: "AI Solutions", path: "/ai-services" },
+        { name: "Workflow Automation", path: "/workflow-automation" }
       ]
     }
   ];
@@ -90,6 +92,8 @@ const AllServicesPage = () => {
   </div>
 </div>
       
+<IntegratedTechnologyStrategy />
+
       {/* Why Our Services Matter */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">

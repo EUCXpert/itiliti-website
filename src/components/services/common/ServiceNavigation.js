@@ -11,7 +11,8 @@ const ServiceNavigation = ({ activeService }) => {
     { id: 'ai-services', name: 'AI Solutions', path: '/ai-services' },
     { id: 'electronic-message-archiving', name: 'Electronic Message Archiving', path: '/electronic-message-archiving' },
     { id: 'private-msp', name: 'Private MSP', path: '/private-msp' },
-    { id: 'regulatory-compliance', name: 'Regulatory Compliance', path: '/regulatory-compliance' }
+    { id: 'regulatory-compliance', name: 'Regulatory Compliance', path: '/regulatory-compliance' },
+    { id: 'workflow-automation', name: 'Workflow Automation', path: '/workflow-automation' }
   ];
 
   return (

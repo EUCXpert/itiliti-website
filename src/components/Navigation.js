@@ -117,6 +117,7 @@ const Navigation = ({
                       <Link to="/cxo-services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">CxO Advisory Services</Link>
                       <Link to="/ai-services" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">AI Solutions</Link>
                       <Link to="/electronic-message-archiving" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Electronic Message Archiving</Link>
+                      <Link to="/workflow-automation" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Workflow Automation</Link>
                     </div>
                   </div>
                 </li>

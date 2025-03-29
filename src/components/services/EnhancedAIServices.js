@@ -13,10 +13,12 @@ import {
   Users
 } from 'lucide-react';
 import ServicePage from './common/ServicePage';
+import AiUseCasesSection from '../AiUseCasesSection';
+
 const EnhancedAIServices = () => {
   const pageData = {
     title: "AI Solutions",
-    subtitle: "Specialized Alternative Investment",
+    subtitle: "For Specialized Alternative Investment",
     description: "Transform your investment processes, unlock hidden insights, and create competitive advantage with AI solutions specifically designed for hedge funds, private equity, venture capital, and family offices.",
     
     challenges: [
@@ -157,7 +159,12 @@ const EnhancedAIServices = () => {
     ]
   };
 
-  return <ServicePage {...pageData} />;
+  return (
+  <>
+    <ServicePage {...pageData} />
+    <AiUseCasesSection /> 
+  </>
+);
 };
 
 export default EnhancedAIServices;

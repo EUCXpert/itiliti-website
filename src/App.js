@@ -1,4 +1,5 @@
 import React from 'react';
+import { Shield, CheckSquare } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLandingPage from './components/MainLandingPage';
 import BoutiqueInvestmentApp from './components/BoutiqueInvestmentApp';
@@ -16,6 +17,7 @@ import AboutUsPage from './components/AboutUsPage';
 import ContactPage from './components/ContactPage';
 import Footer from './components/Footer';
 import ExitIntentProvider from './components/ExitIntentProvider';
+import WorkflowAutomation from '../src/components/WorkflowAutomation'; // Add this import
 
 // Import segment pages
 import {
@@ -45,6 +47,7 @@ function App() {
               <Route path="/electronic-message-archiving" element={<ElectronicMessageArchiving />} />
               <Route path="/about-us" element={<AboutUsPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/workflow-automation" element={<WorkflowAutomation />} /> {/* Fix: Use element instead of component */}
               
               {/* Assessment Routes */}
               <Route path="/assessments" element={<AssessmentHub />} />        

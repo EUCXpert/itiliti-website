@@ -1,5 +1,6 @@
 import React from 'react';
 import ServicePage from './common/ServicePage';
+import EnhancedSecurityValueSection from '../EnhancedSecurityValueSection';
 import { 
   Shield, 
   LockKeyhole, 
@@ -161,7 +162,12 @@ const SecurityFoundation = () => {
     ]
   };
 
-  return <ServicePage {...pageData} />;
+  return (
+    <>
+      <ServicePage {...pageData} />
+      <EnhancedSecurityValueSection /> {/* Add this line */}
+    </>
+  );
 };
 
 export default SecurityFoundation;
