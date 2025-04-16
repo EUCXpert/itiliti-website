@@ -1,0 +1,449 @@
+// src/components/common/EnhancedChatAssistantWithAI.js
+
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Import AI service
+import aiService from '../../services/aiService';
+
+// Form configurations
+const formConfigs = {
+  'demoRequest': {
+    title: 'Schedule a Demo',
+    fields: [
+      { name: 'name', label: 'Your Name', type: 'text', required: true },
+      { name: 'email', label: 'Email Address', type: 'email', required: true },
+      { name: 'company', label: 'Company', type: 'text', required: true },
+      { name: 'phone', label: 'Phone Number', type: 'tel', required: false },
+      { name: 'preferred_time', label: 'Preferred Time', type: 'select', required: true, 
+        options: ['Morning', 'Afternoon', 'Evening'] }
+    ],
+    submitLabel: 'Request Demo',
+    successMessage: "Thank you for your interest in a demo! We've received your information and a member of our team will reach out shortly to schedule your personalized demonstration."
+  }
+};
+
+const EnhancedChatAssistantWithAI = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { 
+      id: 1, 
+      type: 'bot', 
+      content: 'Hello! I\'m your AI assistant for ITILITI.ai. How can I help you learn about our AI solutions for alternative investment?',
+      options: [
+        'Tell me about your services',
+        'How can AI help my investment firm?',
+        'I\'d like to schedule a demo'
+      ]
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [activeForm, setActiveForm] = useState(null);
+  const messagesEndRef = useRef(null);
+  
+  // Scroll to bottom of messages
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+  
+  // Handle form field change
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+  
+  // Handle bot response using AI service
+  const handleBotResponse = async (userMessage) => {
+    setIsTyping(true);
+    
+    try {
+      // Get conversation history for context (excluding options)
+      const conversationHistory = messages.map(msg => ({
+        type: msg.type,
+        content: msg.content
+      }));
+      
+      // Process with AI service
+      const response = await aiService.generateResponse(userMessage, conversationHistory);
+      
+      if (response.form) {
+        setActiveForm(response.form);
+      }
+      
+      setMessages(prev => [...prev, { 
+        id: Date.now(), 
+        type: 'bot', 
+        content: response.message,
+        options: response.options,
+        form: response.form
+      }]);
+    } catch (error) {
+      console.error('Error generating bot response:', error);
+      
+      // Fallback response on error
+      setMessages(prev => [...prev, { 
+        id: Date.now(), 
+        type: 'bot', 
+        content: "I'm sorry, I encountered an error. Please try again or contact our support team for assistance.",
+        options: ['Try again', 'Contact support']
+      }]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+  
+  // Handle input submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+    
+    // Add user message
+    setMessages(prev => [...prev, { 
+      id: Date.now(), 
+      type: 'user', 
+      content: inputValue
+    }]);
+    
+    // Generate response
+    handleBotResponse(inputValue);
+    
+    // Clear input
+    setInputValue('');
+  };
+  
+  // Handle quick reply option click
+  const handleOptionClick = (option) => {
+    // Add user message
+    setMessages(prev => [...prev, { 
+      id: Date.now(), 
+      type: 'user', 
+      content: option
+    }]);
+    
+    // Generate response
+    handleBotResponse(option);
+  };
+  
+  // Handle form submission
+  const handleFormSubmit = (e, formId) => {
+    e.preventDefault();
+    
+    // Add form submission message
+    setMessages(prev => [...prev, { 
+      id: Date.now(), 
+      type: 'user', 
+      content: `Submitted information for ${formConfigs[formId].title}`
+    }]);
+    
+    // Add confirmation message
+    setMessages(prev => [...prev, { 
+      id: Date.now(), 
+      type: 'bot', 
+      content: formConfigs[formId].successMessage,
+      options: ['Tell me more about your AI solutions', 'Thank you!']
+    }]);
+    
+    // In a real implementation, you would send the form data to your API
+    console.log('Form data:', formData);
+    
+    // Reset form data and close form
+    setFormData({});
+    setActiveForm(null);
+  };
+  
+  // Render message form if present
+  const renderMessageForm = (formId) => {
+    if (!formId || !formConfigs[formId]) return null;
+    
+    const form = formConfigs[formId];
+    
+    return (
+      <div className="bg-blue-900 bg-opacity-30 rounded-lg p-4 border border-blue-800 mt-3">
+        <h4 className="text-white font-medium mb-3">{form.title}</h4>
+        <form onSubmit={(e) => handleFormSubmit(e, formId)} className="space-y-3">
+          {form.fields.map((field) => (
+            <div key={field.name} className="space-y-1">
+              <label className="text-blue-200 text-sm">{field.label}{field.required && '*'}</label>
+              {field.type === 'select' ? (
+                <select 
+                  name={field.name}
+                  required={field.required}
+                  onChange={handleFormChange}
+                  value={formData[field.name] || ''}
+                  className="w-full bg-gray-800 bg-opacity-50 text-white border border-blue-700 rounded-md px-3 py-2 text-sm"
+                >
+                  <option value="">Select an option</option>
+                  {field.options.map(option => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              ) : (
+                <input 
+                  type={field.type} 
+                  name={field.name}
+                  required={field.required}
+                  onChange={handleFormChange}
+                  value={formData[field.name] || ''}
+                  className="w-full bg-gray-800 bg-opacity-50 text-white border border-blue-700 rounded-md px-3 py-2 text-sm"
+                />
+              )}
+            </div>
+          ))}
+          <button 
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md py-2 text-sm font-medium mt-2"
+          >
+            {form.submitLabel}
+          </button>
+        </form>
+      </div>
+    );
+  };
+  
+  // Format message text with markdown-like syntax
+  const formatMessageText = (text) => {
+    // Handle bold text
+    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Handle line breaks
+    formattedText = formattedText.replace(/\n/g, '<br />');
+    
+    // Handle bullet points
+    formattedText = formattedText.replace(/• (.*?)(?:\n|$)/g, '<li>$1</li>');
+    if (formattedText.includes('<li>')) {
+      formattedText = formattedText.replace(/<li>(.*?)<\/li>/g, '<ul class="list-disc pl-5"><li class="mb-1">$1</li></ul>');
+    }
+    
+    return formattedText;
+  };
+  
+  return (
+    <>
+      {/* Chat button */}
+      <motion.button
+        className="fixed bottom-24 right-8 z-50 flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-glow-lg text-white focus:outline-none"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+        )}
+        
+        {/* Pulsing effect */}
+        <span className="absolute w-full h-full rounded-full animate-ping bg-blue-600 opacity-40"></span>
+      </motion.button>
+      
+      {/* Chat window */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 100, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 100, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-44 right-8 z-50 w-full sm:w-96 h-96 bg-gray-900 rounded-xl shadow-2xl border border-gray-800 flex flex-col overflow-hidden"
+          >
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-900 to-indigo-800 px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center">
+                <div className="bg-white bg-opacity-20 rounded-full p-1.5 mr-3">
+                  <svg className="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <h3 className="text-white font-medium">ITILITI AI Assistant</h3>
+              </div>
+              
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="text-white opacity-70 hover:opacity-100"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 bg-gradient-to-b from-gray-900 to-gray-800">
+              <div className="space-y-4">
+                {messages.map((message) => (
+                  <div 
+                    key={message.id} 
+                    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    {message.type === 'bot' && (
+                      <div className="bg-blue-600 bg-opacity-20 h-8 w-8 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                        <svg className="h-4 w-4 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 8V4m0 4 3 3m-3-3-3 3" />
+                          <circle cx="12" cy="16" r="6" />
+                        </svg>
+                      </div>
+                    )}
+                    <div className={`max-w-xs sm:max-w-md rounded-lg py-2 px-4 ${
+                      message.type === 'user' 
+                        ? 'bg-indigo-600 text-white ml-auto rounded-br-none'
+                        : 'bg-gray-700 text-white rounded-tl-none'
+                    }`}>
+                      <div 
+                        className="text-sm"
+                        dangerouslySetInnerHTML={{ __html: formatMessageText(message.content) }}
+                      ></div>
+                      
+                      {/* Quick reply options */}
+                      {message.type === 'bot' && message.options && (
+                        <div className="mt-3 space-y-2">
+                          {message.options.map((option, index) => (
+                            <button
+                              key={index}
+                              className="block w-full text-left text-sm bg-blue-900 bg-opacity-30 hover:bg-opacity-50 text-blue-200 px-3 py-1.5 rounded border border-blue-800 transition-colors"
+                              onClick={() => handleOptionClick(option)}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {/* Form if present */}
+                      {message.type === 'bot' && message.form && renderMessageForm(message.form)}
+                    </div>
+                    {message.type === 'user' && (
+                      <div className="bg-indigo-600 bg-opacity-20 h-8 w-8 rounded-full flex items-center justify-center ml-2 flex-shrink-0">
+                        <svg className="h-4 w-4 text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {isTyping && (
+                  <div className="flex justify-start">
+                    <div className="bg-blue-600 bg-opacity-20 h-8 w-8 rounded-full flex items-center justify-center mr-2">
+                      <svg className="h-4 w-4 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 8V4m0 4 3 3m-3-3-3 3" />
+                        <circle cx="12" cy="16" r="6" />
+                      </svg>
+                    </div>
+                    <div className="bg-gray-700 text-white rounded-lg rounded-tl-none py-2 px-4">
+                      <div className="typing">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+            
+            {/* Input */}
+            <div className="border-t border-gray-700 p-4 bg-gray-800">
+              <form onSubmit={handleSubmit} className="flex items-center">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Ask me about our AI solutions..."
+                  className="flex-grow bg-gray-700 text-white rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-r-0 border border-gray-600"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-600 text-white rounded-r-lg px-4 py-2 border border-blue-600 hover:bg-blue-700 transition-colors"
+                >
+                  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </form>
+              
+              {/* Quick suggestion chips */}
+              <div className="flex flex-wrap gap-2 mt-3">
+                <button 
+                  onClick={() => setInputValue("Tell me about your services")}
+                  className="text-xs px-3 py-1 bg-blue-900 bg-opacity-30 text-blue-300 rounded-full hover:bg-opacity-50 transition-colors"
+                >
+                  Our services
+                </button>
+                <button 
+                  onClick={() => setInputValue("How can AI help my investment firm?")}
+                  className="text-xs px-3 py-1 bg-blue-900 bg-opacity-30 text-blue-300 rounded-full hover:bg-opacity-50 transition-colors"
+                >
+                  AI benefits
+                </button>
+                <button 
+                  onClick={() => setInputValue("I'd like to schedule a demo")}
+                  className="text-xs px-3 py-1 bg-blue-900 bg-opacity-30 text-blue-300 rounded-full hover:bg-opacity-50 transition-colors"
+                >
+                  Schedule demo
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {/* Custom styles for typing animation */}
+      <style jsx>{`
+        .typing-indicator {
+          display: flex;
+          align-items: center;
+        }
+        
+        .typing span {
+          height: 8px;
+          width: 8px;
+          background: #3b82f6;
+          border-radius: 50%;
+          display: inline-block;
+          margin-right: 5px;
+          animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing span:nth-child(1) {
+          animation-delay: 0s;
+        }
+        
+        .typing span:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        
+        .typing span:nth-child(3) {
+          animation-delay: 0.4s;
+          margin-right: 0;
+        }
+        
+        @keyframes typing {
+          0%, 60%, 100% {
+            transform: translateY(0);
+            opacity: 0.6;
+          }
+          30% {
+            transform: translateY(-6px);
+            opacity: 1;
+          }
+        }
+        
+        .shadow-glow-lg {
+          box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.4);
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default EnhancedChatAssistantWithAI;

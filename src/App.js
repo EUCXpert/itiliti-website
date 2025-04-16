@@ -21,7 +21,6 @@ import WorkflowAutomation from '../src/components/WorkflowAutomation'; // Add th
 
 // Import segment pages
 import {
-  HedgeFundSegment,
   PrivateEquitySegment,
   FamilyOfficeSegment,
   VentureCapitalSegment,
@@ -54,7 +53,6 @@ function App() {
               
               {/* Segment Routes */}
               <Route path="/segments" element={<SegmentsPage />} />
-              <Route path="/segments/hedge-funds" element={<HedgeFundSegment />} />
               <Route path="/segments/private-equity" element={<PrivateEquitySegment />} />
               <Route path="/segments/family-offices" element={<FamilyOfficeSegment />} />
               <Route path="/segments/venture-capital" element={<VentureCapitalSegment />} />

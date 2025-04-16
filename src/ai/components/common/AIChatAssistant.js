@@ -222,9 +222,9 @@ const AIChatAssistant = () => {
   
   return (
     <>
-      {/* Chat button */}
+      {/* Chat button - POSITION MODIFIED HERE */}
       <motion.button
-        className="fixed bottom-8 right-8 z-50 flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-glow-lg text-white focus:outline-none"
+        className="fixed bottom-24 right-8 z-50 flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-glow-lg text-white focus:outline-none"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
@@ -251,7 +251,7 @@ const AIChatAssistant = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-28 right-8 z-50 w-full sm:w-96 h-96 bg-gray-900 rounded-xl shadow-2xl border border-gray-800 flex flex-col overflow-hidden"
+            className="fixed bottom-44 right-8 z-50 w-full sm:w-96 h-96 bg-gray-900 rounded-xl shadow-2xl border border-gray-800 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-indigo-800 px-4 py-3 flex items-center justify-between">

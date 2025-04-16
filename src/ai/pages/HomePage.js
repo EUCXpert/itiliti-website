@@ -1,13 +1,16 @@
-import React from 'react';
-import AIHeroSection from '../../components/ai-site/home/AIHeroSection';
-import PartnerProductShowcase from '../../components/ai-site/home/PartnerProductShowcase';
-import AICapabilitiesSection from '../../components/ai-site/home/AICapabilitiesSection';
-import BusinessOutcomesSection from '../../components/ai-site/home/BusinessOutcomesSection';
-import AIChatAssistant from '../../components/ai-site/common/AIChatAssistant';
-import AINavigation from '../../components/ai-site/common/AINavigation';
-import AIFooter from '../../components/ai-site/common/AIFooter';
+import React, { useState } from 'react';
+import AIHeroSection from '../../ai/components/home/AIHeroSection';
+import PartnerProductShowcase from '../../ai/components/home/PartnerProductShowcase';
+import AICapabilitiesSection from '../../ai/components/home/AICapabilitiesSection';
+import BusinessOutcomesSection from '../../ai/components/home/BusinessOutcomesSection';
+//import AIChatAssistant from '../../ai/components/common/AIChatAssistant';
+import AINavigation from '../../ai/components/common/AINavigation';
+import AIFooter from '../../ai/components/common/AIFooter';
+import AIServiceCatalog from '../../ai/components/common/AIServiceCatalog';
+import FeatureDemoShowcase from '../../ai/components/common/FeatureDemoShowcase';
 
 const AIHomePage = () => {
+  const [showDemo, setShowDemo] = useState(false);
   return (
     <div className="min-h-screen bg-gray-900 font-sans">
       <AINavigation />
@@ -16,7 +19,9 @@ const AIHomePage = () => {
       <AIHeroSection />
       
       {/* Partner & Product Showcase */}
-      <PartnerProductShowcase />
+      <div className="-mt-12"> {/* Add negative margin to reduce space */}
+        <PartnerProductShowcase />
+      </div>
       
       {/* AI Capabilities Section */}
       <AICapabilitiesSection />
@@ -118,14 +123,49 @@ const AIHomePage = () => {
                   </div>
                   
                   <div className="mt-6 text-center">
-                    <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                      Try Interactive Demo
-                    </button>
-                  </div>
-                </div>
+                <button 
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  onClick={() => setShowDemo(true)}
+                >
+                  Try Interactive Demo
+                </button>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        {/* Demo modal or expanded section */}
+  {showDemo && (
+    <div className="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center p-4">
+      <div className="bg-gray-800 rounded-xl border border-gray-700 max-w-4xl w-full max-h-[90vh] overflow-auto">
+        <div className="flex justify-between items-center p-4 border-b border-gray-700">
+          <h3 className="text-white text-xl font-bold">Interactive AI Demo</h3>
+          <button 
+            className="text-gray-400 hover:text-white"
+            onClick={() => setShowDemo(false)}
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div className="p-4">
+          <FeatureDemoShowcase />
+        </div>
+      </div>
+    </div>
+  )}
+      
+      {/* AI Service Catalog */}
+      <div className="py-2 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+          </div>
+          
+          <AIServiceCatalog />
         </div>
       </div>
       
@@ -250,10 +290,8 @@ const AIHomePage = () => {
       {/* Footer */}
       <AIFooter />
       
-      {/* AI Chat Assistant */}
-      <AIChatAssistant />
-      
-      {/* Custom styles */}
+
+            {/* Custom styles */}
       <style jsx>{`
         @keyframes gradient {
           0% {

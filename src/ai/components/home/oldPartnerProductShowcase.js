@@ -9,7 +9,7 @@ const PartnerProductShowcase = () => {
       id: 'microsoft',
       name: 'Microsoft',
       description: 'Enterprise AI solutions powered by Azure OpenAI and Microsoft Copilot.',
-      logo: '/api/placeholder/200/80',
+      logo: '/Microsoft.png',
       color: '#00a4ef',
       products: [
         'Azure OpenAI Services',
@@ -22,7 +22,7 @@ const PartnerProductShowcase = () => {
       id: 'blueflame',
       name: 'BlueFlame.ai',
       description: 'Advanced Natural Language Processing for investment document analysis.',
-      logo: '/api/placeholder/200/80',
+      logo: '/BlueFlame.png',
       color: '#3b82f6',
       products: [
         'DocumentAI Engine',
@@ -35,7 +35,7 @@ const PartnerProductShowcase = () => {
       id: 'apexhq',
       name: 'ApexHQ.ai',
       description: 'AI-driven investment research and market intelligence platform.',
-      logo: '/api/placeholder/200/80',
+      logo: '/Apex.svg',
       color: '#8b5cf6',
       products: [
         'Market Intelligence Suite',
@@ -48,7 +48,7 @@ const PartnerProductShowcase = () => {
       id: 'direktiv',
       name: 'Direktiv.io',
       description: 'Workflow automation with embedded AI for investment processes.',
-      logo: '/api/placeholder/200/80',
+      logo: '/Direktiv.svg',
       color: '#ec4899',
       products: [
         'Process Automation Suite',
@@ -61,7 +61,7 @@ const PartnerProductShowcase = () => {
       id: 'archtis',
       name: 'archTIS',
       description: 'AI-enhanced security and compliance for sensitive investment data.',
-      logo: '/api/placeholder/200/80',
+      logo: '/archTIS.svg',
       color: '#10b981',
       products: [
         'Security Intelligence',

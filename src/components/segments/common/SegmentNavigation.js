@@ -4,11 +4,10 @@ import Navigation from '../../Navigation';
 
 const SegmentNavigation = ({ activeSegment }) => {
   const segments = [
-    { id: 'hedge-funds', name: 'Hedge Funds' },
     { id: 'private-equity', name: 'Private Equity' },
     { id: 'venture-capital', name: 'Venture Capital' },
     { id: 'family-offices', name: 'Family Offices' },
-    { id: 'real-estate', name: 'Real Estate Investment' }
+    { id: 'real-estate', name: 'Real Estate' }
   ];
 
   return (

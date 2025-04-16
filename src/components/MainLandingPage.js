@@ -146,15 +146,6 @@ const MainLandingPage = () => {
   
   const clientSegments = [
     {
-      title: "Hedge Funds",
-      icon: <BarChart4 className="w-6 h-6 text-gray-700" />,
-      challenges: [
-        "Sophisticated security for institutional due diligence",
-        "Trading-hour support for critical operations",
-        "Scalable technology aligned with AUM growth"
-      ]
-    },
-    {
       title: "Private Equity",
       icon: <Building className="w-6 h-6 text-gray-700" />,
       challenges: [
@@ -180,7 +171,17 @@ const MainLandingPage = () => {
         "Multi-generational technology planning",
         "Cross-asset portfolio management complexity"
       ]
-    }
+    },
+    {
+  title: "Real Estate",
+  icon: <Building className="w-6 h-6 text-gray-700" />,
+  challenges: [
+    "Property portfolio management complexity",
+    "Regulatory compliance across multiple jurisdictions",
+    "Capital deployment and fundraising challenges",
+    "Data integration across disparate property systems"
+  ]
+}
   ];
 
   const enterpriseAdvantages = [
@@ -206,38 +207,7 @@ const MainLandingPage = () => {
     }
   ];
   
-  const clientValue = [
-    {
-      title: "Enhanced Capital Raising",
-      description: "Successfully pass institutional due diligence with technology that meets allocator expectations.",
-      value: "92%",
-      metric: "ODD success rate",
-      icon: <Trophy className="w-8 h-8 text-blue-600" />
-    },
-    {
-      title: "Operational Efficiency",
-      description: "Leverage enterprise-grade automation and optimization at boutique-appropriate scale.",
-      value: "40%",
-      metric: "Increased operational efficiency",
-      icon: <Clock className="w-8 h-8 text-blue-600" />
-    },
-    {
-      title: "Strategic Advantage",
-      description: "Focus on alpha generation rather than technology challenges with expert guidance.",
-      value: "15%",
-      metric: "Improved investment returns",
-      icon: <Target className="w-8 h-8 text-blue-600" />
-    },
-    {
-      title: "Sustainable Growth",
-      description: "Scale efficiently without disruptive technology rebuilds as your AUM grows.",
-      value: "3.5x",
-      metric: "Growth capacity without tech overhaul",
-      icon: <ArrowUpRight className="w-8 h-8 text-blue-600" />
-    }
-  ];
-  
-  const competitiveAdvantages = [
+    const competitiveAdvantages = [
     {
       category: "Against Generic MSPs",
       advantages: [
@@ -464,33 +434,7 @@ const MainLandingPage = () => {
         <div className="container mx-auto px-6 py-16">
           <ConsolidatedApproachVisualization />
         </div>
-        
-        {/* Client Value Section */}
-        <div className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">The Value We Deliver</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">Our enterprise-to-boutique translation creates measurable value for your investment firm.</p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {clientValue.map((value, index) => (
-                <div key={index} className="bg-blue-50 rounded-xl p-6 shadow-sm">
-                  <div className="flex justify-center mb-4">
-                    {value.icon}
-                  </div>
-                  <div className="text-center mb-3">
-                    <div className="text-3xl font-bold text-blue-600">{value.value}</div>
-                    <div className="text-sm text-gray-600">{value.metric}</div>
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2">{value.title}</h3>
-                  <p className="text-gray-600 text-center">{value.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
+             
         {/* Competitive Positioning */}
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-6">

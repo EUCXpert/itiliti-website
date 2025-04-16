@@ -19,6 +19,11 @@ const Navigation = ({
   const [scrollTimer, setScrollTimer] = useState(null);
   const [showAnnouncement, setShowAnnouncement] = useState(true);
 
+  // Determine the AI site URL based on environment
+  const aiSiteUrl = process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3001' 
+    : 'https://itiliti.ai';
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -128,17 +133,29 @@ const Navigation = ({
                   <div className="absolute left-0 top-full w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-150 ease-in-out z-50">
                     <div className="py-1">
                       <Link to="/segments" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 font-semibold border-b border-gray-200">All Segments</Link>
-                      <Link to="/segments/hedge-funds" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Hedge Funds</Link>
                       <Link to="/segments/private-equity" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Private Equity</Link>
                       <Link to="/segments/venture-capital" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Venture Capital</Link>
                       <Link to="/segments/family-offices" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Family Offices</Link>
-                      <Link to="/segments/real-estate" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Real Estate Investment</Link>
+                      <Link to="/segments/real-estate" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Real Estate</Link>
                     </div>
                   </div>
                 </li>
                 <li><Link to="/assessments" className={`font-medium ${textColor} hover:text-blue-500`}>Assessment Hub</Link></li>
                 <li><Link to="/about-us" className={`font-medium ${textColor} hover:text-blue-500`}>About Us</Link></li>
                 <li><Link to="/contact" className={`font-medium ${textColor} hover:text-blue-500`}>Contact</Link></li>
+                <li>
+                  <a 
+                    href={aiSiteUrl} 
+                    className="font-medium text-blue-600 hover:text-blue-700 flex items-center"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    ITILITI.ai
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </li>
               </ul>
             </div>
             
@@ -168,6 +185,16 @@ const Navigation = ({
                 <li><Link to="/assessments" className="block font-medium text-gray-700">Assessment Hub</Link></li>
                 <li><Link to="/about-us" className="block font-medium text-gray-700">About Us</Link></li>
                 <li><Link to="/contact" className="block font-medium text-gray-700">Contact</Link></li>
+                <li>
+                  <a 
+                    href={aiSiteUrl}
+                    className="block font-medium text-blue-600"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    ITILITI.ai
+                  </a>
+                </li>
                 <li>
                   <ScheduleButton className="block w-full text-center" />
                 </li>

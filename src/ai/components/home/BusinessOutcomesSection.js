@@ -196,84 +196,122 @@ const BusinessOutcomesSection = () => {
     );
   };
   
-  // Implementation Timeline
-  const ImplementationTimeline = () => {
-    const [ref, inView] = useInView({
-      triggerOnce: true,
-      threshold: 0.1
-    });
-    
-    const containerControls = useAnimation();
-    
-    useEffect(() => {
-      if (inView) {
-        containerControls.start("visible");
+// Implementation Timeline
+const ImplementationTimeline = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+  
+  const containerControls = useAnimation();
+  
+  useEffect(() => {
+    if (inView) {
+      containerControls.start("visible");
+    }
+  }, [containerControls, inView]);
+  
+  const timelineItems = [
+    { week: 1, title: "Discovery & Requirements", description: "Initial assessment and planning" },
+    { week: 2, title: "Data Integration", description: "Connect to your existing systems" },
+    { week: 4, title: "Initial Deployment", description: "First capabilities available" },
+    { week: 6, title: "User Training", description: "Team onboarding and adoption" },
+    { week: 8, title: "Full Implementation", description: "All capabilities operational" },
+    { week: 12, title: "Optimization", description: "Refinement based on usage" }
+  ];
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
       }
-    }, [containerControls, inView]);
-    
-    const timelineItems = [
-      { week: 1, title: "Discovery & Requirements", description: "Initial assessment and planning" },
-      { week: 2, title: "Data Integration", description: "Connect to your existing systems" },
-      { week: 4, title: "Initial Deployment", description: "First capabilities available" },
-      { week: 6, title: "User Training", description: "Team onboarding and adoption" },
-      { week: 8, title: "Full Implementation", description: "All capabilities operational" },
-      { week: 12, title: "Optimization", description: "Refinement based on usage" }
-    ];
-    
-    const containerVariants = {
-      hidden: { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: {
-          staggerChildren: 0.1
-        }
-      }
-    };
-    
-    const itemVariants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0 }
-    };
-    
-    return (
-      <div className="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700">
-        <h3 className="text-white text-xl font-bold mb-4">Implementation Timeline</h3>
-        <p className="text-blue-200 mb-6">From kickoff to measurable results in weeks, not months</p>
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.3 }
+    }
+  };
+  
+  return (
+    <div className="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700">
+      <h3 className="text-white text-xl font-bold mb-4">Implementation Timeline</h3>
+      <p className="text-blue-200 mb-6">From kickoff to measurable results in weeks, not months</p>
+      
+      <motion.div
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={containerControls}
+        className="relative"
+      >
+        {/* Timeline track - centered vertical line */}
+        <div className="absolute top-0 bottom-0 left-1/2 w-px bg-blue-700 transform -translate-x-1/2"></div>
         
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={containerControls}
-          className="relative ml-4"
-        >
-          {/* Timeline track */}
-          <div className="absolute top-0 bottom-0 left-0 w-px bg-blue-700"></div>
-          
+        <div className="space-y-16 md:space-y-24">
           {timelineItems.map((item, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="mb-6 relative pl-8"
+              className="relative"
             >
-              {/* Timeline node */}
-              <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-blue-500 -translate-x-1/2"></div>
-              
-              {/* Week indicator */}
-              <div className="absolute left-0 top-0 -translate-x-[calc(100%+12px)]">
-                <div className="text-blue-400 text-sm font-medium">Week {item.week}</div>
+              {/* Week label - centered on timeline */}
+              <div className="absolute z-20 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="bg-blue-900 bg-opacity-70 px-3 py-1 rounded text-blue-300 text-sm font-medium border border-blue-800 whitespace-nowrap">
+                  Week {item.week}
+                </div>
               </div>
               
-              <div className="bg-blue-900 bg-opacity-20 rounded-lg p-4 border border-blue-800">
-                <h4 className="text-white font-medium">{item.title}</h4>
-                <p className="text-blue-200 text-sm">{item.description}</p>
+              {/* Content cards - alternating sides */}
+              <div className="flex justify-center items-start">
+                {/* Left side content (even indexes) */}
+                {index % 2 === 0 && (
+                  <motion.div 
+                    className="w-5/12 pr-6 text-right"
+                    whileHover={{ 
+                      y: -3,
+                      boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.3)"
+                    }}
+                  >
+                    <div className="bg-blue-900 bg-opacity-20 rounded-lg p-4 border border-blue-800 hover:border-blue-600 transition-all duration-300">
+                      <h4 className="text-white font-medium">{item.title}</h4>
+                      <p className="text-blue-200 text-sm">{item.description}</p>
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Empty center space for timeline */}
+                <div className="w-2/12"></div>
+                
+                {/* Right side content (odd indexes) */}
+                {index % 2 === 1 && (
+                  <motion.div 
+                    className="w-5/12 pl-6"
+                    whileHover={{ 
+                      y: -3,
+                      boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.3)"
+                    }}
+                  >
+                    <div className="bg-blue-900 bg-opacity-20 rounded-lg p-4 border border-blue-800 hover:border-blue-600 transition-all duration-300">
+                      <h4 className="text-white font-medium">{item.title}</h4>
+                      <p className="text-blue-200 text-sm">{item.description}</p>
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           ))}
-        </motion.div>
-      </div>
-    );
-  };
+        </div>
+      </motion.div>
+    </div>
+  );
+};
   
   return (
     <div className="bg-gray-900 py-20">
