@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from './Navigation';
-import ScheduleButton from './ScheduleButton';
+import Navigation from '../components/Navigation';
+import ScheduleButton from '../components/ScheduleButton';
 import { 
   Building, 
   Users, 

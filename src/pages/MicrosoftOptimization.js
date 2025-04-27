@@ -1,6 +1,6 @@
 import React from 'react';
-import ServicePage from './common/ServicePage';
-import MicrosoftBusinessValueSection from '../MicrosoftBusinessValueSection';
+import ServicePage from '../components/services/common/ServicePage';
+import MicrosoftBusinessValueSection from '../components/MicrosoftBusinessValueSection';
 import { 
   Lightbulb, 
   Shield, 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Shield, 
   Lightbulb, 
@@ -21,7 +22,6 @@ import {
 
 const ConsolidatedApproachVisualization = () => {
   const [activePhase, setActivePhase] = useState(null);
-  const [expandedPanel, setExpandedPanel] = useState(null);
   
   // Define the phases with their respective services
   const phases = [
@@ -170,15 +170,6 @@ const ConsolidatedApproachVisualization = () => {
     }
   ];
 
-  // Toggle expanded panel
-  const togglePanel = (panelId) => {
-    if (expandedPanel === panelId) {
-      setExpandedPanel(null);
-    } else {
-      setExpandedPanel(panelId);
-    }
-  };
-
   // Track mouse over phase
   const handlePhaseHover = (phaseId) => {
     setActivePhase(phaseId);
@@ -198,7 +189,11 @@ const ConsolidatedApproachVisualization = () => {
           A comprehensive methodology that transforms your investment firm's technology 
           from a necessary expense into a strategic advantage.
         </p>
-        <div className="flex items-center justify-center mb-6">
+        {/* Moved value proposition text up here */}
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-2">
+          Creating value by moving from reactive to proactive, aligning with AUM growth, and focusing on investment alpha.
+        </p>
+        <div className="flex items-center justify-center mb-6 mt-4">
           <div className="px-4 py-2 bg-blue-50 rounded-lg border border-blue-100 inline-flex items-center">
             <Users className="w-5 h-5 text-blue-600 mr-2" />
             <span className="text-blue-800 font-medium">CxO Advisory Services span all three phases</span>
@@ -219,22 +214,20 @@ const ConsolidatedApproachVisualization = () => {
                 <h3 className="text-xl font-bold">CxO Advisory Services</h3>
                 <p className="text-sm opacity-90">Strategic technology leadership spanning all phases of your transformation journey</p>
               </div>
-              <button 
-                onClick={() => togglePanel('cxo')} 
+              <Link 
+                to="/cxo-services" 
                 className="bg-white/10 hover:bg-white/20 p-2 rounded-lg transition-colors"
               >
-                <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${expandedPanel === 'cxo' ? 'rotate-90' : ''}`} />
-              </button>
+                <ArrowRight className="w-6 h-6" />
+              </Link>
             </div>
             
-            {/* Expanded CxO panel */}
-            <div className={`overflow-hidden transition-all duration-500 ${
-              expandedPanel === 'cxo' ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-            }`}>
+            {/* Always visible CxO panel */}
+            <div className="mt-4">
               <div className="grid md:grid-cols-3 gap-4 mt-2">
                 {phases.map((phase) => (
                   <div key={phase.id} className="bg-white/10 rounded-lg p-4">
-                    <h4 className="font-medium text-white mb-2">{phase.title}</h4>
+                    <h4 className="font-medium text-white mb-2">{phase.cxoRole.title}</h4>
                     <ul className="space-y-1">
                       {phase.cxoRole.duties.map((duty, idx) => (
                         <li key={idx} className="flex items-start text-sm">
@@ -285,7 +278,7 @@ const ConsolidatedApproachVisualization = () => {
           {phases.map((phase) => (
             <div 
               key={phase.id}
-              className={`transition-all duration-300 ${
+              className={`transition-all duration-300 h-full ${
                 activePhase && activePhase !== phase.id ? 'opacity-70 scale-98' : ''
               }`}
               onMouseEnter={() => handlePhaseHover(phase.id)}
@@ -299,7 +292,7 @@ const ConsolidatedApproachVisualization = () => {
               </div>
               
               {/* Phase Card */}
-              <div className={`bg-white rounded-xl shadow-md border border-${phase.darkColor} overflow-hidden`}>
+              <div className={`bg-white rounded-xl shadow-md border border-${phase.darkColor} overflow-hidden h-full flex flex-col`}>
                 {/* Header */}
                 <div className={`bg-${phase.lightColor} px-4 py-3 border-b border-${phase.color}-200`}>
                   <h3 className={`text-lg font-bold text-${phase.darkColor}`}>{phase.title}</h3>
@@ -307,7 +300,7 @@ const ConsolidatedApproachVisualization = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="p-4">
+                <div className="p-4 flex-grow flex flex-col">
                   <p className="text-gray-700 mb-4">{phase.description}</p>
                   
                   {/* Key metrics */}
@@ -321,53 +314,33 @@ const ConsolidatedApproachVisualization = () => {
                   </div>
                   
                   {/* Services section */}
-                  <div className="mb-3">
+                  <div className="mb-3 flex-grow">
                     <div className="flex justify-between items-center mb-2">
                       <h4 className="font-medium text-gray-800">Key Services</h4>
-                      <button 
-                        onClick={() => togglePanel(phase.id)} 
-                        className={`text-${phase.darkColor} hover:bg-${phase.lightColor} p-1 rounded transition-colors`}
-                      >
-                        <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${expandedPanel === phase.id ? 'rotate-90' : ''}`} />
-                      </button>
                     </div>
                     
                     {/* Always visible services */}
-                    <div className="space-y-2">
-                      {phase.services.slice(0, 2).map((service, idx) => (
+                    <div className="space-y-3">
+                      {phase.services.map((service, idx) => (
                         <div key={idx} className="flex items-start">
                           <div className="flex-shrink-0 mt-1 mr-2">
                             {service.icon}
                           </div>
-                          <span className="text-sm text-gray-700">{service.name}</span>
+                          <div>
+                            <div className="text-sm text-gray-700">{service.name}</div>
+                            <p className="text-xs text-gray-600">{service.description}</p>
+                          </div>
                         </div>
                       ))}
-                    </div>
-                    
-                    {/* Expandable services */}
-                    <div className={`overflow-hidden transition-all duration-300 ${
-                      expandedPanel === phase.id ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
-                    }`}>
-                      <div className="space-y-3 mt-3 pt-3 border-t border-gray-100">
-                        {phase.services.slice(2).map((service, idx) => (
-                          <div key={idx} className="flex items-start">
-                            <div className="flex-shrink-0 mt-1 mr-2">
-                              {service.icon}
-                            </div>
-                            <div>
-                              <div className="text-sm text-gray-700">{service.name}</div>
-                              <p className="text-xs text-gray-600">{service.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
                     </div>
                   </div>
                   
                   {/* CTA link */}
                   <div className={`text-${phase.darkColor} text-sm font-medium flex items-center justify-center mt-3 pt-3 border-t border-gray-100`}>
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <Link to="/cxo-services" className="flex items-center">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -376,39 +349,7 @@ const ConsolidatedApproachVisualization = () => {
         </div>
       </div>
       
-      {/* Value Proposition Cards */}
-      <div className="mt-8">
-        <h3 className="text-xl font-bold mb-4 text-center">How Our Approach Creates Value</h3>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-blue-50 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-blue-100 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="flex items-start gap-3">
-              <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-medium">From Reactive to Proactive</h4>
-                <p className="text-sm text-gray-600">Transition from firefighting to strategic technology management that supports growth.</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-purple-50 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-purple-100 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="flex items-start gap-3">
-              <Settings className="w-5 h-5 text-purple-600 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-medium">Aligned with AUM Growth</h4>
-                <p className="text-sm text-gray-600">Technology that scales efficiently without disruptive transitions as your firm grows.</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-indigo-50 p-4 rounded-lg shadow-sm hover:shadow-md hover:bg-indigo-100 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="flex items-start gap-3">
-              <Target className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-1" />
-              <div>
-                <h4 className="font-medium">Focus on Investment Alpha</h4>
-                <p className="text-sm text-gray-600">Free your team to focus on investment activities rather than technology challenges.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Value Proposition Cards section removed and content incorporated into the title section */}
     </div>
   );
 };

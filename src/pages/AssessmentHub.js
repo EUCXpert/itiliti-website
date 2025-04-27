@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowRight, Shield, BrainCircuit, Briefcase } from 'lucide-react';
-import Navigation from './Navigation';
-import SecurityPostureAssessment from './SecurityPostureAssessment';
-import AIReadinessAssessment from './AIReadinessAssessment';
-import OperationalDueDiligenceAssessment from './OperationalDueDiligenceAssessment';
+import Navigation from '../components/Navigation';
+import SecurityPostureAssessment from '../components/SecurityPostureAssessment';
+import AIReadinessAssessment from '../components/AIReadinessAssessment';
+import OperationalDueDiligenceAssessment from '../components/OperationalDueDiligenceAssessment';
 
 const AssessmentHub = () => {
   const [activeAssessment, setActiveAssessment] = useState(null);

@@ -1,5 +1,5 @@
 import React from 'react';
-import ServicePage from '../components/services/common/ServicePage';
+import ServicePage from '../components/services/layout/ServicePage';
 import WorkflowAutomationSection from '../components/WorkflowAutomationSection';
 import { Clock, ArrowRight, BarChart4, CheckSquare, Users, FileText } from 'lucide-react';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navigation from './Navigation';
+import Navigation from '../components/Navigation';
 import { MapPin, Phone, Mail, Clock, Calendar, ArrowRight, MessageSquare, CheckCircle } from 'lucide-react';
 
 const ContactPage = () => {

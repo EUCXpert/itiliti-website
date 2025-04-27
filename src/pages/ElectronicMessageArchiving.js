@@ -1,5 +1,5 @@
 import React from 'react';
-import ServicePage from './common/ServicePage';
+import ServicePage from '../components/services/common/ServicePage';
 import { 
   Archive, 
   Shield, 

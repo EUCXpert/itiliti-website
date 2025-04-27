@@ -1,23 +1,19 @@
+// src/App.js
 import React from 'react';
-import { Shield, CheckSquare } from 'lucide-react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainLandingPage from './components/MainLandingPage';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import MainLandingPage from './pages/MainLandingPage';
 import BoutiqueInvestmentApp from './components/BoutiqueInvestmentApp';
-import AllServicesPage from './components/services/AllServicesPage';
-import PrivateMSPServices from './components/services/PrivateMSP';
-import CxOServices from './components/services/CxOServices';
-import SecurityFoundation from './components/services/SecurityFoundation';
-import EnhancedAIServices from './components/services/EnhancedAIServices';
-import MicrosoftOptimization from './components/services/MicrosoftOptimization';
-import RegulatoryCompliance from './components/services/RegulatoryCompliance';
-import SegmentsPage from './components/segments/SegmentsPage';
-import ElectronicMessageArchiving from './components/services/ElectronicMessageArchiving';
-import AssessmentHub from './components/AssessmentHub';
-import AboutUsPage from './components/AboutUsPage';
-import ContactPage from './components/ContactPage';
+import AllServicesPage from './pages/AllServicesPage';
+import AssessmentHub from './pages/AssessmentHub';
+import AboutUsPage from './pages/AboutUsPage';
+import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 import ExitIntentProvider from './components/ExitIntentProvider';
-import WorkflowAutomation from '../src/components/WorkflowAutomation'; // Add this import
+import WorkflowAutomation from './pages/WorkflowAutomation';
+
+// Import the dynamic service page component
+import ServicePage from './pages/ServicePage';
 
 // Import segment pages
 import {
@@ -26,27 +22,36 @@ import {
   VentureCapitalSegment,
   RealEstateSegment
 } from './components/segments/Segments';
+import SegmentsPage from './components/segments/SegmentsPage';
 
 function App() {
   return (
     <Router>
       <ExitIntentProvider>
         <div className="flex flex-col min-h-screen">
+          <Navigation 
+            transparent={true} 
+            dark={true} 
+            showFloatingNav={true}
+          />
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<MainLandingPage />} />
               <Route path="/home" element={<BoutiqueInvestmentApp />} />
               <Route path="/services" element={<AllServicesPage />} />
-              <Route path="/private-msp" element={<PrivateMSPServices />} />
-              <Route path="/cxo-services" element={<CxOServices />} />
-              <Route path="/security" element={<SecurityFoundation />} />
-              <Route path="/regulatory-compliance" element={<RegulatoryCompliance />} />
-              <Route path="/ai-services" element={<EnhancedAIServices />} />
-              <Route path="/microsoft-optimization" element={<MicrosoftOptimization />} />
-              <Route path="/electronic-message-archiving" element={<ElectronicMessageArchiving />} />
-              <Route path="/about-us" element={<AboutUsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/workflow-automation" element={<WorkflowAutomation />} /> {/* Fix: Use element instead of component */}
+              
+              {/* Dynamic service route */}
+              <Route path="/services/:serviceId" element={<ServicePage />} />
+              
+              {/* Redirects from old service paths to new dynamic paths */}
+              <Route path="/private-msp" element={<Navigate to="/services/private-msp" replace />} />
+              <Route path="/cxo-services" element={<Navigate to="/services/cxo-services" replace />} />
+              <Route path="/security" element={<Navigate to="/services/security-foundation" replace />} />
+              <Route path="/regulatory-compliance" element={<Navigate to="/services/regulatory-compliance" replace />} />
+              <Route path="/ai-services" element={<Navigate to="/services/ai-services" replace />} />
+              <Route path="/microsoft-optimization" element={<Navigate to="/services/microsoft-optimization" replace />} />
+              <Route path="/electronic-message-archiving" element={<Navigate to="/services/electronic-message-archiving" replace />} />
+              <Route path="/workflow-automation" element={<WorkflowAutomation />} />
               
               {/* Assessment Routes */}
               <Route path="/assessments" element={<AssessmentHub />} />        
@@ -57,6 +62,10 @@ function App() {
               <Route path="/segments/family-offices" element={<FamilyOfficeSegment />} />
               <Route path="/segments/venture-capital" element={<VentureCapitalSegment />} />
               <Route path="/segments/real-estate" element={<RealEstateSegment />} />
+              
+              {/* Other Routes */}
+              <Route path="/about-us" element={<AboutUsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </div>
           <Footer />

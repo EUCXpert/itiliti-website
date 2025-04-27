@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from '../../Navigation';
+import Navigation from '../../../components/Navigation';
 
 const ServiceNavigation = ({ activeService }) => {
   const services = [
     { id: 'all-services', name: 'All Services', path: '/services' },
-    { id: 'security-foundation', name: 'Security Foundation', path: '/security' },
-    { id: 'microsoft-optimization', name: 'Microsoft Optimization', path: '/microsoft-optimization' },
-    { id: 'cxo-services', name: 'CxO Advisory Services', path: '/cxo-services' },
-    { id: 'ai-services', name: 'AI Solutions', path: '/ai-services' },
-    { id: 'electronic-message-archiving', name: 'Electronic Message Archiving', path: '/electronic-message-archiving' },
-    { id: 'private-msp', name: 'Private MSP', path: '/private-msp' },
-    { id: 'regulatory-compliance', name: 'Regulatory Compliance', path: '/regulatory-compliance' },
+    { id: 'security-foundation', name: 'Security Foundation', path: '/services/security-foundation' },
+    { id: 'microsoft-optimization', name: 'Microsoft Optimization', path: '/services/microsoft-optimization' },
+    { id: 'cxo-services', name: 'CxO Advisory Services', path: '/services/cxo-services' },
+    { id: 'ai-services', name: 'AI Solutions', path: '/services/ai-services' },
+    { id: 'electronic-message-archiving', name: 'Electronic Message Archiving', path: '/services/electronic-message-archiving' },
+    { id: 'private-msp', name: 'Private MSP', path: '/services/private-msp' },
+    { id: 'regulatory-compliance', name: 'Regulatory Compliance', path: '/services/regulatory-compliance' },
     { id: 'workflow-automation', name: 'Workflow Automation', path: '/workflow-automation' }
   ];
 
@@ -25,7 +25,7 @@ const ServiceNavigation = ({ activeService }) => {
             <span>/</span>
             <Link to="/services" className="hover:text-blue-600">Services</Link>
             <span>/</span>
-            <span className="text-blue-600 font-medium">{activeService}</span>
+            <span className="text-blue-600 font-medium">{activeService || "Loading..."}</span>
           </div>
           
           <div className="overflow-x-auto">

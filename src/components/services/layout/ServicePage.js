@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ServiceNavigation from './ServiceNavigation';
+import ServiceNavigation from '../common/ServiceNavigation';
 import { 
   CheckSquare, 
   ArrowRight, 
@@ -81,12 +81,6 @@ const ServicePage = ({
               className={`px-6 py-4 font-medium text-lg whitespace-nowrap transition-colors ${activeTab === 'casestudy' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
               onClick={() => setActiveTab('casestudy')}
             >
-              Success Story
-            </button>
-            <button
-              className={`px-6 py-4 font-medium text-lg whitespace-nowrap transition-colors ${activeTab === 'faqs' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 hover:text-blue-600'}`}
-              onClick={() => setActiveTab('faqs')}
-            >
               FAQs
             </button>
           </div>
@@ -121,46 +115,7 @@ const ServicePage = ({
                   </div>
                 ))}
               </div>
-              
-              {/* Enterprise-Boutique Gap Highlight Section */}
-              <div className="bg-gradient-to-r from-black to-blue-900 text-white rounded-xl overflow-hidden shadow-lg mb-12">
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">The Enterprise-Boutique Gap</h3>
-                  <p className="text-lg mb-6">
-                    Boutique alternative investment firms face a fundamental challenge: they must satisfy the same institutional investor expectations 
-                    and regulatory requirements as $50B+ firms, but with a fraction of the resources.
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-white bg-opacity-10 p-5 rounded-lg backdrop-blur-sm">
-                      <h4 className="font-semibold text-lg mb-3">The Challenge</h4>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <Target className="w-5 h-5 mr-3 flex-shrink-0 mt-1" />
-                          <span>You need institutional-grade technology but can't justify enterprise costs</span>
-                        </li>
-                        <li className="flex items-start">
-                          <Target className="w-5 h-5 mr-3 flex-shrink-0 mt-1" />
-                          <span>Generic IT providers don't understand investment operations</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="bg-white bg-opacity-10 p-5 rounded-lg backdrop-blur-sm">
-                      <h4 className="font-semibold text-lg mb-3">Our Solution</h4>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <CheckSquare className="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-1" />
-                          <span>Enterprise expertise adapted to boutique scale and budget</span>
-                        </li>
-                        <li className="flex items-start">
-                          <CheckSquare className="w-5 h-5 text-green-400 mr-3 flex-shrink-0 mt-1" />
-                          <span>Investment-specific technology solutions and methodologies</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
+                          
               {/* Key Metrics Section - Improved visual presentation */}
               <div className="bg-blue-50 rounded-xl p-8 border border-blue-100 max-w-4xl mx-auto">
                 <div className="flex flex-col md:flex-row items-start gap-6">

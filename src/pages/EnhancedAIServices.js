@@ -12,8 +12,8 @@ import {
   ArrowUpRight,
   Users
 } from 'lucide-react';
-import ServicePage from './common/ServicePage';
-import AiUseCasesSection from '../AiUseCasesSection';
+import ServicePage from '../components/services/common/ServicePage';
+import AiUseCasesSection from '../components/AiUseCasesSection';
 
 const EnhancedAIServices = () => {
   const pageData = {
