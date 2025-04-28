@@ -21,24 +21,6 @@ import {
 const SegmentsPage = () => {
   const segments = [
     {
-      id: 'hedge-funds',
-      title: 'Hedge Funds',
-      description: 'Comprehensive technology solutions for long/short equity, quant, macro, and multi-strategy hedge funds.',
-      icon: <BarChart4 className="w-12 h-12 text-blue-600" />,
-      challenges: [
-        "Sophisticated security for institutional due diligence",
-        "Trading-hour support for critical operations",
-        "Scalable technology aligned with AUM growth",
-        "SEC & FINRA regulatory compliance"
-      ],
-      services: [
-        "Security Foundation",
-        "Electronic Message Archiving",
-        "Private MSP",
-        "AI Solutions for Research"
-      ]
-    },
-    {
       id: 'private-equity',
       title: 'Private Equity',
       description: 'Technology solutions designed specifically for buyout, growth equity, and specialized PE strategies.',
@@ -94,7 +76,7 @@ const SegmentsPage = () => {
     },
     {
       id: 'real-estate',
-      title: 'Real Estate Investment',
+      title: 'Real Estate',
       description: 'Specialized technology for real estate investment managers, REITs, and real estate private equity.',
       icon: <Database className="w-12 h-12 text-blue-600" />,
       challenges: [

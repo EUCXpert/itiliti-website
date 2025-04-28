@@ -29,7 +29,7 @@ const Footer = () => {
     { name: "Private Equity", path: "/segments/private-equity" },
     { name: "Venture Capital", path: "/segments/venture-capital" },
     { name: "Family Offices", path: "/segments/family-offices" },
-    { name: "Real Estate Investment", path: "/segments/real-estate" }
+    { name: "Real Estate", path: "/segments/real-estate" }
   ];
   
   const quickLinks = [
