@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '../components/Navigation';
 import ScheduleButton from '../components/ScheduleButton';
 import VideoHeroSection from '../components/VideoHeroSection';
 import { PageEngagementTracker } from '../components/PageEngagementTracker';
 import useFormTracking from '../components/useFormTracking';
+import PartnerLogosCarousel from '../components/AdvancedPartnerLogosCarousel';
+//import TeamExpertiseVisual from '../components/TeamExpertiseVisual';
+
+
 import { 
   Shield, 
   BarChart4, 
@@ -32,6 +37,7 @@ import {
   Download,
   CheckCircle
 } from 'lucide-react';
+
 
 // Lazy load components that are below the fold
 const FloatingCTASection = lazy(() => import('../components/FloatingCTASection'));
@@ -87,6 +93,7 @@ const MainLandingPage = () => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [contactFormSubmitted, setContactFormSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  
   
   // Contact form state
   const [contactForm, setContactForm] = useState({
@@ -240,7 +247,8 @@ const MainLandingPage = () => {
       setIsSubmitting(false);
     }
   }, [validateForm, contactForm]);
-  
+
+ 
   // Service definitions
   const clientSegments = [
     {
@@ -656,6 +664,22 @@ const MainLandingPage = () => {
             </div>
           </section>
 
+          {/* Partner Logos Carousel */}
+          <ErrorBoundary>
+            <PartnerLogosCarousel
+              title="Our Trusted Technology Partners" 
+              subtitle="We partner with industry-leading technology providers to deliver exceptional solutions"
+              duration={80} // Slower scrolling for better visibility
+              pauseOnHover={false}
+              grayscale={false}
+              colorizeOnHover={false}
+              logoHeight="h-16"
+              logoSpacing="mx-36"
+              enableHoverScale={true}
+              scaleAmount={1.10}
+            />
+          </ErrorBoundary>
+
           {/* The Enterprise-Boutique Gap Section - H2 heading */}
           <section className="py-16 bg-gray-50" id="gap">
             <div className="container mx-auto px-6">
@@ -792,10 +816,6 @@ const MainLandingPage = () => {
             </div>
           </section>
           
-          {/* Contact Form Section */}
-          <ErrorBoundary>
-            {contactFormSection}
-          </ErrorBoundary>
         </Suspense>
       </div>
       

@@ -1,4 +1,4 @@
-// src/components/EnhancedNavigation.js
+// src/components/Navigation.js
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -20,10 +20,12 @@ import {
   MessageSquare,
   Building,
   Rocket,
-  Briefcase
+  Briefcase,
+  FileInput,
+  Headphones
 } from 'lucide-react';
 
-const EnhancedNavigation = ({ 
+const Navigation = ({ 
   transparent = false, 
   dark = false,
   showFloatingNav = false
@@ -99,40 +101,8 @@ const EnhancedNavigation = ({
         { 
           path: '/services/workflow-automation', 
           label: 'Workflow Automation', 
-          icon: <FileText className="w-5 h-5 text-indigo-500" />,
+          icon: <FileInput className="w-5 h-5 text-indigo-500" />,
           description: "Streamline operations and scale without adding headcount"
-        }
-      ]
-    },
-    { 
-      path: '/segments',
-      label: 'Segments', 
-      icon: <Globe className="w-5 h-5" />,
-      description: "Tailored solutions for different investment strategies",
-      dropdown: [
-        { 
-          path: '/segments/private-equity', 
-          label: 'Private Equity', 
-          icon: <Building className="w-5 h-5 text-blue-500" />,
-          description: "Deal security across complex transactions and portfolio companies"
-        },
-        { 
-          path: '/segments/venture-capital', 
-          label: 'Venture Capital', 
-          icon: <Rocket className="w-5 h-5 text-emerald-500" />,
-          description: "Relationship-centric technology for partners on the move"
-        },
-        { 
-          path: '/segments/family-offices', 
-          label: 'Family Offices', 
-          icon: <Briefcase className="w-5 h-5 text-purple-500" />,
-          description: "Ultra-high-net-worth privacy and multi-generational planning"
-        },
-        { 
-          path: '/segments/real-estate', 
-          label: 'Real Estate', 
-          icon: <Building className="w-5 h-5 text-amber-500" />,
-          description: "Property portfolio management across multiple jurisdictions"
         }
       ]
     },
@@ -150,6 +120,78 @@ const EnhancedNavigation = ({
       path: '/contact', 
       label: 'Contact', 
       icon: <MessageSquare className="w-5 h-5" /> 
+    }
+  ];
+
+  // Featured resource for the dropdown
+  const featuredResource = {
+    title: "AI for Alternative Investment Firms",
+    description: "Packed with the information, tools, and guidance you need to transform your investment operations with AI-powered insights.",
+    image: "/images/ai-investment-resource.png",
+    link: "/assessments?type=ai_readiness",
+    linkText: "Take the AI Readiness Assessment"
+  };
+
+  // Solutions by Topic section
+  const solutionsByTopic = [
+    { 
+      path: '/services/cxo-services', 
+      label: 'CxO Services', 
+      icon: <Users className="w-5 h-5" />
+    },
+    { 
+      path: '/services/private-msp', 
+      label: 'Private MSP', 
+      icon: <Headphones className="w-5 h-5" />
+    },
+    { 
+      path: '/services/security-foundation', 
+      label: 'Security Foundations', 
+      icon: <Shield className="w-5 h-5" />
+    },
+    { 
+        path: '/services/ai-services', 
+        label: 'AI Services', 
+        icon: <BrainCircuit className="w-5 h-5" />
+    },
+    { 
+      path: '/services/workflow-automation', 
+      label: 'Workflow Automation', 
+      icon: <FileInput className="w-5 h-5" />
+    },
+    { 
+        path: '/services/electronic-message-archiving', 
+        label: 'Electronic Message Archiving', 
+        icon: <Archive className="w-5 h-5" />
+    },
+    { 
+      path: '/services/regulatory-compliance', 
+      label: 'Regulatory Compliance', 
+      icon: <FileText className="w-5 h-5" />
+  }
+  ];
+
+  // Solutions by Industry section
+  const solutionsByIndustry = [
+    { 
+      path: '/segments/private-equity', 
+      label: 'Private Equity', 
+      icon: <Globe className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/venture-capital', 
+      label: 'Venture Capital', 
+      icon: <Rocket className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/family-offices', 
+      label: 'Family Offices', 
+      icon: <Briefcase className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/real-estate', 
+      label: 'Real Estate', 
+      icon: <Building className="w-5 h-5" />
     }
   ];
 
@@ -219,7 +261,7 @@ const EnhancedNavigation = ({
                   
                   {/* Enhanced dropdown with animation */}
                   <div 
-                    className={`absolute left-0 top-full pt-2 w-[32rem] z-20 transition-all duration-300 ${
+                    className={`absolute left-0 top-full pt-2 w-[800px] z-20 transition-all duration-300 ${
                       activeDropdown === index 
                         ? 'opacity-100 translate-y-0 visible' 
                         : 'opacity-0 -translate-y-4 invisible'
@@ -238,40 +280,72 @@ const EnhancedNavigation = ({
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-2 p-4 gap-2">
-                        {item.dropdown.map((dropdownItem, idx) => (
-                          <Link 
-                            key={idx} 
-                            to={dropdownItem.path}
-                            className="flex items-start p-3 rounded-lg hover:bg-blue-50 transition-colors group"
-                          >
-                            {dropdownItem.icon && (
-                              <div className="mr-3 p-2 rounded-lg bg-gray-100 group-hover:bg-white">
-                                {dropdownItem.icon}
-                              </div>
-                            )}
-                            <div>
-                              <div className="font-medium text-gray-900 group-hover:text-blue-700">
-                                {dropdownItem.label}
-                              </div>
-                              {dropdownItem.description && (
-                                <div className="text-xs text-gray-500 mt-1 group-hover:text-blue-600">
-                                  {dropdownItem.description}
+                      <div className="flex">
+                        <div className="flex-1 p-6 border-r border-gray-100">
+                          <h4 className="font-semibold mb-4 text-gray-500 text-sm tracking-wider uppercase">Specialized Services</h4>
+                          <div className="grid grid-cols-1 gap-3">
+                            {solutionsByTopic.map((solution, idx) => (
+                              <Link 
+                                key={idx} 
+                                to={solution.path}
+                                className="flex items-center p-3 rounded-lg hover:bg-blue-50 transition-colors group"
+                              >
+                                {solution.icon && (
+                                  <div className="mr-3 p-2 rounded-lg bg-gray-100 group-hover:bg-white">
+                                    {solution.icon}
+                                  </div>
+                                )}
+                                <div className="font-medium text-gray-900 group-hover:text-blue-700">
+                                  {solution.label}
                                 </div>
-                              )}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="flex-1 p-6 border-r border-gray-100">
+                          <h4 className="font-semibold mb-4 text-gray-500 text-sm tracking-wider uppercase">Solutions by Segment</h4>
+                          <div className="grid grid-cols-1 gap-3">
+                            {solutionsByIndustry.map((industry, idx) => (
+                              <Link 
+                                key={idx} 
+                                to={industry.path}
+                                className="flex items-center p-3 rounded-lg hover:bg-blue-50 transition-colors group"
+                              >
+                                {industry.icon && (
+                                  <div className="mr-3 p-2 rounded-lg bg-gray-100 group-hover:bg-white">
+                                    {industry.icon}
+                                  </div>
+                                )}
+                                <div className="font-medium text-gray-900 group-hover:text-blue-700">
+                                  {industry.label}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        <div className="w-[280px] bg-blue-50 p-6">
+                          <h4 className="font-semibold mb-4 text-gray-600 text-sm tracking-wider uppercase">Featured Resource</h4>
+                          <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+                            <img 
+                              src={featuredResource.image || "/images/ai-investment-default.jpg"} 
+                              alt="AI for Investment" 
+                              className="w-full h-32 object-cover bg-blue-100"
+                            />
+                            <div className="p-4">
+                              <h5 className="font-bold text-gray-900 text-lg mb-2">{featuredResource.title}</h5>
+                              <p className="text-gray-600 text-sm mb-4">{featuredResource.description}</p>
+                              <Link 
+                                to={featuredResource.link} 
+                                className="inline-flex items-center text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-sm transition-colors"
+                              >
+                                {featuredResource.linkText}
+                                <ChevronRight className="w-4 h-4 ml-1" />
+                              </Link>
                             </div>
-                          </Link>
-                        ))}
-                      </div>
-                      
-                      <div className="p-3 bg-gray-50 border-t border-gray-100">
-                        <Link 
-                          to={item.path}
-                          className="text-sm text-blue-600 hover:text-blue-800 flex items-center justify-end"
-                        >
-                          View All {item.label}
-                          <ChevronRight className="w-4 h-4 ml-1" />
-                        </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -410,6 +484,19 @@ const EnhancedNavigation = ({
                   <ExternalLink className="w-4 h-4 ml-1" />
                 </a>
                 
+                <Link 
+                  to="/assessments?type=ai_readiness"
+                  className="block bg-blue-50 border border-blue-100 p-4 rounded-lg mb-4"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <h5 className="font-bold text-gray-900 mb-2">{featuredResource.title}</h5>
+                  <p className="text-sm text-gray-600 mb-2">{featuredResource.description}</p>
+                  <span className="inline-flex items-center text-sm font-medium text-blue-600">
+                    {featuredResource.linkText}
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </span>
+                </Link>
+                
                 <button className="w-full py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center">
                   <Calendar className="w-5 h-5 mr-2" />
                   Schedule Consultation
@@ -462,4 +549,4 @@ const EnhancedNavigation = ({
   );
 };
 
-export default EnhancedNavigation;
+export default Navigation;
