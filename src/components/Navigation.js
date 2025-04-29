@@ -1,4 +1,6 @@
 // src/components/Navigation.js
+// Update the enhanced dropdown with animation section to position it better
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -259,13 +261,18 @@ const Navigation = ({
                     </span>
                   </Link>
                   
-                  {/* Enhanced dropdown with animation */}
+                  {/* Enhanced dropdown with animation - ADJUSTED POSITIONING */}
                   <div 
                     className={`absolute left-0 top-full pt-2 w-[800px] z-20 transition-all duration-300 ${
                       activeDropdown === index 
                         ? 'opacity-100 translate-y-0 visible' 
                         : 'opacity-0 -translate-y-4 invisible'
                     }`}
+                    style={{ 
+                      transform: 'translateX(-25%)', /* This shifts the dropdown to the left */
+                      maxWidth: 'calc(100vw - 40px)',
+                      marginLeft: 'min(0px, calc((100vw - 800px) / 2))'
+                    }}
                   >
                     <div className="bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
                       <div className="p-4 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
@@ -361,20 +368,6 @@ const Navigation = ({
                 </Link>
               )
             ))}
-            
-            {/* AI Site Link 
-            <a 
-              href={aiSiteUrl} 
-              className="flex items-center font-medium text-blue-600 hover:text-blue-700 transition-colors ml-2 px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100"
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <BrainCircuit className="w-5 h-5 mr-2" />
-              ITILITI.ai
-              <ExternalLink className="w-4 h-4 ml-1" />
-            </a>*/}
-            
-            {/* CTA Button */}
           </div>
           
           {/* Mobile Menu Button */}
