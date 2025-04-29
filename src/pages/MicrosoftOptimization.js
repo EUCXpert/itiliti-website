@@ -104,32 +104,32 @@ const MicrosoftOptimization = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Fund Achieves 35% Microsoft Cost Reduction",
-      firmType: "Private Equity Firm",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "35 employees" },
-        { icon: <DollarSign className="w-4 h-4" />, text: "$120,000 annual Microsoft spend" },
-        { icon: <Target className="w-4 h-4" />, text: "Significant waste and underutilization" }
-      ],
-      challenge: "A growing PE firm with 35 employees was spending over $120,000 annually on Microsoft services with significant waste across licenses, subscriptions, and cloud resources. Despite this spending, they weren't leveraging key security and productivity features that could enhance their investment operations.",
-      approach: [
-        "Conducted comprehensive assessment of Microsoft environment and usage patterns",
-        "Developed tailored optimization plan with clear ROI projections",
-        "Implemented right-sized licensing and eliminated redundant subscriptions",
-        "Enabled previously unused enterprise features to enhance security and productivity"
-      ],
-      results: [
-        { value: "$42,000", label: "Annual cost savings" },
-        { value: "35%", label: "Reduction in Microsoft spend" },
-        { value: "20+", label: "Hours saved weekly in manual tasks" }
-      ],
-      quote: "The optimization not only reduced our costs but actually improved our capabilities. We're now leveraging Microsoft tools we didn't even know we already owned, which has streamlined our deal management process and enhanced our security posture for investor due diligence.",
-      author: {
-        title: "CFO",
-        company: "Mid-Market Private Equity Fund"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Fund Achieves 35% Microsoft Cost Reduction",
+//      firmType: "Private Equity Firm",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "35 employees" },
+//        { icon: <DollarSign className="w-4 h-4" />, text: "$120,000 annual Microsoft spend" },
+//        { icon: <Target className="w-4 h-4" />, text: "Significant waste and underutilization" }
+//      ],
+//      challenge: "A growing PE firm with 35 employees was spending over $120,000 annually on Microsoft services with significant waste across licenses, subscriptions, and cloud resources. Despite this spending, they weren't leveraging key security and productivity features that could enhance their investment operations.",
+//      approach: [
+//        "Conducted comprehensive assessment of Microsoft environment and usage patterns",
+//       "Developed tailored optimization plan with clear ROI projections",
+//        "Implemented right-sized licensing and eliminated redundant subscriptions",
+//        "Enabled previously unused enterprise features to enhance security and productivity"
+//      ],
+//      results: [
+//        { value: "$42,000", label: "Annual cost savings" },
+//        { value: "35%", label: "Reduction in Microsoft spend" },
+//        { value: "20+", label: "Hours saved weekly in manual tasks" }
+//      ],
+//      quote: "The optimization not only reduced our costs but actually improved our capabilities. We're now leveraging Microsoft tools we didn't even know we already owned, which has streamlined our deal management process and enhanced our security posture for investor due diligence.",
+//      author: {
+//        title: "CFO",
+//        company: "Mid-Market Private Equity Fund"
+//      }
+//    },
     
     faqs: [
       {

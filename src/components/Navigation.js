@@ -66,7 +66,7 @@ const Navigation = ({
       path: '/services',
       label: 'Services', 
       icon: <BarChart4 className="w-5 h-5" />,
-      description: "Enterprise-grade technology solutions for boutique firms",
+      description: "Enterprise-grade technology solutions for boutique investment firms",
       dropdown: [
         { 
           path: '/services/security-foundation', 
@@ -126,10 +126,10 @@ const Navigation = ({
   // Featured resource for the dropdown
   const featuredResource = {
     title: "AI for Alternative Investment Firms",
-    description: "Packed with the information, tools, and guidance you need to transform your investment operations with AI-powered insights.",
+    description: "Responsible, transparent AI that delivers measurable business impact aligned with your investment strategy. We bring enterprise-grade AI capabilities scaled appropriately for boutique investment firms.",
     image: "/images/ai-investment-resource.png",
-    link: "/assessments?type=ai_readiness",
-    linkText: "Take the AI Readiness Assessment"
+    path: '/services/ai-services',
+    linkText: "Explore AI Services"
   };
 
   // Solutions by Topic section
@@ -327,22 +327,22 @@ const Navigation = ({
                         
                         <div className="w-[280px] bg-blue-50 p-6">
                           <h4 className="font-semibold mb-4 text-gray-600 text-sm tracking-wider uppercase">Featured Resource</h4>
-                          <div className="bg-white rounded-lg overflow-hidden shadow-sm">
-                            <img 
-                              src={featuredResource.image || "/images/ai-investment-default.jpg"} 
-                              alt="AI for Investment" 
-                              className="w-full h-32 object-cover bg-blue-100"
-                            />
-                            <div className="p-4">
-                              <h5 className="font-bold text-gray-900 text-lg mb-2">{featuredResource.title}</h5>
-                              <p className="text-gray-600 text-sm mb-4">{featuredResource.description}</p>
-                              <Link 
-                                to={featuredResource.link} 
-                                className="inline-flex items-center text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-sm transition-colors"
-                              >
-                                {featuredResource.linkText}
-                                <ChevronRight className="w-4 h-4 ml-1" />
-                              </Link>
+                        <div className="bg-white rounded-lg overflow-hidden shadow-sm">
+                          <img 
+                          src={featuredResource.image || "/images/ai-investment-default.jpg"} 
+                          alt="AI for Investment" 
+                          className="w-full h-32 object-cover bg-blue-100"
+                          />
+                        <div className="p-4">
+                        <h5 className="font-bold text-gray-900 text-lg mb-2">{featuredResource.title}</h5>
+                        <p className="text-gray-600 text-sm mb-4">{featuredResource.description}</p>
+                        <Link 
+                        to={featuredResource.path} 
+                        className="inline-flex items-center text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-lg text-sm transition-colors"
+      >
+        {featuredResource.linkText}
+        <ChevronRight className="w-4 h-4 ml-1" />
+      </Link>
                             </div>
                           </div>
                         </div>
@@ -362,7 +362,7 @@ const Navigation = ({
               )
             ))}
             
-            {/* AI Site Link */}
+            {/* AI Site Link 
             <a 
               href={aiSiteUrl} 
               className="flex items-center font-medium text-blue-600 hover:text-blue-700 transition-colors ml-2 px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100"
@@ -372,13 +372,9 @@ const Navigation = ({
               <BrainCircuit className="w-5 h-5 mr-2" />
               ITILITI.ai
               <ExternalLink className="w-4 h-4 ml-1" />
-            </a>
+            </a>*/}
             
             {/* CTA Button */}
-            <button className="ml-2 px-6 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors flex items-center font-medium">
-              <Calendar className="w-4 h-4 mr-2" />
-              Schedule
-            </button>
           </div>
           
           {/* Mobile Menu Button */}

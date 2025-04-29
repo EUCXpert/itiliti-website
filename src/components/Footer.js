@@ -1,8 +1,52 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Facebook, Twitter, Linkedin, Download, CheckCircle } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { 
+  MapPin, 
+  Phone, 
+  Mail, 
+  ExternalLink, 
+  ArrowRight, 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Download, 
+  CheckCircle,
+  Shield,
+  Users,
+  Lightbulb,
+  BrainCircuit,
+  Archive,
+  FileInput,
+  Globe,
+  Rocket,
+  Briefcase,
+  Building,
+  Home,
+  FileText,
+  Info,
+  MessageSquare,
+  Calendar,
+  BarChart4
+} from 'lucide-react';
 import ConsultationModal from './ConsultationModal';
 import useFormTracking from './useFormTracking';
+
+// Custom Link component that scrolls to top when clicked
+const ScrollLink = ({ to, children, className }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+    navigate(to);
+  };
+  
+  return (
+    <a href={to} onClick={handleClick} className={className}>
+      {children}
+    </a>
+  );
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,30 +60,94 @@ const Footer = () => {
   useFormTracking('download', isDownloading);
   useFormTracking('newsletter', isSubscribed);
   
+  // Service items from Navigation.js
   const mainServices = [
-    { name: "Security Foundation", path: "/security" },
-    { name: "Microsoft Optimization", path: "/microsoft-optimization" },
-    { name: "CxO Advisory Services", path: "/cxo-services" },
-    { name: "AI Solutions", path: "/ai-services" },
-    { name: "Electronic Message Archiving", path: "/electronic-message-archiving" }
+    { 
+      path: '/services/security-foundation', 
+      label: 'Security Foundation', 
+      icon: <Shield className="w-5 h-5 text-red-500" />
+    },
+    { 
+      path: '/services/microsoft-optimization', 
+      label: 'Microsoft Optimization', 
+      icon: <Lightbulb className="w-5 h-5 text-purple-500" />
+    },
+    { 
+      path: '/services/cxo-services', 
+      label: 'CxO Advisory Services', 
+      icon: <Users className="w-5 h-5 text-blue-500" />
+    },
+    { 
+      path: '/services/ai-services', 
+      label: 'AI Solutions', 
+      icon: <BrainCircuit className="w-5 h-5 text-emerald-500" />
+    },
+    { 
+      path: '/services/electronic-message-archiving', 
+      label: 'Electronic Message Archiving', 
+      icon: <Archive className="w-5 h-5 text-amber-500" />
+    },
+    { 
+      path: '/services/workflow-automation', 
+      label: 'Workflow Automation', 
+      icon: <FileInput className="w-5 h-5 text-indigo-500" />
+    }
   ];
   
+  // Segments from Navigation.js
   const segments = [
-    { name: "Hedge Funds", path: "/segments/hedge-funds" },
-    { name: "Private Equity", path: "/segments/private-equity" },
-    { name: "Venture Capital", path: "/segments/venture-capital" },
-    { name: "Family Offices", path: "/segments/family-offices" },
-    { name: "Real Estate", path: "/segments/real-estate" }
+    { 
+      path: '/segments/private-equity', 
+      label: 'Private Equity', 
+      icon: <Globe className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/venture-capital', 
+      label: 'Venture Capital', 
+      icon: <Rocket className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/family-offices', 
+      label: 'Family Offices', 
+      icon: <Briefcase className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/real-estate', 
+      label: 'Real Estate', 
+      icon: <Building className="w-5 h-5" />
+    }
   ];
   
+  // Quick links from Navigation.js
   const quickLinks = [
-    { name: "About Us", path: "/about-us" },
-    { name: "Services", path: "/services" },
-    { name: "Assessment Hub", path: "/assessments" },
-    { name: "Contact", path: "/contact" },
-    { name: "Blog", path: "/blog" }
+    { 
+      path: '/', 
+      label: 'Home', 
+      icon: <Home className="w-5 h-5" /> 
+    },
+    { 
+      path: '/services', 
+      label: 'Services', 
+      icon: <BarChart4 className="w-5 h-5" />
+    },
+    { 
+      path: '/assessments', 
+      label: 'Assessment Hub', 
+      icon: <FileText className="w-5 h-5" /> 
+    },
+    { 
+      path: '/about-us', 
+      label: 'About Us', 
+      icon: <Info className="w-5 h-5" /> 
+    },
+    { 
+      path: '/contact', 
+      label: 'Contact', 
+      icon: <MessageSquare className="w-5 h-5" /> 
+    }
   ];
   
+  // Office locations
   const locations = [
     {
       name: "Main Office",
@@ -225,23 +333,27 @@ const Footer = () => {
               <ul className="space-y-3">
                 {mainServices.map((service, index) => (
                   <li key={index}>
-                    <Link 
+                    <ScrollLink 
                       to={service.path} 
                       className="text-gray-400 hover:text-blue-400 transition-colors flex items-center"
                     >
-                      <ArrowRight className="w-4 h-4 mr-2" />
-                      {service.name}
-                    </Link>
+                      {service.icon ? (
+                        <span className="mr-2">{service.icon}</span>
+                      ) : (
+                        <ArrowRight className="w-4 h-4 mr-2" />
+                      )}
+                      {service.label}
+                    </ScrollLink>
                   </li>
                 ))}
                 <li className="pt-2">
-                  <Link 
+                  <ScrollLink 
                     to="/services" 
                     className="text-blue-400 hover:text-blue-300 transition-colors font-medium flex items-center"
                   >
                     View All Services
                     <ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
+                  </ScrollLink>
                 </li>
               </ul>
             </div>
@@ -252,23 +364,27 @@ const Footer = () => {
               <ul className="space-y-3">
                 {segments.map((segment, index) => (
                   <li key={index}>
-                    <Link 
+                    <ScrollLink 
                       to={segment.path} 
                       className="text-gray-400 hover:text-blue-400 transition-colors flex items-center"
                     >
-                      <ArrowRight className="w-4 h-4 mr-2" />
-                      {segment.name}
-                    </Link>
+                      {segment.icon ? (
+                        <span className="mr-2">{segment.icon}</span>
+                      ) : (
+                        <ArrowRight className="w-4 h-4 mr-2" />
+                      )}
+                      {segment.label}
+                    </ScrollLink>
                   </li>
                 ))}
                 <li className="pt-2">
-                  <Link 
+                  <ScrollLink 
                     to="/segments" 
                     className="text-blue-400 hover:text-blue-300 transition-colors font-medium flex items-center"
                   >
                     View All Segments
                     <ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
+                  </ScrollLink>
                 </li>
               </ul>
             </div>
@@ -279,13 +395,17 @@ const Footer = () => {
               <ul className="space-y-3 mb-8">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
-                    <Link 
+                    <ScrollLink 
                       to={link.path} 
                       className="text-gray-400 hover:text-blue-400 transition-colors flex items-center"
                     >
-                      <ArrowRight className="w-4 h-4 mr-2" />
-                      {link.name}
-                    </Link>
+                      {link.icon ? (
+                        <span className="mr-2">{link.icon}</span>
+                      ) : (
+                        <ArrowRight className="w-4 h-4 mr-2" />
+                      )}
+                      {link.label}
+                    </ScrollLink>
                   </li>
                 ))}
               </ul>
@@ -331,9 +451,9 @@ const Footer = () => {
               &copy; {currentYear} ITILITI Technology Partners LLC. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link to="/privacy-policy" className="text-gray-500 hover:text-gray-300 text-sm">Privacy Policy</Link>
-              <Link to="/terms-of-service" className="text-gray-500 hover:text-gray-300 text-sm">Terms of Service</Link>
-              <Link to="/cookie-policy" className="text-gray-500 hover:text-gray-300 text-sm">Cookie Policy</Link>
+              <ScrollLink to="/privacy-policy" className="text-gray-500 hover:text-gray-300 text-sm">Privacy Policy</ScrollLink>
+              <ScrollLink to="/terms-of-service" className="text-gray-500 hover:text-gray-300 text-sm">Terms of Service</ScrollLink>
+              <ScrollLink to="/cookie-policy" className="text-gray-500 hover:text-gray-300 text-sm">Cookie Policy</ScrollLink>
             </div>
           </div>
         </div>

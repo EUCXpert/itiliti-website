@@ -11,6 +11,8 @@ import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 import ExitIntentProvider from './components/ExitIntentProvider';
 import WorkflowAutomation from './pages/WorkflowAutomation';
+import ScrollToTop from './components/ScrollToTop';
+
 
 // Import the dynamic service page component
 import ServicePage from './pages/ServicePage';
@@ -27,6 +29,7 @@ import SegmentsPage from './components/segments/SegmentsPage';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <ExitIntentProvider>
         <div className="flex flex-col min-h-screen">
           <Navigation 

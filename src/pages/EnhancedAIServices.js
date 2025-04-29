@@ -103,32 +103,32 @@ const EnhancedAIServices = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Firm Transforms Due Diligence Process",
-      firmType: "Mid-Market Private Equity Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "Limited research bandwidth" },
-        { icon: <Clock className="w-4 h-4" />, text: "Time-intensive due diligence process" }
-      ],
-      challenge: "A mid-market private equity firm with a 12-person team was struggling to evaluate enough potential investments due to the manual nature of their due diligence process. Each potential deal required weeks of document review, limiting their capacity to explore new opportunities.",
-      approach: [
-        "Implemented AI-powered document analysis for deal review",
-        "Developed custom models for financial statement analysis",
-        "Created automated reporting for comparative deal assessment",
-        "Integrated insights with existing investment workflow"
-      ],
-      results: [
-        { value: "65%", label: "Faster extraction of insights from documents" },
-        { value: "3.5x", label: "More potential investments evaluated per analyst" },
-        { value: "40%", label: "Reduction in research time for investment analysis" }
-      ],
-      quote: "AI solutions have transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
-      author: {
-        title: "Investment Director",
-        company: "Mid-Market Private Equity Firm"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Firm Transforms Due Diligence Process",
+//      firmType: "Mid-Market Private Equity Fund",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
+//        { icon: <BarChart4 className="w-4 h-4" />, text: "Limited research bandwidth" },
+//        { icon: <Clock className="w-4 h-4" />, text: "Time-intensive due diligence process" }
+//      ],
+//      challenge: "A mid-market private equity firm with a 12-person team was struggling to evaluate enough potential investments due to the manual nature of their due diligence process. Each potential deal required weeks of document review, limiting their capacity to explore new opportunities.",
+//      approach: [
+//        "Implemented AI-powered document analysis for deal review",
+//        "Developed custom models for financial statement analysis",
+//        "Created automated reporting for comparative deal assessment",
+//        "Integrated insights with existing investment workflow"
+//      ],
+//      results: [
+//        { value: "65%", label: "Faster extraction of insights from documents" },
+//        { value: "3.5x", label: "More potential investments evaluated per analyst" },
+//        { value: "40%", label: "Reduction in research time for investment analysis" }
+//      ],
+//      quote: "AI solutions have transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
+//      author: {
+//        title: "Investment Director",
+//        company: "Mid-Market Private Equity Firm"
+//      }
+//    },
     
     faqs: [
       {

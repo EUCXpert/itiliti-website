@@ -103,32 +103,32 @@ const ElectronicMessageArchiving = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Hedge Fund Avoids Regulatory Penalties",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "45 employees" },
-        { icon: <AlertTriangle className="w-4 h-4" />, text: "SEC examination imminent" },
-        { icon: <MessageSquare className="w-4 h-4" />, text: "High text message volume" }
-      ],
-      challenge: "A quantitative hedge fund with 45 employees was facing an upcoming SEC examination without adequate text message archiving. Their traders frequently used text messaging for time-sensitive communications, creating significant regulatory exposure.",
-      approach: [
-        "Implemented comprehensive text archiving solution within 14 days",
-        "Deployed both company-issued and BYOD device coverage",
-        "Established appropriate surveillance and compliance workflows",
-        "Provided thorough documentation for regulatory examination"
-      ],
-      results: [
-        { value: "100%", label: "Communication compliance achieved" },
-        { value: "Zero", label: "Deficiency findings in SEC examination" },
-        { value: "$750K+", label: "Potential penalties avoided" }
-      ],
-      quote: "The implementation was remarkably smooth considering our tight timeline. Their team understood the regulatory requirements deeply and provided exactly what we needed before our examination. The SEC examiners specifically noted the completeness of our text archiving solution.",
-      author: {
-        title: "Chief Compliance Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    },
+ //   caseStudy: {
+ //     title: "Hedge Fund Avoids Regulatory Penalties",
+ //     firmType: "Quantitative Hedge Fund",
+ //     profile: [
+ //       { icon: <Users className="w-4 h-4" />, text: "45 employees" },
+ //       { icon: <AlertTriangle className="w-4 h-4" />, text: "SEC examination imminent" },
+ //       { icon: <MessageSquare className="w-4 h-4" />, text: "High text message volume" }
+ //     ],
+ //     challenge: "A quantitative hedge fund with 45 employees was facing an upcoming SEC examination without adequate text message archiving. Their traders frequently used text messaging for time-sensitive communications, creating significant regulatory exposure.",
+ //     approach: [
+ //       "Implemented comprehensive text archiving solution within 14 days",
+ //       "Deployed both company-issued and BYOD device coverage",
+ //       "Established appropriate surveillance and compliance workflows",
+ //       "Provided thorough documentation for regulatory examination"
+ //     ],
+ //     results: [
+ //       { value: "100%", label: "Communication compliance achieved" },
+ //       { value: "Zero", label: "Deficiency findings in SEC examination" },
+ //       { value: "$750K+", label: "Potential penalties avoided" }
+ //     ],
+ //     quote: "The implementation was remarkably smooth considering our tight timeline. Their team understood the regulatory requirements deeply and provided exactly what we needed before our examination. The SEC examiners specifically noted the completeness of our text archiving solution.",
+ //     author: {
+ //       title: "Chief Compliance Officer",
+ //       company: "Quantitative Hedge Fund"
+ //     }
+ //   },
     
     faqs: [
       {

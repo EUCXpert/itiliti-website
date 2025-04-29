@@ -4,8 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 
 // Import service data
-import { getServiceById, SERVICE_IDS } from '../../../data/services/serviceData';
+import { SERVICE_IDS } from '../../../data/services/serviceData';
 import { BASE_SERVICE_TABS } from '../../../data/services/serviceCategories';
+import { SERVICE_BACKGROUND_IMAGES } from '../../../data/services/serviceAssets';
 
 // Import service components
 import ServiceHero from './ServiceHero';
@@ -43,6 +44,9 @@ const ServiceLayout = ({ serviceData }) => {
   if (!serviceData) {
     return <div className="p-12 text-center">Loading...</div>;
   }
+  
+  // Get background image for the current service
+  const backgroundImage = SERVICE_BACKGROUND_IMAGES?.[serviceId] || '/images/default-hero-bg.jpg';
   
   // Determine which tabs to show (required + optional if data exists)
   const availableTabs = BASE_SERVICE_TABS.filter(tab => {
@@ -106,6 +110,7 @@ const ServiceLayout = ({ serviceData }) => {
         subtitle={serviceData.subtitle}
         description={serviceData.description}
         category={serviceData.category}
+        backgroundImage={backgroundImage}
       />
       
       {/* Tab Navigation */}

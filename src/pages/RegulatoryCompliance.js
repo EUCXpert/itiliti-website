@@ -100,32 +100,32 @@ const RegulatoryCompliance = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Emerging Hedge Fund Passes SEC Examination",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "$180M AUM" },
-        { icon: <Landmark className="w-4 h-4" />, text: "First SEC examination" },
-        { icon: <Shield className="w-4 h-4" />, text: "Limited compliance staff" }
-      ],
-      challenge: "A quantitative hedge fund with $180M AUM faced its first SEC examination after three years of operation. With limited compliance staff, they struggled to prepare for the extensive document requests and possible on-site review.",
-      approach: [
-        "Implemented comprehensive regulatory compliance framework",
-        "Deployed Microsoft 365 compliance features for document management",
-        "Created automated reporting systems for ongoing monitoring",
-        "Provided mock examination and staff interview preparation"
-      ],
-      results: [
-        { value: "Zero", label: "Significant findings in SEC examination" },
-        { value: "75%", label: "Reduction in preparation time" },
-        { value: "48hr", label: "Response time for all document requests" }
-      ],
-      quote: "The compliance framework transformed our examination readiness. What would have been months of stressful preparation was streamlined into a well-organized process. The SEC examiners specifically noted our documentation quality and responsiveness.",
-      author: {
-        title: "Chief Compliance Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    }
+//    caseStudy: {
+//      title: "Emerging Hedge Fund Passes SEC Examination",
+//      firmType: "Quantitative Hedge Fund",
+//     profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "$180M AUM" },
+//        { icon: <Landmark className="w-4 h-4" />, text: "First SEC examination" },
+//        { icon: <Shield className="w-4 h-4" />, text: "Limited compliance staff" }
+//      ],
+//      challenge: "A quantitative hedge fund with $180M AUM faced its first SEC examination after three years of operation. With limited compliance staff, they struggled to prepare for the extensive document requests and possible on-site review.",
+//      approach: [
+//        "Implemented comprehensive regulatory compliance framework",
+//        "Deployed Microsoft 365 compliance features for document management",
+//        "Created automated reporting systems for ongoing monitoring",
+//        "Provided mock examination and staff interview preparation"
+//      ],
+//      results: [
+//        { value: "Zero", label: "Significant findings in SEC examination" },
+//        { value: "75%", label: "Reduction in preparation time" },
+//        { value: "48hr", label: "Response time for all document requests" }
+//      ],
+//      quote: "The compliance framework transformed our examination readiness. What would have been months of stressful preparation was streamlined into a well-organized process. The SEC examiners specifically noted our documentation quality and responsiveness.",
+//      author: {
+//        title: "Chief Compliance Officer",
+//        company: "Quantitative Hedge Fund"
+//      }
+//    }
   };
 
   return <ServicePage {...pageData} />;

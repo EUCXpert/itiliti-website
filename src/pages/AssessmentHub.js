@@ -1,3 +1,6 @@
+// Updated hero section for AssessmentHub.js
+// Replace the existing hero section with this code
+
 import React, { useState } from 'react';
 import { ArrowRight, Shield, BrainCircuit, Briefcase } from 'lucide-react';
 import Navigation from '../components/Navigation';
@@ -56,16 +59,45 @@ const AssessmentHub = () => {
     setActiveAssessment(null);
   };
 
+  // Scroll to assessments section
+  const scrollToAssessments = () => {
+    const assessmentSection = document.getElementById('assessment-section');
+    if (assessmentSection) {
+      assessmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="font-sans min-h-screen bg-gray-50">
       <Navigation />
       
+      {/* Enhanced Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white relative">
-        <div className="container mx-auto px-6 py-16">
-          <h1 className="text-4xl font-bold mb-4">Assessment Hub</h1>
-          <p className="text-xl mb-8 max-w-2xl">
-            Evaluate your firm's capabilities, identify improvement opportunities, and receive personalized recommendations aligned with institutional investor expectations.
-          </p>
+        <div className="absolute inset-0 bg-blue-900 opacity-20 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]"></div>
+        
+        <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full text-blue-200 text-sm font-medium mb-5">
+              <Shield className="w-4 h-4 mr-2" />
+              Specialized for Alternative Investment Firms
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Assessment Hub</h1>
+            
+            <p className="text-xl mb-8 max-w-2xl">
+              Evaluate your firm's capabilities, identify improvement opportunities, and receive personalized recommendations aligned with institutional investor expectations.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <button 
+                onClick={scrollToAssessments}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+              >
+                <ArrowRight className="w-5 h-5 mr-2" />
+                Start an Assessment
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -73,7 +105,7 @@ const AssessmentHub = () => {
         {/* Show assessment selection when no assessment is active */}
         {!activeAssessment && (
           <>
-            <div className="max-w-4xl mx-auto mb-12">
+            <div className="max-w-4xl mx-auto mb-12" id="assessment-section">
               <h2 className="text-2xl font-bold mb-4">Select an Assessment</h2>
               <p className="text-gray-700">
                 Our specialized assessments are designed specifically for boutique alternative investment firms. 

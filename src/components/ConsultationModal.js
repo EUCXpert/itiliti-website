@@ -1,5 +1,7 @@
+// src/components/EnhancedConsultationModal.js
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Calendar, Clock, Users, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ConsultationModal = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
@@ -13,6 +15,8 @@ const ConsultationModal = ({ isOpen, onClose }) => {
     time: '',
     notes: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   
   useEffect(() => {
     if (isOpen) {
@@ -41,9 +45,34 @@ const ConsultationModal = ({ isOpen, onClose }) => {
     }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setStep(3); // Move to confirmation step
+    setIsSubmitting(true);
+    setSubmitError(null);
+    
+    try {
+      // Send the form data to your API endpoint
+      const response = await fetch('/api/schedule-consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to schedule consultation');
+      }
+      
+      // Move to confirmation step
+      setStep(3);
+    } catch (error) {
+      console.error('Error scheduling consultation:', error);
+      setSubmitError(error.message || 'An error occurred while scheduling your consultation.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   if (!isOpen) return null;
@@ -72,6 +101,21 @@ const ConsultationModal = ({ isOpen, onClose }) => {
   
   const businessDays = getBusinessDays();
   
+  // Animation variants
+  const modalVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.3 }
+    },
+    exit: {
+      opacity: 0,
+      y: 20,
+      transition: { duration: 0.2 }
+    }
+  };
+  
   return (
     <div 
       className="fixed inset-0 flex items-center justify-center z-[9999] p-4"
@@ -79,20 +123,24 @@ const ConsultationModal = ({ isOpen, onClose }) => {
         backgroundColor: 'rgba(0, 0, 0, 0.75)',
       }}
     >
-      <div 
+      <motion.div 
         ref={modalRef}
         className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative"
         tabIndex={-1}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={modalVariants}
         style={{ 
           maxHeight: '85vh',
           overflowY: 'auto',
-          margin: '2rem',
-          animation: 'modalFadeIn 0.3s ease-out'
+          margin: '2rem'
         }}
       >
         <button 
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-[10000]"
+          aria-label="Close modal"
         >
           <X className="w-6 h-6" />
         </button>
@@ -248,6 +296,12 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 ></textarea>
               </div>
               
+              {submitError && (
+                <div className="bg-red-50 text-red-700 p-3 rounded-lg border border-red-200">
+                  {submitError}
+                </div>
+              )}
+              
               <div className="pt-4 flex space-x-4">
                 <button
                   type="button"
@@ -258,14 +312,14 @@ const ConsultationModal = ({ isOpen, onClose }) => {
                 </button>
                 <button
                   type="submit"
-                  disabled={!formData.date || !formData.time}
+                  disabled={!formData.date || !formData.time || isSubmitting}
                   className={`w-2/3 font-medium py-3 rounded-lg transition-colors ${
-                    !formData.date || !formData.time
+                    !formData.date || !formData.time || isSubmitting
                       ? 'bg-gray-400 text-white cursor-not-allowed'
                       : 'bg-blue-600 hover:bg-blue-700 text-white'
                   }`}
                 >
-                  Schedule Consultation
+                  {isSubmitting ? 'Scheduling...' : 'Schedule Consultation'}
                 </button>
               </div>
             </form>
@@ -287,29 +341,17 @@ const ConsultationModal = ({ isOpen, onClose }) => {
             <p className="text-gray-600 mb-6">
               We've sent a calendar invitation to {formData.email}. A member of our team will contact you shortly to confirm details.
             </p>
-            <button
+            <motion.button
               onClick={onClose}
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Close
-            </button>
+            </motion.button>
           </div>
         )}
-        
-        {/* Add CSS animation */}
-        <style jsx>{`
-          @keyframes modalFadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(-20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}</style>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -104,33 +104,6 @@ const PrivateMSP = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Hedge Fund Transitions from Generic MSP to Private Service",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "25-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "Sophisticated trading strategies" },
-        { icon: <Clock className="w-4 h-4" />, text: "Critical market hours support" }
-      ],
-      challenge: "A 25-person quantitative hedge fund was experiencing productivity losses due to their generic MSP's lack of understanding of trading operations and slow response times during market hours. Their previous provider used offshore support teams unfamiliar with their investment applications and critical systems.",
-      approach: [
-        "Implemented dedicated support team with financial services expertise",
-        "Established investment-aware monitoring with priority for trading systems",
-        "Created proactive maintenance schedules aligned with market hours",
-        "Developed custom security controls for sensitive trading data"
-      ],
-      results: [
-        { value: "Zero", label: "Trading disruptions since implementation" },
-        { value: "95%", label: "Reduction in IT-related productivity loss" },
-        { value: "100%", label: "Success rate in operational due diligence" }
-      ],
-      quote: "The difference is night and day. Their team understands our trading operations and responds immediately during market hours. It's like having an enterprise-grade IT department that's perfectly tailored to our Specialized operation.",
-      author: {
-        title: "Chief Operating Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    },
-    
     faqs: [
       {
         id: 1,

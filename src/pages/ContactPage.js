@@ -1,6 +1,20 @@
+// src/pages/ContactPage.js
 import React, { useState } from 'react';
+import { 
+  MessageSquare, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Calendar, 
+  Send, 
+  CheckCircle,
+  Clock,
+  User,
+  Briefcase,
+  ArrowRight
+} from 'lucide-react';
 import Navigation from '../components/Navigation';
-import { MapPin, Phone, Mail, Clock, Calendar, ArrowRight, MessageSquare, CheckCircle } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -9,56 +23,102 @@ const ContactPage = () => {
     company: '',
     phone: '',
     message: '',
-    service: 'general'
+    firmType: 'Hedge Fund'
   });
-
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleInputChange = (e) => {
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Form submission logic would go here in a production environment
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
+    setIsSubmitting(true);
     
-    // Reset form after 5 seconds
+    // Simulate form submission
     setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: '',
-        service: 'general'
-      });
-    }, 5000);
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      // Reset form after showing success message
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: '',
+          firmType: 'Hedge Fund'
+        });
+      }, 5000);
+    }, 1500);
   };
-
-  const locations = [
+  
+  // Contact options
+  const contactOptions = [
     {
-      title: "Main Office",
+      icon: <Mail className="w-6 h-6 text-blue-600" />,
+      title: "Email Us",
+      content: "info@itiliti.io",
+      link: "mailto:info@itiliti.io"
+    },
+    {
+      icon: <Phone className="w-6 h-6 text-blue-600" />,
+      title: "Call Us",
+      content: "(631) 400-4299",
+      link: "tel:6314004299"
+    },
+    {
+      icon: <Calendar className="w-6 h-6 text-blue-600" />,
+      title: "Schedule a Meeting",
+      content: "Book a 30-minute consultation",
+      link: "/schedule"
+    }
+  ];
+  
+  // Office locations from Footer.js
+  const officeLocations = [
+    {
+      name: "Main Office",
       address: "156 East Main Street",
       city: "Port Jefferson, NY 11777",
       phone: "(631) 400-4299",
       email: "info@itiliti.io"
     },
     {
-      title: "Satellite Office",
-      address: "Charlotte, NC",
+      name: "Satellite Office",
+      city: "NYC",
+      phone: "(631) 400-4299"
+    },
+    {
+      name: "Satellite Office",
+      city: "Charlotte, NC",
       phone: "(631) 552-5048"
     },
     {
-      title: "Satellite Office",
-      address: "Palm Beach, FL",
+      name: "Satellite Office",
+      city: "Palm Beach, FL",
       phone: "(561) 701-1486"
+    }
+  ];
+  
+  // FAQ items
+  const faqItems = [
+    {
+      question: "What services do you provide to alternative investment firms?",
+      answer: "We provide a comprehensive suite of technology services tailored specifically for alternative investment firms, including managed security, Microsoft optimization, fractional CxO services, AI strategy and implementation, workflow automation, and regulatory compliance solutions."
+    },
+    {
+      question: "How quickly can you respond to critical technology issues?",
+      answer: "Our service level agreements (SLAs) for critical issues guarantee a response time of 15 minutes or less during market hours, with 24/7 emergency support available for our managed service clients."
+    },
+    {
+      question: "Do you work with firms outside the United States?",
+      answer: "Yes, we support alternative investment firms globally, with particular expertise in the regulatory environments of the US, UK, EU, Singapore, and Hong Kong."
     }
   ];
 
@@ -66,246 +126,301 @@ const ContactPage = () => {
     <div className="font-sans min-h-screen bg-gray-50">
       <Navigation />
       
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-black to-blue-900 text-white">
-        <div className="container mx-auto px-6 py-16">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl mb-8 max-w-2xl">
-            Reach out to discuss how our boutique approach to enterprise technology can transform your alternative investment firm's operations.
-          </p>
+      {/* Enhanced Hero Section */}
+      <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white relative">
+        <div className="absolute inset-0 bg-blue-900 opacity-20 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]"></div>
+        
+        <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full text-blue-200 text-sm font-medium mb-5">
+              <MessageSquare className="w-4 h-4 mr-2" />
+              We'd Love to Hear From You
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+            
+            <p className="text-xl mb-8 max-w-2xl leading-relaxed">
+              Have questions about our services or want to discuss your firm's specific technology needs? Our team of investment technology experts is ready to help.
+            </p>
+            
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#contact-form"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+              >
+                <Send className="w-5 h-5 mr-2" />
+                Send a Message
+              </a>
+              <a 
+                href="#consultation"
+                className="bg-transparent border border-white hover:bg-white hover:bg-opacity-10 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule a Consultation
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       
-      {/* Contact Section */}
-      <div className="py-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto mb-12">
-            <div className="grid md:grid-cols-3 gap-8">
-              {locations.map((location, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-xl font-semibold mb-4">{location.title}</h3>
+      {/* Contact Information Section */}
+      <div className="container mx-auto px-6 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {contactOptions.map((option, index) => (
+              <a 
+                key={index} 
+                href={option.link}
+                className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow transform hover:-translate-y-1 duration-300"
+              >
+                <div className="bg-blue-50 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  {option.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{option.title}</h3>
+                <p className="text-gray-600">{option.content}</p>
+              </a>
+            ))}
+          </div>
+          
+          {/* Contact Form Section */}
+          <div id="contact-form" className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="md:flex">
+              <div className="md:w-1/3 bg-gradient-to-b from-blue-600 to-blue-800 text-white p-8">
+                <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+                <p className="mb-8">
+                  Fill out the form and our team will get back to you within 24 hours.
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start">
+                    <Clock className="w-5 h-5 mr-3 text-blue-200 mt-1" />
+                    <div>
+                      <h4 className="font-medium text-lg">Business Hours</h4>
+                      <p className="text-blue-100">Monday - Friday: 8am - 6pm EST</p>
+                    </div>
+                  </div>
                   
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <div className="bg-blue-100 p-2 rounded-full mr-3">
-                        <MapPin className="w-5 h-5 text-blue-600" />
-                      </div>
+                  <div className="flex items-start">
+                    <MapPin className="w-5 h-5 mr-3 text-blue-200 mt-1" />
+                    <div>
+                      <h4 className="font-medium text-lg">Main Office</h4>
+                      <p className="text-blue-100">Port Jefferson, NY</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="md:w-2/3 p-8">
+                {isSubmitted ? (
+                  <div className="text-center py-12">
+                    <div className="mb-6 mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="w-8 h-8 text-green-600" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                    <p className="text-gray-600 mb-6">
+                      Thank you for reaching out. We'll get back to you shortly.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <div className="font-medium">Address</div>
-                        <address className="not-italic text-gray-600">
-                          {location.address}<br />
-                          {location.city && location.city}
-                        </address>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                        <div className="relative">
+                          <div className="absolute left-3 top-3 text-gray-400">
+                            <User className="w-5 h-5" />
+                          </div>
+                          <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="John Smith"
+                            required
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <div className="relative">
+                          <div className="absolute left-3 top-3 text-gray-400">
+                            <Mail className="w-5 h-5" />
+                          </div>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="john@example.com"
+                            required
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                        <div className="relative">
+                          <div className="absolute left-3 top-3 text-gray-400">
+                            <Briefcase className="w-5 h-5" />
+                          </div>
+                          <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleChange}
+                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Your Company"
+                            required
+                          />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <div className="relative">
+                          <div className="absolute left-3 top-3 text-gray-400">
+                            <Phone className="w-5 h-5" />
+                          </div>
+                          <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="(555) 555-5555"
+                          />
+                        </div>
                       </div>
                     </div>
                     
-                    <div className="flex items-start">
-                      <div className="bg-blue-100 p-2 rounded-full mr-3">
-                        <Phone className="w-5 h-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <div className="font-medium">Phone</div>
-                        <a href={`tel:${location.phone.replace(/\D/g, '')}`} className="text-blue-600 hover:text-blue-800">
-                          {location.phone}
-                        </a>
-                      </div>
+                    <div>
+                      <label htmlFor="firmType" className="block text-sm font-medium text-gray-700 mb-1">Firm Type</label>
+                      <select
+                        id="firmType"
+                        name="firmType"
+                        value={formData.firmType}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                        required
+                      >
+                        <option value="Hedge Fund">Hedge Fund</option>
+                        <option value="Private Equity">Private Equity</option>
+                        <option value="Venture Capital">Venture Capital</option>
+                        <option value="Family Office">Family Office</option>
+                        <option value="Real Estate">Real Estate Investment</option>
+                        <option value="Other">Other</option>
+                      </select>
                     </div>
                     
-                    {location.email && (
-                      <div className="flex items-start">
-                        <div className="bg-blue-100 p-2 rounded-full mr-3">
-                          <Mail className="w-5 h-5 text-blue-600" />
-                        </div>
-                        <div>
-                          <div className="font-medium">Email</div>
-                          <a href={`mailto:${location.email}`} className="text-blue-600 hover:text-blue-800">
-                            {location.email}
-                          </a>
-                        </div>
-                      </div>
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows="4"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Tell us about your needs or questions..."
+                        required
+                      ></textarea>
+                    </div>
+                    
+                    <div>
+                      <button
+                        type="submit"
+                        className={`w-full py-3 px-4 rounded-lg font-medium text-white ${
+                          isSubmitting ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
+                        } transition-colors flex items-center justify-center`}
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="mr-2">Sending...</span>
+                            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5 mr-2" />
+                            Send Message
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Office Locations - Updated from Footer.js */}
+      <div className="bg-gray-50 py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12 text-center">Our Offices</h2>
+          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {officeLocations.map((location, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-md">
+                <h3 className="text-xl font-bold mb-3">{location.name}</h3>
+                <div className="flex items-start mb-3">
+                  <MapPin className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-1" />
+                  <div>
+                    {location.address && (
+                      <p className="text-gray-700">
+                        {location.address}<br/>
+                        {location.city}
+                      </p>
+                    )}
+                    {!location.address && (
+                      <p className="text-gray-700">{location.city}</p>
                     )}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
-            <div className="md:w-1/2">
-              <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-              
-              {submitted ? (
-                <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-                  <div className="flex justify-center mb-4">
-                    <CheckCircle className="w-12 h-12 text-green-500" />
-                  </div>
-                  <h3 className="text-xl font-bold text-green-700 mb-2">Thank You!</h3>
-                  <p className="text-gray-700">
-                    Your message has been received. A member of our team will contact you shortly.
-                  </p>
+                <div className="flex items-start">
+                  <Phone className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-1" />
+                  <p className="text-gray-700">{location.phone}</p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                      <input 
-                        type="text" 
-                        id="name" 
-                        name="name" 
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                        required 
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange} 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                        required 
-                      />
-                    </div>
+                {location.email && (
+                  <div className="flex items-start mt-3">
+                    <Mail className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-1" />
+                    <p className="text-gray-700">{location.email}</p>
                   </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
-                      <input 
-                        type="text" 
-                        id="company" 
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange} 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                        required 
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                      <input 
-                        type="tel" 
-                        id="phone" 
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange} 
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                      />
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Interest</label>
-                    <select 
-                      id="service" 
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange} 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                    >
-                      <option value="general">General Inquiry</option>
-                      <option value="security">Security Foundation</option>
-                      <option value="microsoft">Microsoft Optimization</option>
-                      <option value="cxo">CxO Advisory Services</option>
-                      <option value="ai">AI Solutions</option>
-                      <option value="archiving">Electronic Message Archiving</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                    <textarea 
-                      id="message" 
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange} 
-                      rows="4" 
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-                      required
-                    ></textarea>
-                  </div>
-                  
-                  <button 
-                    type="submit" 
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
-                  >
-                    Submit
-                  </button>
-                </form>
-              )}
-            </div>
-            
-            <div className="md:w-1/2">
-              <h2 className="text-2xl font-bold mb-6">How We Can Help</h2>
-              
-              <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 mb-6">
-                <h3 className="text-xl font-semibold mb-4">Schedule a Consultation</h3>
-                <p className="text-gray-700 mb-4">
-                  Request a complimentary consultation to discuss your firm's specific challenges and how our specialized approach can help.
-                </p>
-                <button className="flex items-center text-blue-600 font-medium">
-                  Schedule Now
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </button>
+                )}
               </div>
-              
-              <div className="space-y-4">
-                <div className="bg-white p-5 rounded-xl shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <MessageSquare className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Quick Response</h3>
-                      <p className="text-gray-600 text-sm">
-                        We pride ourselves on responsive communication. Expect a reply to your inquiry within one business day.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 rounded-xl shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Calendar className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Assessments</h3>
-                      <p className="text-gray-600 text-sm">
-                        Request a complimentary assessment of your security posture, AI readiness, or operational due diligence preparedness.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-5 rounded-xl shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Clock className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Business Hours</h3>
-                      <p className="text-gray-600 text-sm">
-                        Monday - Friday: 8:00 AM - 6:00 PM<br />
-                        After-hours support available for clients
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
+            
+      {/* Schedule Consultation CTA */}
+      <div id="consultation" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to transform your technology?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Schedule a free 30-minute consultation with one of our investment technology experts.
+          </p>
+          <a 
+            href="/schedule" 
+            className="bg-white text-blue-700 hover:bg-blue-50 px-8 py-4 rounded-lg font-medium text-lg inline-flex items-center transition-colors"
+          >
+            <Calendar className="w-5 h-5 mr-2" />
+            Book Your Consultation
+          </a>
+        </div>
+      </div>
       
-
+      <Footer />
     </div>
   );
 };

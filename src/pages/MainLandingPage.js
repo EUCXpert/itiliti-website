@@ -667,102 +667,18 @@ const MainLandingPage = () => {
           {/* Partner Logos Carousel */}
           <ErrorBoundary>
             <PartnerLogosCarousel
-              title="Our Trusted Technology Partners" 
-              subtitle="We partner with industry-leading technology providers to deliver exceptional solutions"
-              duration={80} // Slower scrolling for better visibility
-              pauseOnHover={false}
-              grayscale={false}
-              colorizeOnHover={false}
-              logoHeight="h-16"
-              logoSpacing="mx-36"
-              enableHoverScale={true}
-              scaleAmount={1.10}
-            />
+    title="Our Partners" 
+    subtitle="" // No subtitle
+    backgroundColor="bg-gray-100"
+    containerPadding="py-8" // Less padding
+    grayscale={false} // Full color logos
+    logoHeight="h-14"
+    logoSpacing="mx-36" // More space between logos
+    enableHoverScale={false} // No hover effects
+    duration={50} // Very slow scrolling
+    pauseOnHover={false} // No pause on hover
+  />
           </ErrorBoundary>
-
-          {/* The Enterprise-Boutique Gap Section - H2 heading */}
-          <section className="py-16 bg-gray-50" id="gap">
-            <div className="container mx-auto px-6">
-              <div className="max-w-3xl mx-auto text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">The Enterprise-Boutique Gap</h2>
-                <p className="text-xl text-gray-600">
-                  Boutique alternative investment firms face a fundamental challenge: they must satisfy the same institutional investor expectations and regulatory requirements as $50B+ firms, but with a fraction of the resources.
-                </p>
-              </div>
-              
-              <div className="grid md:grid-cols-3 gap-8">
-                {/* Problem Card - H3 heading */}
-                <HoverCard className="bg-gray-100" hoverEffect="both">
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">The Problem</h3>
-                    <p className="text-gray-700 mb-4">Boutique firms struggle to meet institutional standards with limited resources, caught between:</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>Generic IT providers who don't understand investment workflows</span>
-                      </li>
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>Enterprise providers with solutions too complex and costly</span>
-                      </li>
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>Growing investor and regulatory expectations</span>
-                      </li>
-                    </ul>
-                  </div>
-                </HoverCard>
-                
-                {/* Gap Card - H3 heading */}
-                <HoverCard className="bg-gray-200" hoverEffect="both">
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">The Gap</h3>
-                    <p className="text-gray-700 mb-4">This creates a specific gap in the market for firms with:</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>Under 100 employees but sophisticated operations</span>
-                      </li>
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>$100M-$5B AUM requiring institutional-grade technology</span>
-                      </li>
-                      <li className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-1" />
-                        <span>Complex investment strategies with limited IT resources</span>
-                      </li>
-                    </ul>
-                  </div>
-                </HoverCard>
-                
-                {/* Solution Card - H3 heading */}
-                <HoverCard className="bg-gray-800" hoverEffect="both">
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3">Our Solution</h3>
-                    <p className="text-gray-200 mb-4">We bridge this gap by providing:</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start">
-                        <CheckSquare className="w-5 h-5 text-blue-300 mr-2 flex-shrink-0 mt-1" />
-                        <span className="text-gray-200">Enterprise expertise adapted to boutique scale</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckSquare className="w-5 h-5 text-blue-300 mr-2 flex-shrink-0 mt-1" />
-                        <span className="text-gray-200">Investment-specific technology solutions</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckSquare className="w-5 h-5 text-blue-300 mr-2 flex-shrink-0 mt-1" />
-                        <span className="text-gray-200">Right-sized approach respecting resource constraints</span>
-                      </li>
-                      <li className="flex items-start">
-                        <CheckSquare className="w-5 h-5 text-blue-300 mr-2 flex-shrink-0 mt-1" />
-                        <span className="text-gray-200">Growth-aligned architecture that scales with AUM</span>
-                      </li>
-                    </ul>
-                  </div>
-                </HoverCard>
-              </div>
-            </div>
-          </section>
 
           {/* Enterprise Advantage Section - H2 heading */}
           <section className="bg-gradient-to-r from-gray-900 to-blue-900 text-white relative" id="advantages">

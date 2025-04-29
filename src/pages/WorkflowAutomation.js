@@ -91,32 +91,32 @@ const WorkflowAutomation = () => {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Firm Transforms Deal Management",
-      firmType: "Mid-Market Private Equity",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "$850M AUM" },
-        { icon: <Clock className="w-4 h-4" />, text: "Deal-intensive strategy" }
-      ],
-      challenge: "A mid-market private equity firm was struggling with an inefficient deal evaluation process that limited the number of opportunities they could assess. Manual document handling, inconsistent approval workflows, and fragmented communications created bottlenecks that prevented scaling.",
-      approach: [
-        "Implemented structured deal intake and evaluation workflow",
-        "Automated document collection and organization by deal stage",
-        "Created multi-stage approval process with notifications",
-        "Integrated due diligence checklist automation"
-      ],
-      results: [
-        { value: "40%", label: "Faster deal cycle time" },
-        { value: "3x", label: "More deals evaluated per analyst" },
-        { value: "Zero", label: "Missed opportunities due to process delays" }
-      ],
-      quote: "Workflow automation transformed our deal management process. What previously took weeks of manual coordination now happens in days with far less effort. Our team can focus on evaluating opportunities rather than managing paperwork, dramatically increasing our capacity without adding headcount.",
-      author: {
-        title: "Director of Operations",
-        company: "Mid-Market Private Equity Firm"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Firm Transforms Deal Management",
+//      firmType: "Mid-Market Private Equity",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
+//        { icon: <BarChart4 className="w-4 h-4" />, text: "$850M AUM" },
+//        { icon: <Clock className="w-4 h-4" />, text: "Deal-intensive strategy" }
+//      ],
+//      challenge: "A mid-market private equity firm was struggling with an inefficient deal evaluation process that limited the number of opportunities they could assess. Manual document handling, inconsistent approval workflows, and fragmented communications created bottlenecks that prevented scaling.",
+//      approach: [
+//        "Implemented structured deal intake and evaluation workflow",
+//        "Automated document collection and organization by deal stage",
+//        "Created multi-stage approval process with notifications",
+//        "Integrated due diligence checklist automation"
+//      ],
+//      results: [
+//       { value: "40%", label: "Faster deal cycle time" },
+//        { value: "3x", label: "More deals evaluated per analyst" },
+//        { value: "Zero", label: "Missed opportunities due to process delays" }
+//      ],
+//      quote: "Workflow automation transformed our deal management process. What previously took weeks of manual coordination now happens in days with far less effort. Our team can focus on evaluating opportunities rather than managing paperwork, dramatically increasing our capacity without adding headcount.",
+//      author: {
+//        title: "Director of Operations",
+//        company: "Mid-Market Private Equity Firm"
+//      }
+//    },
     
     faqs: [
       {

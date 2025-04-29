@@ -127,33 +127,33 @@ export const SERVICES = {
         ]
       }
     ],
-    
-    caseStudy: {
-      title: "Emerging Private Equity Fund Transforms Operations",
-      firmType: "Private Equity Fund",
-      profile: [
-        { icon: <Building className="w-4 h-4" />, text: "$250M AUM Healthcare Focus" },
-        { icon: <Users className="w-4 h-4" />, text: "14-person investment team" },
-        { icon: <Target className="w-4 h-4" />, text: "Institutional investor focus" }
-      ],
-      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet allocator requirements.",
-      approach: [
-        "Deployed a virtual CIO and CISO service working 4 days monthly",
-        "Developed and implemented a technology and security strategy aligned with institutional investor expectations",
-        "Created comprehensive documentation for investor due diligence processes",
-        "Implemented portfolio monitoring and deal flow automation solutions"
-      ],
-      results: [
-        { value: "$50M", label: "New institutional allocation secured" },
-        { value: "100%", label: "ODD pass rate after implementation" },
-        { value: "3x", label: "Increase in deal evaluation capacity" }
-      ],
-      quote: "The virtual CIO and CISO services transformed our operational capabilities and investor perception. What we couldn't afford as full-time executives became our competitive advantage through this fractional model. The transformation in our technology operations directly led to a significant new allocation that would have been impossible previously.",
-      author: {
-        title: "Managing Partner",
-        company: "Healthcare-focused PE Fund"
-      }
-    },
+
+//    caseStudy: {
+//      title: "Emerging Private Equity Fund Transforms Operations",
+//      firmType: "Private Equity Fund",
+//      profile: [
+//        { icon: <Building className="w-4 h-4" />, text: "$250M AUM Healthcare Focus" },
+//        { icon: <Users className="w-4 h-4" />, text: "14-person investment team" },
+//        { icon: <Target className="w-4 h-4" />, text: "Institutional investor focus" }
+//      ],
+//      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet allocator requirements.",
+//      approach: [
+//       "Deployed a virtual CIO and CISO service working 4 days monthly",
+//        "Developed and implemented a technology and security strategy aligned with institutional investor expectations",
+//        "Created comprehensive documentation for investor due diligence processes",
+//        "Implemented portfolio monitoring and deal flow automation solutions"
+//      ],
+//      results: [
+//        { value: "$50M", label: "New institutional allocation secured" },
+//        { value: "100%", label: "ODD pass rate after implementation" },
+//        { value: "3x", label: "Increase in deal evaluation capacity" }
+//      ],
+//      quote: "The virtual CIO and CISO services transformed our operational capabilities and investor perception. What we couldn't afford as full-time executives became our competitive advantage through this fractional model. The transformation in our technology operations directly led to a significant new allocation that would have been impossible previously.",
+//      author: {
+//        title: "Managing Partner",
+//        company: "Healthcare-focused PE Fund"
+//      }
+//    },
     
     faqs: [
       {
@@ -418,32 +418,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Hedge Fund Avoids Regulatory Penalties",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "45 employees" },
-        { icon: <AlertTriangle className="w-4 h-4" />, text: "SEC examination imminent" },
-        { icon: <MessageSquare className="w-4 h-4" />, text: "High text message volume" }
-      ],
-      challenge: "A quantitative hedge fund with 45 employees was facing an upcoming SEC examination without adequate text message archiving. Their traders frequently used text messaging for time-sensitive communications, creating significant regulatory exposure.",
-      approach: [
-        "Implemented comprehensive text archiving solution within 14 days",
-        "Deployed both company-issued and BYOD device coverage",
-        "Established appropriate surveillance and compliance workflows",
-        "Provided thorough documentation for regulatory examination"
-      ],
-      results: [
-        { value: "100%", label: "Communication compliance achieved" },
-        { value: "Zero", label: "Deficiency findings in SEC examination" },
-        { value: "$750K+", label: "Potential penalties avoided" }
-      ],
-      quote: "The implementation was remarkably smooth considering our tight timeline. Their team understood the regulatory requirements deeply and provided exactly what we needed before our examination. The SEC examiners specifically noted the completeness of our text archiving solution.",
-      author: {
-        title: "Chief Compliance Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    },
+//    caseStudy: {
+//      title: "Hedge Fund Avoids Regulatory Penalties",
+//      firmType: "Quantitative Hedge Fund",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "45 employees" },
+//        { icon: <AlertTriangle className="w-4 h-4" />, text: "SEC examination imminent" },
+//        { icon: <MessageSquare className="w-4 h-4" />, text: "High text message volume" }
+//      ],
+//      challenge: "A quantitative hedge fund with 45 employees was facing an upcoming SEC examination without adequate text message archiving. Their traders frequently used text messaging for time-sensitive communications, creating significant regulatory exposure.",
+//      approach: [
+//        "Implemented comprehensive text archiving solution within 14 days",
+//        "Deployed both company-issued and BYOD device coverage",
+//        "Established appropriate surveillance and compliance workflows",
+//        "Provided thorough documentation for regulatory examination"
+//      ],
+//      results: [
+//        { value: "100%", label: "Communication compliance achieved" },
+//        { value: "Zero", label: "Deficiency findings in SEC examination" },
+//        { value: "$750K+", label: "Potential penalties avoided" }
+//      ],
+//      quote: "The implementation was remarkably smooth considering our tight timeline. Their team understood the regulatory requirements deeply and provided exactly what we needed before our examination. The SEC examiners specifically noted the completeness of our text archiving solution.",
+//      author: {
+//        title: "Chief Compliance Officer",
+//        company: "Quantitative Hedge Fund"
+//      }
+//    },
     
     faqs: [
       {
@@ -563,32 +563,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Fund Achieves 35% Microsoft Cost Reduction",
-      firmType: "Private Equity Firm",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "35 employees" },
-        { icon: <DollarSign className="w-4 h-4" />, text: "$120,000 annual Microsoft spend" },
-        { icon: <Target className="w-4 h-4" />, text: "Significant waste and underutilization" }
-      ],
-      challenge: "A growing PE firm with 35 employees was spending over $120,000 annually on Microsoft services with significant waste across licenses, subscriptions, and cloud resources. Despite this spending, they weren't leveraging key security and productivity features that could enhance their investment operations.",
-      approach: [
-        "Conducted comprehensive assessment of Microsoft environment and usage patterns",
-        "Developed tailored optimization plan with clear ROI projections",
-        "Implemented right-sized licensing and eliminated redundant subscriptions",
-        "Enabled previously unused enterprise features to enhance security and productivity"
-      ],
-      results: [
-        { value: "$42,000", label: "Annual cost savings" },
-        { value: "35%", label: "Reduction in Microsoft spend" },
-        { value: "20+", label: "Hours saved weekly in manual tasks" }
-      ],
-      quote: "The optimization not only reduced our costs but actually improved our capabilities. We're now leveraging Microsoft tools we didn't even know we already owned, which has streamlined our deal management process and enhanced our security posture for investor due diligence.",
-      author: {
-        title: "CFO",
-        company: "Mid-Market Private Equity Fund"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Fund Achieves 35% Microsoft Cost Reduction",
+//      firmType: "Private Equity Firm",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "35 employees" },
+//        { icon: <DollarSign className="w-4 h-4" />, text: "$120,000 annual Microsoft spend" },
+//        { icon: <Target className="w-4 h-4" />, text: "Significant waste and underutilization" }
+//      ],
+//      challenge: "A growing PE firm with 35 employees was spending over $120,000 annually on Microsoft services with significant waste across licenses, subscriptions, and cloud resources. Despite this spending, they weren't leveraging key security and productivity features that could enhance their investment operations.",
+//      approach: [
+//        "Conducted comprehensive assessment of Microsoft environment and usage patterns",
+//        "Developed tailored optimization plan with clear ROI projections",
+//        "Implemented right-sized licensing and eliminated redundant subscriptions",
+//        "Enabled previously unused enterprise features to enhance security and productivity"
+//      ],
+//      results: [
+//        { value: "$42,000", label: "Annual cost savings" },
+//        { value: "35%", label: "Reduction in Microsoft spend" },
+//        { value: "20+", label: "Hours saved weekly in manual tasks" }
+//      ],
+//      quote: "The optimization not only reduced our costs but actually improved our capabilities. We're now leveraging Microsoft tools we didn't even know we already owned, which has streamlined our deal management process and enhanced our security posture for investor due diligence.",
+//      author: {
+//        title: "CFO",
+//        company: "Mid-Market Private Equity Fund"
+//      }
+//    },
     
     faqs: [
       {
@@ -708,32 +708,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Hedge Fund Transitions from Generic MSP to Private Service",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "25-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "Sophisticated trading strategies" },
-        { icon: <Clock className="w-4 h-4" />, text: "Critical market hours support" }
-      ],
-      challenge: "A 25-person quantitative hedge fund was experiencing productivity losses due to their generic MSP's lack of understanding of trading operations and slow response times during market hours. Their previous provider used offshore support teams unfamiliar with their investment applications and critical systems.",
-      approach: [
-        "Implemented dedicated support team with financial services expertise",
-        "Established investment-aware monitoring with priority for trading systems",
-        "Created proactive maintenance schedules aligned with market hours",
-        "Developed custom security controls for sensitive trading data"
-      ],
-      results: [
-        { value: "Zero", label: "Trading disruptions since implementation" },
-        { value: "95%", label: "Reduction in IT-related productivity loss" },
-        { value: "100%", label: "Success rate in operational due diligence" }
-      ],
-      quote: "The difference is night and day. Their team understands our trading operations and responds immediately during market hours. It's like having an enterprise-grade IT department that's perfectly tailored to our boutique operation.",
-      author: {
-        title: "Chief Operating Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    },
+//    caseStudy: {
+//      title: "Hedge Fund Transitions from Generic MSP to Private Service",
+//      firmType: "Quantitative Hedge Fund",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "25-person investment team" },
+//        { icon: <BarChart4 className="w-4 h-4" />, text: "Sophisticated trading strategies" },
+//        { icon: <Clock className="w-4 h-4" />, text: "Critical market hours support" }
+//      ],
+//      challenge: "A 25-person quantitative hedge fund was experiencing productivity losses due to their generic MSP's lack of understanding of trading operations and slow response times during market hours. Their previous provider used offshore support teams unfamiliar with their investment applications and critical systems.",
+//      approach: [
+//        "Implemented dedicated support team with financial services expertise",
+//        "Established investment-aware monitoring with priority for trading systems",
+//        "Created proactive maintenance schedules aligned with market hours",
+//        "Developed custom security controls for sensitive trading data"
+//      ],
+//      results: [
+//        { value: "Zero", label: "Trading disruptions since implementation" },
+//        { value: "95%", label: "Reduction in IT-related productivity loss" },
+//        { value: "100%", label: "Success rate in operational due diligence" }
+//      ],
+//     quote: "The difference is night and day. Their team understands our trading operations and responds immediately during market hours. It's like having an enterprise-grade IT department that's perfectly tailored to our boutique operation.",
+//      author: {
+//        title: "Chief Operating Officer",
+//       company: "Quantitative Hedge Fund"
+//      }
+//    },
     
     faqs: [
       {
@@ -853,32 +853,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Emerging Hedge Fund Passes SEC Examination",
-      firmType: "Quantitative Hedge Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "$180M AUM" },
-        { icon: <Landmark className="w-4 h-4" />, text: "First SEC examination" },
-        { icon: <Shield className="w-4 h-4" />, text: "Limited compliance staff" }
-      ],
-      challenge: "A quantitative hedge fund with $180M AUM faced its first SEC examination after three years of operation. With limited compliance staff, they struggled to prepare for the extensive document requests and possible on-site review.",
-      approach: [
-        "Implemented comprehensive regulatory compliance framework",
-        "Deployed Microsoft 365 compliance features for document management",
-        "Created automated reporting systems for ongoing monitoring",
-        "Provided mock examination and staff interview preparation"
-      ],
-      results: [
-        { value: "Zero", label: "Significant findings in SEC examination" },
-        { value: "75%", label: "Reduction in preparation time" },
-        { value: "48hr", label: "Response time for all document requests" }
-      ],
-      quote: "The compliance framework transformed our examination readiness. What would have been months of stressful preparation was streamlined into a well-organized process. The SEC examiners specifically noted our documentation quality and responsiveness.",
-      author: {
-        title: "Chief Compliance Officer",
-        company: "Quantitative Hedge Fund"
-      }
-    },
+//    caseStudy: {
+//      title: "Emerging Hedge Fund Passes SEC Examination",
+//      firmType: "Quantitative Hedge Fund",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "$180M AUM" },
+//        { icon: <Landmark className="w-4 h-4" />, text: "First SEC examination" },
+//        { icon: <Shield className="w-4 h-4" />, text: "Limited compliance staff" }
+//      ],
+//      challenge: "A quantitative hedge fund with $180M AUM faced its first SEC examination after three years of operation. With limited compliance staff, they struggled to prepare for the extensive document requests and possible on-site review.",
+//      approach: [
+//        "Implemented comprehensive regulatory compliance framework",
+//        "Deployed Microsoft 365 compliance features for document management",
+//        "Created automated reporting systems for ongoing monitoring",
+//        "Provided mock examination and staff interview preparation"
+//      ],
+//      results: [
+//        { value: "Zero", label: "Significant findings in SEC examination" },
+//        { value: "75%", label: "Reduction in preparation time" },
+//        { value: "48hr", label: "Response time for all document requests" }
+//      ],
+//      quote: "The compliance framework transformed our examination readiness. What would have been months of stressful preparation was streamlined into a well-organized process. The SEC examiners specifically noted our documentation quality and responsiveness.",
+//      author: {
+//        title: "Chief Compliance Officer",
+//        company: "Quantitative Hedge Fund"
+//      }
+//    },
     
     faqs: [
       {
@@ -998,32 +998,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Firm Transforms Due Diligence Process",
-      firmType: "Mid-Market Private Equity Fund",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "Limited research bandwidth" },
-        { icon: <Clock className="w-4 h-4" />, text: "Time-intensive due diligence process" }
-      ],
-      challenge: "A mid-market private equity firm with a 12-person team was struggling to evaluate enough potential investments due to the manual nature of their due diligence process. Each potential deal required weeks of document review, limiting their capacity to explore new opportunities.",
-      approach: [
-        "Implemented AI-powered document analysis for deal review",
-        "Developed custom models for financial statement analysis",
-        "Created automated reporting for comparative deal assessment",
-        "Integrated insights with existing investment workflow"
-      ],
-      results: [
-        { value: "65%", label: "Faster extraction of insights from documents" },
-        { value: "3.5x", label: "More potential investments evaluated per analyst" },
-        { value: "40%", label: "Reduction in research time for investment analysis" }
-      ],
-      quote: "AI solutions have transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
-      author: {
-        title: "Investment Director",
-        company: "Mid-Market Private Equity Firm"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Firm Transforms Due Diligence Process",
+//      firmType: "Mid-Market Private Equity Fund",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
+//        { icon: <BarChart4 className="w-4 h-4" />, text: "Limited research bandwidth" },
+//        { icon: <Clock className="w-4 h-4" />, text: "Time-intensive due diligence process" }
+//      ],
+//      challenge: "A mid-market private equity firm with a 12-person team was struggling to evaluate enough potential investments due to the manual nature of their due diligence process. Each potential deal required weeks of document review, limiting their capacity to explore new opportunities.",
+//      approach: [
+//        "Implemented AI-powered document analysis for deal review",
+//        "Developed custom models for financial statement analysis",
+//       "Created automated reporting for comparative deal assessment",
+//        "Integrated insights with existing investment workflow"
+//      ],
+//      results: [
+//        { value: "65%", label: "Faster extraction of insights from documents" },
+//        { value: "3.5x", label: "More potential investments evaluated per analyst" },
+//        { value: "40%", label: "Reduction in research time for investment analysis" }
+//      ],
+//      quote: "AI solutions have transformed how our investment team processes information. What used to take an analyst several hours of document review now takes minutes, allowing us to evaluate more opportunities and conduct deeper analysis on the most promising ones. The ROI has been exceptional.",
+//      author: {
+//        title: "Investment Director",
+//        company: "Mid-Market Private Equity Firm"
+//      }
+//    },
     
     faqs: [
       {
@@ -1143,32 +1143,32 @@ export const SERVICES = {
       }
     ],
     
-    caseStudy: {
-      title: "Private Equity Firm Transforms Deal Management",
-      firmType: "Mid-Market Private Equity",
-      profile: [
-        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
-        { icon: <BarChart4 className="w-4 h-4" />, text: "$850M AUM" },
-        { icon: <Clock className="w-4 h-4" />, text: "Deal-intensive strategy" }
-      ],
-      challenge: "A mid-market private equity firm was struggling with an inefficient deal evaluation process that limited the number of opportunities they could assess. Manual document handling, inconsistent approval workflows, and fragmented communications created bottlenecks that prevented scaling.",
-      approach: [
-        "Implemented structured deal intake and evaluation workflow",
-        "Automated document collection and organization by deal stage",
-        "Created multi-stage approval process with notifications",
-        "Integrated due diligence checklist automation"
-      ],
-      results: [
-        { value: "40%", label: "Faster deal cycle time" },
-        { value: "3x", label: "More deals evaluated per analyst" },
-        { value: "Zero", label: "Missed opportunities due to process delays" }
-      ],
-      quote: "Workflow automation transformed our deal management process. What previously took weeks of manual coordination now happens in days with far less effort. Our team can focus on evaluating opportunities rather than managing paperwork, dramatically increasing our capacity without adding headcount.",
-      author: {
-        title: "Director of Operations",
-        company: "Mid-Market Private Equity Firm"
-      }
-    },
+//    caseStudy: {
+//      title: "Private Equity Firm Transforms Deal Management",
+//      firmType: "Mid-Market Private Equity",
+//      profile: [
+//        { icon: <Users className="w-4 h-4" />, text: "12-person investment team" },
+//        { icon: <BarChart4 className="w-4 h-4" />, text: "$850M AUM" },
+//        { icon: <Clock className="w-4 h-4" />, text: "Deal-intensive strategy" }
+//      ],
+//      challenge: "A mid-market private equity firm was struggling with an inefficient deal evaluation process that limited the number of opportunities they could assess. Manual document handling, inconsistent approval workflows, and fragmented communications created bottlenecks that prevented scaling.",
+//      approach: [
+//        "Implemented structured deal intake and evaluation workflow",
+//        "Automated document collection and organization by deal stage",
+//       "Created multi-stage approval process with notifications",
+//        "Integrated due diligence checklist automation"
+//      ],
+//      results: [
+//        { value: "40%", label: "Faster deal cycle time" },
+//        { value: "3x", label: "More deals evaluated per analyst" },
+//        { value: "Zero", label: "Missed opportunities due to process delays" }
+//      ],
+//      quote: "Workflow automation transformed our deal management process. What previously took weeks of manual coordination now happens in days with far less effort. Our team can focus on evaluating opportunities rather than managing paperwork, dramatically increasing our capacity without adding headcount.",
+//      author: {
+//        title: "Director of Operations",
+//        company: "Mid-Market Private Equity Firm"
+//      }
+//    },
     
     faqs: [
       {

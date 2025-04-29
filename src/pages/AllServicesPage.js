@@ -127,22 +127,34 @@ const AllServicesPage = () => {
       {/* Use ServiceNavigation component */}
       <ServiceNavigation activeService="All Services" />
       
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-black to-blue-900 text-white">
-        <div className="container mx-auto px-6 py-20">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Enterprise-Grade Services at Boutique Scale</h1>
-            <p className="text-xl mb-8">
-              Comprehensive technology solutions tailored specifically for hedge funds, private equity, venture capital, and family offices.
-            </p>
-            <ScheduleButton 
-              text="Schedule a Service Consultation" 
-              variant="primary" 
-              className="text-lg px-8 py-4"
-            />
-          </div>
-        </div>
-      </div>
+{/* Hero Section */}
+<div className="relative text-white">
+  {/* Fixed Background Image */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-fixed z-0" 
+    style={{ 
+      backgroundImage: 'url("/images/hero-all-services.png")',
+      backgroundAttachment: 'fixed'
+    }}
+  />
+  {/* Gradient Overlay for better text contrast */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black to-blue-900 opacity-75 z-10"></div>
+  
+  {/* Content */}
+  <div className="container relative mx-auto px-6 py-28 z-20">
+    <div className="max-w-3xl">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">Enterprise-Grade Services at Boutique Scale</h1>
+      <p className="text-xl mb-8 text-shadow-md">
+        Comprehensive technology solutions tailored specifically for hedge funds, private equity, venture capital, and family offices.
+      </p>
+      <ScheduleButton 
+        text="Schedule a Service Consultation" 
+        variant="primary" 
+        className="text-lg px-8 py-4"
+      />
+    </div>
+  </div>
+</div>
       
       {/* Integrated ServiceSelector Component */}
       <ServiceSelector />
