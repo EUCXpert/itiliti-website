@@ -16,7 +16,6 @@ import ServiceSolutions from './ServiceSolutions';
 import ServiceApproach from './ServiceApproach';
 import ServiceCaseStudy from './ServiceCaseStudy';
 import ServiceFAQ from './ServiceFAQ';
-import ServiceNavigation from '../../services/common/ServiceNavigation';
 
 // Import additional components
 import MicrosoftBusinessValueSection from '../../MicrosoftBusinessValueSection';
@@ -102,7 +101,6 @@ const ServiceLayout = ({ serviceData }) => {
   
   return (
     <div className="font-sans min-h-screen bg-gray-50">
-      <ServiceNavigation activeService={serviceData.title} />
       
       {/* Hero Section */}
       <ServiceHero 

@@ -114,21 +114,60 @@ const ServiceFAQ = ({ title, faqs = [] }) => {
 
   return (
     <div ref={faqRef} className="py-8">
+  <motion.div 
+    className="max-w-3xl mx-auto text-center mb-10"
+    initial={{ opacity: 0, y: 20 }}
+    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+    transition={{ duration: 0.6 }}
+  >
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="inline-flex items-center justify-center mb-3 bg-blue-100 text-blue-700 px-5 py-2 rounded-full text-sm font-semibold tracking-wide"
+    >
+      <MessageSquare className="w-4 h-4 mr-2" />
+      FAQ
+    </motion.div>
+    
+    <h2 className="relative inline-block">
+      <span className="relative z-10 text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">
+        Frequently Asked
+      </span>
+      <span className="relative z-10 block md:inline text-4xl md:text-5xl font-bold text-gray-800 mt-1 md:mt-0 md:ml-3">
+        Questions
+      </span>
+      {/* Decorative elements */}
       <motion.div 
-        className="max-w-3xl mx-auto text-center mb-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="inline-flex items-center justify-center mb-4 bg-blue-100 p-3 rounded-full">
-          <MessageSquare className="w-8 h-8 text-blue-600" />
-        </div>
-        <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-        <p className="text-lg text-gray-700 mb-8">
-          Find answers to common questions about our {title} solutions.
-        </p>
+        className="absolute -bottom-3 left-0 h-3 bg-blue-200 opacity-50 rounded-full"
+        initial={{ width: 0 }}
+        animate={isVisible ? { width: '100%' } : { width: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+      />
+      <motion.div 
+        className="absolute -z-10 -top-6 -left-6 w-20 h-20 bg-blue-100 rounded-full opacity-70 blur-xl"
+        initial={{ scale: 0 }}
+        animate={isVisible ? { scale: 1 } : { scale: 0 }}
+        transition={{ duration: 0.5 }}
+      />
+      <motion.div 
+        className="absolute -z-10 -bottom-6 -right-6 w-24 h-24 bg-indigo-100 rounded-full opacity-70 blur-xl"
+        initial={{ scale: 0 }}
+        animate={isVisible ? { scale: 1 } : { scale: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      />
+    </h2>
+    
+    <motion.p 
+      className="text-lg text-gray-700 max-w-2xl mx-auto mt-6 mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+    >
+      Find answers to common questions about our {title} solutions.
+    </motion.p>
         
-        {/* Search bar with animation */}
+        {/* Search bar with animation 
         <motion.div 
           className="max-w-md mx-auto relative"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -149,7 +188,7 @@ const ServiceFAQ = ({ title, faqs = [] }) => {
             />
             <Search className="absolute left-4 top-3.5 text-gray-400 w-5 h-5" />
           </div>
-          {/* Search results count */}
+          {/* Search results count
           {searchQuery && (
             <motion.div 
               className="text-sm text-gray-500 mt-2 text-left px-2"
@@ -162,10 +201,10 @@ const ServiceFAQ = ({ title, faqs = [] }) => {
               ) : (
                 `Found ${filteredFaqs.length} matching question${filteredFaqs.length !== 1 ? 's' : ''}`
               )}
-            </motion.div>
-          )}
-        </motion.div>
-      </motion.div>
+            </motion.div> 
+          )} 
+        </motion.div> */}
+      </motion.div> 
       
       {/* FAQ list with animations */}
       <motion.div 

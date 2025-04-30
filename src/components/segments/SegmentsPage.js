@@ -1,10 +1,11 @@
+// src/components/segments/SegmentsPage.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SegmentNavigation from './common/SegmentNavigation';
 import HoverCard from '../HoverCard';
 import ScheduleButton from '../ScheduleButton'; 
+import { SEGMENT_IDS, getSegmentById } from '../../data/segments/segmentData';
+
 import { 
-  BarChart4, 
   Building, 
   Briefcase, 
   ArrowRight,
@@ -15,90 +16,54 @@ import {
   Clock,
   FileText,
   Rocket,
-  Database
+  Database,
+  Scale
 } from 'lucide-react';
 
 const SegmentsPage = () => {
-  const segments = [
-    {
-      id: 'private-equity',
-      title: 'Private Equity',
-      description: 'Technology solutions designed specifically for buyout, growth equity, and specialized PE strategies.',
-      icon: <Building className="w-12 h-12 text-blue-600" />,
-      challenges: [
-        "Deal security across complex transactions",
-        "Portfolio company integration challenges",
-        "Investor reporting and transparency requirements",
-        "Cross-border compliance considerations"
-      ],
-      services: [
-        "Microsoft Optimization",
-        "CxO Advisory Services",
-        "Regulatory Compliance",
-        "Due Diligence Acceleration"
-      ]
-    },
-    {
-      id: 'venture-capital',
-      title: 'Venture Capital',
-      description: 'Right-sized technology solutions for early-stage, growth, and specialized venture firms.',
-      icon: <Rocket className="w-12 h-12 text-blue-600" />,
-      challenges: [
-        "Relationship-centric technology requirements",
-        "Mobile-first access for partners on the move",
-        "Deal flow tracking and opportunity management",
-        "Scalable solutions for lean operations"
-      ],
-      services: [
-        "CxO Advisory Services",
-        "AI for Deal Flow Analysis",
-        "Microsoft Optimization",
-        "Electronic Message Archiving"
-      ]
-    },
-    {
-      id: 'family-offices',
-      title: 'Family Offices',
-      description: 'Tailored technology solutions for single and multi-family offices with sophisticated investment operations.',
-      icon: <Briefcase className="w-12 h-12 text-blue-600" />,
-      challenges: [
-        "Ultra-high-net-worth privacy concerns",
-        "Multi-generational technology planning",
-        "Cross-asset portfolio management complexity",
-        "Integrated reporting across investment vehicles"
-      ],
-      services: [
-        "Security Foundation",
-        "Private MSP",
-        "Microsoft Optimization",
-        "CxO Advisory Services"
-      ]
-    },
-    {
-      id: 'real-estate',
-      title: 'Real Estate',
-      description: 'Specialized technology for real estate investment managers, REITs, and real estate private equity.',
-      icon: <Database className="w-12 h-12 text-blue-600" />,
-      challenges: [
-        "Property-level data integration and reporting",
-        "Distributed asset management technology",
-        "Transaction security and compliance",
-        "Investor transparency and communication"
-      ],
-      services: [
-        "CxO Advisory Services",
-        "Microsoft Optimization",
-        "Portfolio Analytics",
-        "Regulatory Compliance"
-      ]
-    }
-  ];
+  // Get all segments from the data store
+  const segments = SEGMENT_IDS.map(id => {
+    const segmentData = getSegmentById(id);
+    
+    // Map segment ID to icon
+    const getIconForSegment = (segmentId) => {
+      switch (segmentId) {
+        case 'private-equity':
+          return <Building className="w-12 h-12 text-blue-600" />;
+        case 'venture-capital':
+          return <Rocket className="w-12 h-12 text-blue-600" />;
+        case 'family-offices':
+          return <Briefcase className="w-12 h-12 text-blue-600" />;
+        case 'real-estate':
+          return <Database className="w-12 h-12 text-blue-600" />;
+        default:
+          return <Building className="w-12 h-12 text-blue-600" />;
+      }
+    };
+    
+    // Get challenge highlights
+    const challengeHighlights = segmentData.challenges
+      .slice(0, 4)
+      .map(challenge => challenge.title);
+    
+    // Get service highlights
+    const serviceHighlights = segmentData.recommendedServices
+      .slice(0, 4)
+      .map(service => service.title);
+    
+    return {
+      id: segmentData.id,
+      title: segmentData.title,
+      description: segmentData.description,
+      icon: getIconForSegment(segmentData.id),
+      challenges: challengeHighlights,
+      services: serviceHighlights
+    };
+  });
 
   return (
     <div className="font-sans min-h-screen bg-gray-50">
-      {/* Use SegmentNavigation with "All Segments" as the active segment */}
-      <SegmentNavigation activeSegment="All Segments" />
-      
+    
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-black to-blue-900 text-white">
         <div className="container mx-auto px-6 py-20">
@@ -126,7 +91,7 @@ const SegmentsPage = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
             {segments.map(segment => (
               <HoverCard 
                 key={segment.id} 

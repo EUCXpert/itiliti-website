@@ -24,12 +24,13 @@ import {
   Rocket,
   Briefcase,
   FileInput,
-  Headphones
+  Headphones,
+  Scale
 } from 'lucide-react';
 
 const Navigation = ({ 
   transparent = false, 
-  dark = false,
+  dark = true,
   showFloatingNav = false
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +67,7 @@ const Navigation = ({
     },
     { 
       path: '/services',
-      label: 'Services', 
+      label: 'Solutions', 
       icon: <BarChart4 className="w-5 h-5" />,
       description: "Enterprise-grade technology solutions for boutique investment firms",
       dropdown: [
@@ -179,6 +180,11 @@ const Navigation = ({
       path: '/segments/private-equity', 
       label: 'Private Equity', 
       icon: <Globe className="w-5 h-5" />
+    },
+    { 
+      path: '/segments/private-credit', 
+      label: 'Private Credit', 
+      icon: <Scale className="w-5 h-5" />
     },
     { 
       path: '/segments/venture-capital', 

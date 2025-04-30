@@ -128,32 +128,32 @@ export const SERVICES = {
       }
     ],
 
-//    caseStudy: {
-//      title: "Emerging Private Equity Fund Transforms Operations",
-//      firmType: "Private Equity Fund",
-//      profile: [
-//        { icon: <Building className="w-4 h-4" />, text: "$250M AUM Healthcare Focus" },
-//        { icon: <Users className="w-4 h-4" />, text: "14-person investment team" },
-//        { icon: <Target className="w-4 h-4" />, text: "Institutional investor focus" }
-//      ],
-//      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet allocator requirements.",
-//      approach: [
-//       "Deployed a virtual CIO and CISO service working 4 days monthly",
-//        "Developed and implemented a technology and security strategy aligned with institutional investor expectations",
-//        "Created comprehensive documentation for investor due diligence processes",
-//        "Implemented portfolio monitoring and deal flow automation solutions"
-//      ],
-//      results: [
-//        { value: "$50M", label: "New institutional allocation secured" },
-//        { value: "100%", label: "ODD pass rate after implementation" },
-//        { value: "3x", label: "Increase in deal evaluation capacity" }
-//      ],
-//      quote: "The virtual CIO and CISO services transformed our operational capabilities and investor perception. What we couldn't afford as full-time executives became our competitive advantage through this fractional model. The transformation in our technology operations directly led to a significant new allocation that would have been impossible previously.",
-//      author: {
-//        title: "Managing Partner",
-//        company: "Healthcare-focused PE Fund"
-//      }
-//    },
+    caseStudy: {
+      title: "Emerging Private Equity Fund Transforms Operations",
+      firmType: "Private Equity Fund",
+      profile: [
+        { icon: <Building className="w-4 h-4" />, text: "$250M AUM Healthcare Focus" },
+        { icon: <Users className="w-4 h-4" />, text: "14-person investment team" },
+        { icon: <Target className="w-4 h-4" />, text: "Institutional investor focus" }
+      ],
+      challenge: "An emerging PE fund with $250M AUM was struggling with institutional investor operational due diligence, hampering fundraising efforts despite strong returns. Their lean team lacked the technology infrastructure and compliance expertise needed to meet allocator requirements.",
+      approach: [
+       "Deployed a virtual CIO and CISO service working 4 days monthly",
+        "Developed and implemented a technology and security strategy aligned with institutional investor expectations",
+        "Created comprehensive documentation for investor due diligence processes",
+        "Implemented portfolio monitoring and deal flow automation solutions"
+      ],
+      results: [
+        { value: "$50M", label: "New institutional allocation secured" },
+        { value: "100%", label: "ODD pass rate after implementation" },
+        { value: "3x", label: "Increase in deal evaluation capacity" }
+      ],
+      quote: "The virtual CIO and CISO services transformed our operational capabilities and investor perception. What we couldn't afford as full-time executives became our competitive advantage through this fractional model. The transformation in our technology operations directly led to a significant new allocation that would have been impossible previously.",
+      author: {
+        title: "Managing Partner",
+        company: "Healthcare-focused PE Fund"
+      }
+    },
     
     faqs: [
       {

@@ -238,38 +238,6 @@ const Footer = () => {
 
   return (
     <footer>
-      {/* Pre-Footer CTA */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-12">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Investment Firm's Technology?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Schedule a complimentary consultation to discuss how our enterprise expertise can enhance your boutique investment operations.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button 
-              onClick={handleScheduleConsultation}
-              className="bg-white text-blue-700 px-8 py-3 rounded-lg font-medium text-lg hover:bg-blue-50 transition-colors"
-              aria-label="Schedule a consultation"
-            >
-              Schedule a Consultation
-            </button>
-            <button 
-              onClick={downloadCapabilitiesOverview}
-              className="bg-transparent border border-white text-white px-8 py-3 rounded-lg font-medium text-lg hover:bg-white hover:bg-opacity-10 transition-colors flex items-center justify-center"
-              disabled={isDownloading}
-              aria-label="Download capabilities overview"
-            >
-              {isDownloading ? (
-                <span>Downloading...</span>
-              ) : (
-                <>
-                  <Download className="w-5 h-5 mr-2" />
-                  <span>Download Capabilities Overview</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-      
       {/* Main Footer */}
       <div className="bg-gray-900 text-white pt-16 pb-8">
         <div className="container mx-auto px-6">

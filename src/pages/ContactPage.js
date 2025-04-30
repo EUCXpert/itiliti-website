@@ -11,7 +11,8 @@ import {
   Clock,
   User,
   Briefcase,
-  ArrowRight
+  ArrowRight,
+  Download
 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -122,26 +123,48 @@ const ContactPage = () => {
     }
   ];
 
+  // Static hero content for the page
+  const heroContent = {
+    title: "Contact Us",
+    subtitle: "Investment Technology Partners",
+    description: "Have questions about our services or want to discuss your firm's specific technology needs? Our team of investment technology experts is ready to help.",
+    backgroundImage: "/images/hero-contact.png", // Replace with your actual image path
+    gradient: "from-gray-900 to-blue-900" // Custom gradient for contact page
+  };
+
   return (
     <div className="font-sans min-h-screen bg-gray-50">
       <Navigation />
       
-      {/* Enhanced Hero Section */}
-      <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white relative">
-        <div className="absolute inset-0 bg-blue-900 opacity-20 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]"></div>
+      {/* Hero Section - Styled like Service/Segment Hero */}
+      <div className="relative text-white">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed z-0" 
+          style={{ 
+            backgroundImage: `url("${heroContent.backgroundImage}")`,
+            backgroundAttachment: 'fixed'
+          }}
+        />
         
-        <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+        {/* Gradient Overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-r ${heroContent.gradient} opacity-75 z-10`}></div>
+        
+        {/* Content */}
+        <div className="container relative mx-auto px-6 py-20 z-20">
           <div className="max-w-3xl">
             <div className="inline-flex items-center bg-blue-800 bg-opacity-50 px-4 py-2 rounded-full text-blue-200 text-sm font-medium mb-5">
               <MessageSquare className="w-4 h-4 mr-2" />
               We'd Love to Hear From You
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-shadow-lg">
+              {heroContent.title}
+              <br/>
+              <span className="text-blue-300">{heroContent.subtitle}</span>
+            </h1>
             
-            <p className="text-xl mb-8 max-w-2xl leading-relaxed">
-              Have questions about our services or want to discuss your firm's specific technology needs? Our team of investment technology experts is ready to help.
-            </p>
+            <p className="text-xl mb-8 max-w-2xl text-shadow-md">{heroContent.description}</p>
             
             <div className="flex flex-wrap gap-4">
               <a 
@@ -153,7 +176,7 @@ const ContactPage = () => {
               </a>
               <a 
                 href="#consultation"
-                className="bg-transparent border border-white hover:bg-white hover:bg-opacity-10 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+                className="bg-transparent border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:bg-opacity-10 transition-colors flex items-center"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule a Consultation
@@ -419,8 +442,6 @@ const ContactPage = () => {
           </a>
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 };

@@ -4,26 +4,20 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navigation from './components/Navigation';
 import MainLandingPage from './pages/MainLandingPage';
 import BoutiqueInvestmentApp from './components/BoutiqueInvestmentApp';
-import AllServicesPage from './pages/AllServicesPage';
 import AssessmentHub from './pages/AssessmentHub';
 import AboutUsPage from './pages/AboutUsPage';
 import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 import ExitIntentProvider from './components/ExitIntentProvider';
-import WorkflowAutomation from './pages/WorkflowAutomation';
+//import WorkflowAutomation from './pages/WorkflowAutomation';
 import ScrollToTop from './components/ScrollToTop';
-
 
 // Import the dynamic service page component
 import ServicePage from './pages/ServicePage';
+import ServicesPage from './components/services/ServicesPage';
 
-// Import segment pages
-import {
-  PrivateEquitySegment,
-  FamilyOfficeSegment,
-  VentureCapitalSegment,
-  RealEstateSegment
-} from './components/segments/Segments';
+// Import the dynamic segment page component and segments page
+import SegmentPage from './components/segments/common/SegmentPage';
 import SegmentsPage from './components/segments/SegmentsPage';
 
 function App() {
@@ -41,9 +35,9 @@ function App() {
             <Routes>
               <Route path="/" element={<MainLandingPage />} />
               <Route path="/home" element={<BoutiqueInvestmentApp />} />
-              <Route path="/services" element={<AllServicesPage />} />
               
-              {/* Dynamic service route */}
+              {/* Services routes - added ServicesPage */}
+              <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/:serviceId" element={<ServicePage />} />
               
               {/* Redirects from old service paths to new dynamic paths */}
@@ -54,17 +48,19 @@ function App() {
               <Route path="/ai-services" element={<Navigate to="/services/ai-services" replace />} />
               <Route path="/microsoft-optimization" element={<Navigate to="/services/microsoft-optimization" replace />} />
               <Route path="/electronic-message-archiving" element={<Navigate to="/services/electronic-message-archiving" replace />} />
-              <Route path="/workflow-automation" element={<WorkflowAutomation />} />
               
               {/* Assessment Routes */}
               <Route path="/assessments" element={<AssessmentHub />} />        
               
-              {/* Segment Routes */}
+              {/* Segment Routes - Updated to use dynamic segment page */}
               <Route path="/segments" element={<SegmentsPage />} />
-              <Route path="/segments/private-equity" element={<PrivateEquitySegment />} />
-              <Route path="/segments/family-offices" element={<FamilyOfficeSegment />} />
-              <Route path="/segments/venture-capital" element={<VentureCapitalSegment />} />
-              <Route path="/segments/real-estate" element={<RealEstateSegment />} />
+              <Route path="/segments/:segmentId" element={<SegmentPage />} />
+              
+              {/* Redirects from old segment paths to new dynamic paths */}
+              <Route path="/private-equity" element={<Navigate to="/segments/private-equity" replace />} />
+              <Route path="/family-offices" element={<Navigate to="/segments/family-offices" replace />} />
+              <Route path="/venture-capital" element={<Navigate to="/segments/venture-capital" replace />} />
+              <Route path="/real-estate" element={<Navigate to="/segments/real-estate" replace />} />
               
               {/* Other Routes */}
               <Route path="/about-us" element={<AboutUsPage />} />
